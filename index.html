@@ -50,16 +50,34 @@
 			];
 			// function chgimg(avatars){return avatars[Math.floor(Math.random()*avatars.length)];} // abandoned function to change the avatar image
 			$(function() { // When the page loads
-				 changeavatarimage(); // Pick a random avatar and change it before the page fades in
-				$("body").hide().fadeIn(1000); // Fades in the body, excluding the background
+				changeavatarimage(); // Pick a random avatar and change it before the page fades in
+				$("body").fadeIn(1000); // Fades in the body, excluding the background
+
+				var $avi = $(".avatar");
+
+				$avi.click( function(){
+					let $rip = $('<div class="ripple"/>')
+					$avi.prepend($rip);
+					$rip.ready(function(){
+						$rip.addClass("rippleout");
+						setTimeout(function(){
+							$rip.remove();
+						}, 5000)
+					})
+					changeavatarimage()
+					// $rip.animate({
+					// 	width: "calc( max(142vw, 142vh) + 250px );",
+					// 	height: "calc( max(142vw, 142vh) + 250px );"
+					// }, 5000)
+					// setTimeout(function(){
+					// 	$(".ripple").removeClass("rippleout");
+					// }, 5000);
+				})
 			});
 
 			function changeavatarimage () {
 				$(".avatarnormal").attr("src", avatars[Math.floor(Math.random()*avatars.length)]);
 			}
-			// Functions for opening my socials, called from the buttons below
-			function opentwitch(){ window.open("https://twitch.tv/flleeppyy") }
-			function opendiscord(){ window.open("https://discord.gg/w8AJNTQ") }
 
 		</script>
 
@@ -73,8 +91,13 @@
 				<img class="avatarnormal" src="">
 			</div>
 			<div class="socialbuttons0 item">
-				<img class="twitchicon" src="images/icons/twitchnormal.png" onclick="opentwitch()">
-				<img class="discordicon" src="images/icons/discordnormal.png" onclick="opendiscord()">
+				<a href="https://twitch.tv/flleeppyy" target="_blank">
+					<img class="twitchicon" src="images/icons/twitchnormal.png">
+				</a>
+				<a href="https://discord.gg/w8AJNTQ" target="_blank">
+					<img class="discordicon" src="images/icons/discordnormal.png">
+				</a>
+				</div>
 			</div>
 			<br>
 			<br>
