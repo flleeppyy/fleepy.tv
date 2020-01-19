@@ -1,0 +1,89 @@
+<!--
+	Todo:
+- Make the page fade in when loaded - DONE
+- Make the avatar different on each load - DONE
+- Make the button over transition smooth - Scrapped
+-->
+<html>
+	<head>
+		<title>Flleeppyy</title>
+		<link rel="stylesheet" type="text/css" href="main/main.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<!-- Primary Meta Tags -->
+		<title>Flleeppyy - A Twitch Streamer</title>
+		<meta name="title" content="Flleeppyy - A Twitch Streamer">
+		<meta name="description" content="A Twitch Streamer, Developer, Graphics Designer, Music Composer, Game Creator, and many other things.">
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://fleepy.tv/">
+		<meta property="og:title" content="Flleeppyy - A Twitch Streamer">
+		<meta property="og:description" content="A Twitch Streamer, Developer, Graphics Designer, Music Composer, Game Creator, and many other things.">
+		<meta property="og:image" content="https://fleepy.tv/images/banner_large.png">
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://fleepy.tv/">
+		<meta property="twitter:title" content="Flleeppyy - A Twitch Streamer">
+		<meta property="twitter:description" content="A Twitch Streamer, Developer, Graphics Designer, Music Composer, Game Creator, and many other things.">
+		<meta property="twitter:image" content="https://fleepy.tv/images/banner_large.png">
+		<script>
+			var avatars = [ // Creates a table with the list of avatars from Ran and Chen
+			"images/avatar/ran/avatar1.png",
+			"images/avatar/ran/avatar2.png",
+			"images/avatar/ran/avatar3.png",
+			"images/avatar/ran/avatar4.png",
+			"images/avatar/ran/avatar5.png",
+			"images/avatar/ran/avatar6.png",
+			"images/avatar/ran/avatar7.png",
+			"images/avatar/ran/avatar8.png",
+			"images/avatar/ran/avatar9.png",
+			"images/avatar/ran/avatar10.png",
+			"images/avatar/chen/avatar1.png",
+			"images/avatar/chen/avatar2.png",
+			"images/avatar/chen/avatar3.png",
+			"images/avatar/chen/avatar4.png",
+			"images/avatar/chen/avatar5.png",
+			"images/avatar/chen/avatar6.png",
+			"images/avatar/chen/avatar7.png",
+			"images/avatar/chen/avatar8.png",
+			"images/avatar/chen/avatar9.png",
+			"images/avatar/chen/avatar10.png"
+			];
+			// function chgimg(avatars){return avatars[Math.floor(Math.random()*avatars.length)];} // abandoned function to change the avatar image
+			$(function() { // When the page loads
+				 changeavatarimage(); // Pick a random avatar and change it before the page fades in
+				$("body").hide().fadeIn(1000); // Fades in the body, excluding the background
+			});
+
+			function changeavatarimage () {
+				$(".avatarnormal").attr("src", avatars[Math.floor(Math.random()*avatars.length)]);
+			}
+			// Functions for opening my socials, called from the buttons below
+			function opentwitch(){ window.open("https://twitch.tv/flleeppyy") }
+			function opendiscord(){ window.open("https://discord.gg/w8AJNTQ") }
+
+		</script>
+
+	</head>
+	<body>
+		<div id="maincontent">
+			<div class="nametitle">
+				<img src="images/Name.png">
+			</div>
+			<div class="avatar">
+				<img class="avatarnormal" src="">
+			</div>
+			<div id="socialbuttons0">
+				<img class="twitchicon" src="images/icons/twitchnormal.png" onclick="opentwitch()">
+				<img class="discordicon" src="images/icons/discordnormal.png" onclick="opendiscord()">
+			</div>
+			<br>
+			<br>
+		</div>
+		<div class="cookieinfo" style="position: fixed;left: 0px;right: 0px;height: auto;min-height: 21px;z-index: 2147483647;background: rgb(43, 43, 43);color: rgb(216, 216, 216);line-height: 21px;padding: 8px 18px;font-family: verdana, arial, sans-serif;font-size: 14px;text-align: center;bottom: 0px;opacity: 1;">
+			<div class="cookieinfo-close" style="float: right; display: block; padding: 5px 8px; min-width: 100px; margin-left: 5px; border-radius: 5px; cursor: pointer; color: rgb(0, 0, 0); background: rgb(241, 214, 0); text-align: center;" onclick="$('.cookieinfo').hide(500);">X</div>
+			<span style="display:block;padding:5px 0 5px 0;">Hey, the website is currently undergoing a redesign since some things on the page are not functional, and is broken on mobile devices. <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="display: none;">
+			</span>
+		</div>
+		</script>
+	</body>
+</html>

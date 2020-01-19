@@ -1,0 +1,73 @@
+body {
+	background-image: url(../images/background.png);
+	background-size: cover;
+}
+
+.nametitle {
+	top: 193px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.avatar {
+	position: absolute;
+	top: 240px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.avatarnormal {
+	position: absolute;
+	top: 240px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.avatarhover {
+	position: absolute;
+	top: 240px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+/*
+.icons {
+	position: absolute;
+	top: 680px;
+	transform: translate(-50%, -50%);
+}
+*/
+
+.twitchicon {
+	left: 42%;
+	position: absolute;
+	top: 680px;
+	transition: content 0.4s
+}
+.discordicon {
+	right: 42%;
+	position: absolute;
+	top: 680px;
+	transition: content 0.4s
+}
+
+.twitchicon:hover {
+	content: url('../images/icons/twitchhover.png');
+	cursor: pointer;
+}
+
+.discordicon:hover {
+	content: url('../images/icons/discordhover.png');
+	cursor: pointer;
+}
+
+
+
+
+
