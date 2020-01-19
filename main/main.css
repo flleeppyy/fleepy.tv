@@ -1,73 +1,38 @@
 body {
 	background-image: url(../images/background.png);
 	background-size: cover;
+	margin: 0;
 }
 
-.nametitle {
-	top: 193px;
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, -50%);
+#maincontent {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
-.avatar {
-	position: absolute;
-	top: 240px;
-	left: 50%;
-	transform: translate(-50%, -50%);
+.item {
+	margin: 0 auto;
 }
 
-.avatarnormal {
-	position: absolute;
-	top: 240px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.avatarhover {
-	position: absolute;
-	top: 240px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	display: none;
-}
+.nametitle > img {
+	width: 100%;
+ }
 
 ::-webkit-scrollbar { 
     display: none; 
 }
 
-/*
-.icons {
-	position: absolute;
-	top: 680px;
-	transform: translate(-50%, -50%);
-}
-*/
-
-.twitchicon {
-	left: 42%;
-	position: absolute;
-	top: 680px;
-	transition: content 0.4s
-}
-.discordicon {
-	right: 42%;
-	position: absolute;
-	top: 680px;
-	transition: content 0.4s
+.socialbuttons0 > img {
+	width: 100px;
+	height: 100px;
+	filter: brightness(70%) blur(1px);
+	transition: 0.2s;
 }
 
-.twitchicon:hover {
-	content: url('../images/icons/twitchhover.png');
+.socialbuttons0 > img:hover {
 	cursor: pointer;
+	filter: brightness(100%)  blur(0);
 }
-
-.discordicon:hover {
-	content: url('../images/icons/discordhover.png');
-	cursor: pointer;
-}
-
-
-
-
-
