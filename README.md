@@ -1,2 +1,3 @@
 # fleepy.tv
-my website
+My website that I work on.
+With the help of a couple friends
