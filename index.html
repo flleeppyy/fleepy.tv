@@ -3,80 +3,124 @@ Co-authored-by: GeneralUltra758 <gen.ultra758@gmail.com>
 Co-authored-by: Joschua Schneider <joschua-schneider@web.de>
 -->
 <html>
-
-<head>
-    <title>Flleeppyy</title>
-    <link rel="stylesheet" type="text/css" href="main/main.css">
-    <link rel="stylesheet" type="text/css" href="main/navbar.css">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
-    <title>Flleeppyy - Home</title>
-    <meta name="title" content="Flleeppyy - Home">
-    <meta name="description" content="A Twitch Streamer, Music Producer, Developer, Graphics Designer, Game Creator, and many other things.">
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fleepy.tv/">
-    <meta property="og:title" content="Flleeppyy - Home">
-    <meta property="og:description" content="A Twitch Streamer, Music Producer, Developer, Graphics Designer, Game Creator, and many other things.">
-    <meta property="og:image" content="https://fleepy.tv/images/banner_large.png">
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://fleepy.tv/">
-    <meta property="twitter:title" content="Flleeppyy - Home">
-    <meta property="twitter:description" content="A Twitch Streamer, Music Producer, Developer, Graphics Designer, Game Creator, and many other things.">
-    <meta property="twitter:image" content="https://fleepy.tv/images/banner_large.png">
-    <script>
-        var avatars = [ // Creates a table with the list of avatars from Ran and Chen
-            "images/avatar/ran/avatar1.png",
-            "images/avatar/ran/avatar2.png",
-            "images/avatar/ran/avatar3.png",
-            "images/avatar/ran/avatar4.png",
-            "images/avatar/ran/avatar5.png",
-            "images/avatar/ran/avatar6.png",
-            "images/avatar/ran/avatar7.png",
-            "images/avatar/ran/avatar8.png",
-            "images/avatar/ran/avatar9.png",
-            "images/avatar/ran/avatar10.png",
-            "images/avatar/chen/avatar1.png",
-            "images/avatar/chen/avatar2.png",
-            "images/avatar/chen/avatar3.png",
-            "images/avatar/chen/avatar4.png",
-            "images/avatar/chen/avatar5.png",
-            "images/avatar/chen/avatar6.png",
-            "images/avatar/chen/avatar7.png",
-            "images/avatar/chen/avatar8.png",
-            "images/avatar/chen/avatar9.png",
-            "images/avatar/chen/avatar10.png"
-        ];
-        // function chgimg(avatars){return avatars[Math.floor(Math.random()*avatars.length)];} // abandoned function to change the avatar image
-        $(function() { // When the page loads
-            changeavatarimage(); // Pick a random avatar and change it before the page fades in
-            $("body").fadeIn(1000); // Fades in the body, excluding the background
-
-            var $avi = $(".avatar");
-
-            let clickedCount = 0;
-            let firstClickTimeout = null;
-
-            // Gets called if avatar gets clicked 5 times or more within 5 seconds
-            function easterEgg() {
-                // Rick-Roll
-                window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    <head>
+        <title>Flleeppyy</title>
+        <link rel="stylesheet" type="text/css" href="main/main.css">
+        <link rel="stylesheet" type="text/css" href="main/navbar.css">
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Primary Meta Tags -->
+        <title>Flleeppyy - Home</title>
+        <meta name="title" content="Flleeppyy - Home">
+        <meta name="description" content="A Twitch Streamer, Music Producer, Developer, Graphics Designer, Game Creator, and many other things.">
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://fleepy.tv/">
+        <meta property="og:title" content="Flleeppyy - Home">
+        <meta property="og:description" content="A Twitch Streamer, Music Producer, Developer, Graphics Designer, Game Creator, and many other things.">
+        <meta property="og:image" content="https://fleepy.tv/images/banner_large.png">
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://fleepy.tv/">
+        <meta property="twitter:title" content="Flleeppyy - Home">
+        <meta property="twitter:description" content="A Twitch Streamer, Music Producer, Developer, Graphics Designer, Game Creator, and many other things.">
+        <meta property="twitter:image" content="https://fleepy.tv/images/banner_large.png">
+        <script>
+            
+            var avatars = [// Creates a table with the list of avatars from Ran and Chen
+            "images/avatar/ran/avatar1.png", "images/avatar/ran/avatar2.png", "images/avatar/ran/avatar3.png", "images/avatar/ran/avatar4.png", "images/avatar/ran/avatar5.png", "images/avatar/ran/avatar6.png", "images/avatar/ran/avatar7.png", "images/avatar/ran/avatar8.png", "images/avatar/ran/avatar9.png", "images/avatar/ran/avatar10.png", "images/avatar/chen/avatar1.png", "images/avatar/chen/avatar2.png", "images/avatar/chen/avatar3.png", "images/avatar/chen/avatar4.png", "images/avatar/chen/avatar5.png", "images/avatar/chen/avatar6.png", "images/avatar/chen/avatar7.png", "images/avatar/chen/avatar8.png", "images/avatar/chen/avatar9.png", "images/avatar/chen/avatar10.png"];
+            // function chgimg(avatars){return avatars[Math.floor(Math.random()*avatars.length)];} // abandoned function to change the avatar image
+            function chentip() {
+                alert('If you hold down shift and click the avatar, chen will run forever until you refresh the page c:')
+           
             }
+            var running = false;
+            var repeatrun = false;
+            function chenhonk() {
+                // please ignore this fuckfest of a mess
+                
+                if (running == true)
+                    return;
+                // transition, left/right, transform, rotate
+                if (repeatrun) {
+                        setInterval(function(){dothething()}, 1050)
+                } else {
+                        dothething()
+                }
+                function dothething() {
+                    //console.log($(".honk").attr("style"));
 
-            $avi.click(function() {
-                let $rip = $('<div class="ripple"/>')
-                $avi.prepend($rip);
-                $rip.ready(function() {
-                    $rip.addClass("rippleout");
+                    running = true
+                    if ($(".honk").attr("style") == "transition: right 1s linear; right: -30%; transform: scale(0.4) rotate(0deg); top: unset; bottom: -50px;") {
+                        //if ready to travel to left
+                        //console.log("gotoleft")
+                        $(".honk").attr("style", "transition: right 1s linear; right: 140%; transform: scale(0.4) rotate(0deg); top: unset; bottom: -50px;");
+                    } else if ($(".honk").attr("style") == "transition: left 1s linear; left: -30%; transform: scale(0.4) rotate(180deg); top: 0px; bottom: unset;") {
+                        // if ready to travel to right
+                        //console.log("gotoright")
+                        $(".honk").attr("style", "transition: left 1s linear; left: 140%; transform: scale(0.4) rotate(180deg); top: 0px; bottom: unset;");
+                    } //else console.log("failed first if check");
+
                     setTimeout(function() {
-                        $rip.remove();
-                    }, 5000)
-                })
-                changeavatarimage()
+                        // transition, left/right, transform, rotate
+                        //console.log($(".honk").attr("style"));
+                        if ($(".honk").attr("style") == "transition: right 1s linear; right: 140%; transform: scale(0.4) rotate(0deg); top: unset; bottom: -50px;") {
+                            // if chen just ran from the bottom right side
+                            //console.log("came from right")
+                            $(".honk").attr("style", "transition: right 0s linear; left: 140%; transform: scale(0.4) rotate(180deg); top: unset; bottom: -50px;");
+                            $(".honk").attr("style", "transition: left 0s linear; left: -30%; transform: scale(0.4) rotate(180deg); top: unset; bottom: -50px;");
+                            $(".honk").attr("style", "transition: left 1s linear; left: -30%; transform: scale(0.4) rotate(180deg); top: 0px; bottom: unset;");
+                        } else if ($(".honk").attr("style") == "transition: left 1s linear; left: 140%; transform: scale(0.4) rotate(180deg); top: 0px; bottom: unset;") {
+                            // if chen just ran from the top left side
+                            //console.log("came from left")
+                            $(".honk").attr("style", "transition: left 0s linear; right: 140%; transform: scale(0.4) rotate(0deg); top: 0px; bottom: unset;");
+                            $(".honk").attr("style", "transition: right 0s linear; right: -30%; transform: scale(0.4) rotate(0deg); top: 0px; bottom: unset;");
+                            $(".honk").attr("style", "transition: right 1s linear; right: -30%; transform: scale(0.4) rotate(0deg); top: unset; bottom: -50px;");
+                        } else {
+                            //console.log("failed if check");
+                            //console.log($(".honk").attr("style"));
+                        }
+                        running = false;
+                    }, 1000)
+                }
+
+                
+            }
+            $(function() {
+                // When the page loads
+
+                changeavatarimage();
+                // Pick a random avatar and change it before the page fades in
+                $("body").fadeIn(1000);
+                // Fades in the body, excluding the background
+
+                var $avi = $(".avatar");
+
+                // Gets called if avatar gets clicked 5 times or more within 5 seconds
+                function easterEgg() {
+                    // Rick-Roll
+                    window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                }
+
+                $avi.click(function() {
+                    if (window.event.shiftKey) {
+                        repeatrun = true
+                    }
+                    setTimeout(chenhonk(), 10)
+                    
+                    /* // no need for this since chenhonk() c:
+                    let $rip = $('<div class="ripple"/>')
+                    $avi.prepend($rip);
+                    $rip.ready(function() {
+                        $rip.addClass("rippleout");
+                        setTimeout(function() {
+                            $rip.remove();
+                        }, 5000)
+                    })
+                    */
+                    changeavatarimage()
                     // $rip.animate({
                     // 	width: "calc( max(142vw, 142vh) + 250px );",
                     // 	height: "calc( max(142vw, 142vh) + 250px );"
@@ -85,40 +129,27 @@ Co-authored-by: Joschua Schneider <joschua-schneider@web.de>
                     // 	$(".ripple").removeClass("rippleout");
                     // }, 5000);
 
-                if (clickedCount === 0) {
-                    firstClickTimeout = setTimeout(() => {
-                        if (clickedCount >= 5) {
-                            easterEgg();
-                        } else {
-                            clickedCount = 0;
-                        }
-                    }, 5000);
-                }
+                })
 
-                clickedCount++;
-            })
+                let menuOpen = false;
+                const mobileMenuButton = $(".mobile-menu-button");
+                const mobileMenuContainer = $(".mobile-menu-container");
+                const mobileMenuLinks = $(".mobile-menu-links");
 
-            let menuOpen = false;
-            const mobileMenuButton = $(".mobile-menu-button");
-            const mobileMenuContainer = $(".mobile-menu-container");
-            const mobileMenuLinks = $(".mobile-menu-links");
+                mobileMenuButton.click(function() {
+                    menuOpen = !menuOpen;
 
-            mobileMenuButton.click(function() {
-                menuOpen = !menuOpen;
-
-                mobileMenuLinks.slideToggle(200)
+                    mobileMenuLinks.slideToggle(200)
+                });
             });
-        });
 
-        function changeavatarimage() {
-            $(".avatarnormal").attr("src", avatars[Math.floor(Math.random() * avatars.length)]);
-        }
-    </script>
-
-</head>
-
-<body>
-    <!-- <div class="inline-flex w-screen">
+            function changeavatarimage() {
+                $(".avatarnormal").attr("src", avatars[Math.floor(Math.random() * avatars.length)]);
+            }
+        </script>
+    </head>
+    <body>
+        <!-- <div class="inline-flex w-screen">
         <ul class="flex w-screen">
             <li><a class="active" href="#home">Home</a></li>
             <li><a href="#news">News</a></li>
@@ -127,68 +158,66 @@ Co-authored-by: Joschua Schneider <joschua-schneider@web.de>
             <li><a href="#about">About</a></li>
         </ul>
     </div> -->
-
-    <!-- Mobile Nav -->
-    <div class="mobile-menu-container flex flex-col md:hidden z-10 fixed bg-white top-0 right-0 left-0">
-        <div class="flex justify-between h-12">
-            <div class="w-24"></div>
-            <a class="flex items-center" href="https://fleepy.tv"><img src="images/name_smaller.png" alt="" /></a>
-            <div class="w-24 h-full relative flex justify-end items-center">
-                <button class="mobile-menu-button px-4 h-full">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="text-gray-900 h-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
-                </button>
+        <!-- Mobile Nav -->
+        <div class="mobile-menu-container flex flex-col md:hidden z-10 fixed bg-white top-0 right-0 left-0">
+            <div class="flex justify-between h-12">
+                <div class="w-24"></div>
+                <a class="flex items-center" href="https://fleepy.tv">
+                    <img src="images/name_smaller.png" alt=""/>
+                </a>
+                <div class="w-24 h-full relative flex justify-end items-center">
+                    <button class="mobile-menu-button px-4 h-full">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="text-gray-900 h-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-menu-links hidden">
+                <div class=" flex flex-col flex-no-wrap flex-shrink-0 mt-4">
+                    <a href="https://u.fleepy.tv" class="nav-item py-4 text-center">ShortURL
+                </a>
+                    <a href="https://patreon.com/flleeppyy" class="nav-item py-4 text-center">Patreon</a>
+                    <a href="#contact" class="nav-item py-4 text-center">Contact
+                </a>
+                    <a href="#about" class="nav-item py-4 text-center">About</a>
+                </div>
             </div>
         </div>
-        <div class="mobile-menu-links hidden">
-            <div class=" flex flex-col flex-no-wrap flex-shrink-0 mt-4">
-                <a href="https://u.fleepy.tv" class="nav-item py-4 text-center">
-                    ShortURL
-                </a>
-                <a href="https://patreon.com/flleeppyy" class="nav-item py-4 text-center">Patreon</a>
-                <a href="#contact" class="nav-item py-4 text-center">
-                    Contact
-                </a>
-                <a href="#about" class="nav-item py-4 text-center">About</a>
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex z-10 flex justify-center items-center content-around fixed bg-white top-0 right-0 left-0 flex-row">
+            <a class="flex md:hidden mb-2 mt-4" href="https://fleepy.tv">
+                <img src="images/name_smaller.png" alt=""/>
+            </a>
+            <div class="flex relative h-full flex-row flex-grow-0">
+                <a href="https://u.fleepy.tv" class="nav-item w-24 py-4 text-center">ShortURL
+            </a>
+                <a href="https://patreon.com/flleeppyy" class="nav-item w-24 py-4 text-center">Patreon</a>
+            </div>
+            <a class="hidden md:flex" href="https://fleepy.tv">
+                <img class="mx-12" src="images/name_smaller.png" alt=""/>
+            </a>
+            <div class="flex relative h-full flex-row flex-grow-0">
+                <a href="#contact" class="nav-item w-24 py-4 text-center">Contact
+            </a>
+                <a href="#about" class="nav-item w-24 py-4 text-center">About</a>
             </div>
         </div>
-    </div>
-
-    <!-- Desktop Nav -->
-    <div class="hidden md:flex z-10 flex justify-center items-center content-around fixed bg-white top-0 right-0 left-0 flex-row">
-        <a class="flex md:hidden mb-2 mt-4" href="https://fleepy.tv"><img src="images/name_smaller.png" alt="" /></a>
-        <div class="flex relative h-full flex-row flex-grow-0">
-            <a href="https://u.fleepy.tv" class="nav-item w-24 py-4 text-center">
-                ShortURL
-            </a>
-            <a href="https://patreon.com/flleeppyy" class="nav-item w-24 py-4 text-center">Patreon</a>
+        <image class="honk" src="images/chenrun.gif" onclick="chentip()" style="transition: right 1s linear; right: -30%; transform: scale(0.4) rotate(0deg); top: unset; bottom: -50px;"></image>
+        <div id="maincontent">
+            <div class="nametitle item">
+                <img onclick="chentip()" class="z-1" src="images/Name.png">
+            </div>
+            <div class="avatar item">
+                <img class="avatarnormal" src="">
+            </div>
+            <div class="socialbuttons0 item inline-flex">
+                <a href="https://twitch.tv/flleeppyy" target="_blank" style="color: transparent;">
+                    <img class="twitchicon" src="images/icons/twitchnormal.png">
+                </a>
+                <a href="https://discord.gg/w8AJNTQ" target="_blank">
+                    <img class="discordicon" src="images/icons/discordnormal.png">
+                </a>
+            </div>
         </div>
-        <a class="hidden md:flex" href="https://fleepy.tv"><img class="mx-12" src="images/name_smaller.png" alt="" /></a>
-        <div class="flex relative h-full flex-row flex-grow-0">
-            <a href="#contact" class="nav-item w-24 py-4 text-center">
-                Contact
-            </a>
-            <a href="#about" class="nav-item w-24 py-4 text-center">About</a>
-        </div>
-    </div>
-
-
-    <div id="maincontent">
-        <div class="nametitle item">
-            <img class="z-1" src="images/Name.png">
-        </div>
-        <div class="avatar item">
-            <img class="avatarnormal" src="">
-        </div>
-        <div class="socialbuttons0 item inline-flex">
-            <a href="https://twitch.tv/flleeppyy" target="_blank" style="color: transparent;">
-                <img class="twitchicon" src="images/icons/twitchnormal.png">
-            </a>
-            <a href="https://discord.gg/w8AJNTQ" target="_blank">
-                <img class="discordicon" src="images/icons/discordnormal.png">
-            </a>
-        </div>
-    </div>
-    </div>
-</body>
-
-</html>
+</div></body></html>
