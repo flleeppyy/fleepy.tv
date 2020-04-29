@@ -74,3 +74,11 @@ body {
 	width: 600px;
 	height: 600px;*/
 }
+
+.honk {
+    position: fixed;
+    transform: scale(0.4) rotate(0deg);
+    transition: left 1s;
+    bottom: -50px;
+    right: -30%;
+}
