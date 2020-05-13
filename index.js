@@ -1,3 +1,6 @@
+// you may be asking, why the fuck did you run your front end on node when nginx can just provide the files without a server in the /var/www directory?
+// because fuck you thats why
+
 const path = require("path")
 
 const express = require("express")
@@ -17,5 +20,6 @@ app.get('/', (req, res) => {
         */
 
 })
+app.get('/favicon.ico', (req, res), res.sendFile(path.join(__dirname, 'public/favicon.ico')))
 
 app.listen(port, () => console.log(`listening at http://localhost:${port}`)) // listen the server, make it live
