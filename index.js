@@ -8,8 +8,10 @@ const app = express() // let app be express()
 
 const port = 8001
 
-app.use('/assets', express.static(__dirname + '/public')) // Static route, /src serves anything in the public/assets folder
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/favicon.ico')))
+app.use('/other_stuff', express.static(__dirname + '/public/other_stuff')) // Static route
+app.use('/assets', express.static(__dirname + '/public/assets')) // Static route, /src serves anything in the public/assets folder
+
+app.get('/favicon.ico', (req, res) => res.sendFile(path.join(__dirname, 'public/favicon.ico')))
 app.get('/', (req, res) => {
     console.log(`IP: ${req.ip} Requested ${req.url}`) // just do some logging
     res.sendFile(
