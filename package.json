@@ -1,0 +1,22 @@
+{
+  "name": "frontpage",
+  "version": "1.0.0",
+  "description": "My website that I work on. With the help of a couple friends",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flleeppyy/fleepy.tv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flleeppyy/fleepy.tv/issues"
+  },
+  "homepage": "https://github.com/flleeppyy/fleepy.tv#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
