@@ -7,20 +7,30 @@ const express = require("express")
 const app = express() // let app be express()
 const cheerio = require('cheerio');
 const fs = require('fs')
+const serveIndex = require('serve-index')
+const rateLimit = require("express-rate-limit"); // https://github.com/nfriedly/express-rate-limit
 
 const port = 8001
 
 
-app.use('/other_stuff', express.static(__dirname + '/public/other_stuff')) // Static route
-app.use('/assets', express.static(__dirname + '/public/assets')) // Static route, /src serves anything in the public/assets folder
+app.use('/', express.static(__dirname + '/public')) // Static route, /src serves anything in the public/assets folder
+app.use('/tf2classic/dl', (req, res) => {
+    serveIndex(__dirname + '/public/tf2classic/dl')
+});
+
+app.use('/tf2classic', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/tf2classic'))
+});
+
+
 
 app.get('/favicon.ico', (req, res) => res.sendFile(path.join(__dirname, 'public/favicon.ico')))
 app.get('/', (req, res) => { // The index page
     console.log(`IP: ${req.ip} Requested ${req.url}`) // just do some logging
     res.sendFile(
-            path.join(__dirname, 'public/index.html')
-        )
-        /*
+        path.join(__dirname, 'public/index.html')
+    )
+    /*
          .catch(e => { // If theres an error (most like)
             res.status(404).sendFile(path.join(__dirname, 'public/fuckywucky.html')) // show an error page (just sending pure html text wont cut it)
        })
