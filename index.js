@@ -12,7 +12,6 @@ const rateLimit = require("express-rate-limit"); // https://github.com/nfriedly/
 
 const port = 8001
 
-
 app.use('/', express.static(__dirname + '/public')) // Static route, /src serves anything in the public/assets folder
 app.use('/tf2classic/dl', (req, res) => {
     serveIndex(__dirname + '/public/tf2classic/dl')
