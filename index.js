@@ -8,7 +8,6 @@ const app = express() // let app be express()
 const cheerio = require('cheerio');
 const fs = require('fs')
 const serveIndex = require('serve-index')
-const rateLimit = require("express-rate-limit"); // https://github.com/nfriedly/express-rate-limit
 
 const port = 8001
 
@@ -20,8 +19,6 @@ app.use('/tf2classic/dl', (req, res) => {
 app.use('/tf2classic', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/tf2classic'))
 });
-
-
 
 app.get('/favicon.ico', (req, res) => res.sendFile(path.join(__dirname, 'public/favicon.ico')))
 app.get('/', (req, res) => { // The index page
