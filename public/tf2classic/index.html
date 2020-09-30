@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="TF2 Classic Mirror">
+    <meta name="description" content="A mirror for TF2 Classic, containing version 2.0.0, the 2.0.1 patch, and the full game with the 2.0.1 patch">
+    <meta property="image" content="tf2c.gif">
+    <link rel="icon" type="image/gif" sizes="32x32" href="tf2c.gif">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fleepy.tv/tf2classic">
+    <meta property="twitter:title" content="TF2 Classic Mirror">
+    <meta property="twitter:description" content="A mirror for TF2 Classic, containing version 2.0.0, the 2.0.1 patch, and the full game with the 2.0.1 patch">
+    <meta property="twitter:image" content="https://fleepy.tv/tf2classic/tf2c.gif">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>TF2 Classic Mirror</title>
+    <link rel="stylesheet" href="main.css?v=5">
+    <meta name="theme-color" content="#482a15">
+</head>
+
+<body>
+    <section class="flex" style="padding-top: 100px">
+        <img src="mirror.png" style="max-width: 600px">
+        <h2 class="outer-stroke" style="font-size:20px">Hosted in Dallas, TX by Flleeppyy</h2>
+        <div style="display: flex;align-items: center; padding-top:5px">
+            <h2 class="outer-stroke" style="font-size:18px; vertical-align:auto; padding: 0 3px">Ping/Add me on Discord if something is incorrect</h2>
+            <h2 style="font-size:15px; font-family: 'Montserrat', sans-serif">Flleeppyy#5039</h2>
+        </div>
+        <div style="display: flex;align-items: center; flex-direction: column; padding-top:5px;  ">
+            <h2 style="font-family: 'Montserrat', sans-serif!important; font-size:14px;">If the monthly quota is over 1000gb, please be considerate<br/>
+            and download from another mirror instead of this one.<br/>
+            Hosting mirrors costs money ya know!</br>
+            </h2>
+            <div id="barbox">
+                <h2 style="font-family: 'Montserrat', sans-serif!important; font-size:14px;">Monthly Network Transfer</h2>
+                <div id="barbar">
+                    <div id="barprogress"></div>
+                </div>
+                <h2 id="quota" style="font-family: 'Montserrat', sans-serif!important; font-size:14px;">...</h2>
+            </div>
+        </div>
+        <img src="tf2c.gif" class="logo item" alt="">
+        <h2 style="font-family: 'Montserrat', sans-serif!important; font-size:14px;">Choose a download below<br/>or choose from the <a href="https://fleepy.tv/tf2classic/dl" style="color: #ff9100">file index</a></h2>
+        <section class="version">
+            <h2>v2.0.0 Full Game</h2>
+            <div class="row-flex">
+                <button class="item" onclick="window.open('https://fleepy.tv/tf2classic/dl/v2.0.0.7z')">.7z</button>
+                <button class="item" onclick="window.open('https://fleepy.tv/tf2classic/dl/v2.0.0.zip')">.zip</button>
+            </div>
+            <div class="row-flex">
+                <h2 class="filesize">3.8GB</h2>
+                <h2 class="filesize">5.3GB</h2>
+            </div>
+            <h2 class="filesize smallerh2">Fully Unpacked: 11.8GB</h2>
+        </section>
+        <section class="version">
+            <h2>v2.0.1 patch only</h2>
+            <div class="row-flex">
+                <button class="item" onclick="window.open('https://fleepy.tv/tf2classic/dl/v2.0.1-patch-only.7z')">.7z</button>
+                <button class="item" onclick="window.open('https://fleepy.tv/tf2classic/dl/v2.0.1-patch-only.zip')">.zip</button>
+            </div>
+            <div class="row-flex">
+                <h2 class="filesize">2.7GB</h2>
+                <h2 class="filesize">3.6GB</h2>
+            </div>
+            <h2 class="filesize smallerh2">Fully Unpacked: 8.8GB</h2>
+        </section>
+        <section class="version">
+            <h2>v2.0.1 full game</h2>
+            <div class="row-flex">
+                <button class="item" onclick="window.open('https://fleepy.tv/tf2classic/dl/v2.0.1-full-game.7z')">.7z</button>
+                <button class="item" onclick="window.open('https://fleepy.tv/tf2classic/dl/v2.0.1-full-game.zip')">.zip</button>
+            </div>
+            <div class="row-flex">
+                <h2 class="filesize">3.9GB</h2>
+                <h2 class="filesize">5.4GB<br/></h2> 
+                
+            </div>
+            <h2 class="filesize smallerh2">Fully Unpacked: 11.9GB</h2>
+        </section>
+        <h1>Team Fortress 2 Classic Discord</h1>
+        <iframe class="discordembed" src="https://discord.com/widget?id=196337717267791874&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <button class="item" style="font-size: 20px" onclick="window.open('https://discord.gg/3zMk4vn')">Click here if embed doesn't load</button>
+    </section>
+    <script>
+        let elem = document.getElementById("barprogress");
+        let quota;
+        let quotaraw;
+        let width;
+        function checkquota() {
+            const xhr = new XMLHttpRequest()
+            xhr.onload = () => {
+                const response = JSON.parse(xhr.response);
+                quota = response['quota'];
+                quotaraw = response['quotaraw'];
+                console.log(response)
+                document.getElementById('quota').innerHTML = quota;
+                if (quotaraw >= 1000) {
+                    elem.style.backgroundColor = '#ff690f' // Bad
+                } else if (quotaraw < 1000) {
+                    elem.style.backgroundColor = '#4CAF50' // Good
+                }
+                elem.style.width = quotaraw / 10 + "%";
+            };        
+            xhr.open('GET', '/tf2classic/getquota');
+            xhr.send();
+        }
+        function a() {
+            setInterval(() => {
+                checkquota()
+                
+                a()
+            }, 600000);
+        }
+
+        checkquota()
+        a()
+        
+        
+        console.log(width)
+    </script>
+
+</body>
+
+</html>
