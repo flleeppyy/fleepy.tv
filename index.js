@@ -24,6 +24,8 @@ const limiter = rateLimit({
     }
 });
 
+
+/*
 let quota;
 
 async function checkquota() {
@@ -47,6 +49,13 @@ interval = setInterval(() => {
 
 checkquota()
 
+app.use('/tf2classic/getquota', limiter)
+app.get('/tf2classic/getquota', (req, res) => {
+    res.send({quota: `${quota} Used - Linode`, quotaraw: Number(quota.split('GB')[0])})
+    // res.send({quota: "838GB", quotaraw: 838})
+
+})
+*/
 
 app.use((req,res,next) => {
     res.setHeader('x-powered-by', 'Chen')
@@ -67,12 +76,7 @@ app.use('/tf2classic', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/tf2classic'))
 });
 
-app.use('/tf2classic/getquota', limiter)
-app.get('/tf2classic/getquota', (req, res) => {
-    res.send({quota: `${quota} Used - Linode`, quotaraw: Number(quota.split('GB')[0])})
-    // res.send({quota: "838GB", quotaraw: 838})
 
-})
 
 app.get('/favicon.ico', (req, res) => res.sendFile(path.join(__dirname, 'public/favicon.ico')))
 app.get('/', (req, res) => { // The index page
