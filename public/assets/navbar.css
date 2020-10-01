@@ -28,10 +28,10 @@ li a.active {
 */
 
 .nav-item {
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .nav-item:hover {
-    color: white;
-    background-color: #444444;
+  color: white;
+  background-color: #444444;
 }

@@ -19,7 +19,7 @@ body {
   position: relative;
 }
 
-.nametitle>img {
+.nametitle > img {
   width: 100%;
 }
 
@@ -31,7 +31,7 @@ body {
   width: 100px;
   height: 100px;
   -webkit-filter: brightness(80%) blur(1px);
-          filter: brightness(80%) blur(1px);
+  filter: brightness(80%) blur(1px);
   transition: 0.2s;
   padding: 10px;
 }
@@ -39,7 +39,7 @@ body {
 .socialbuttons0 img:hover {
   cursor: pointer;
   -webkit-filter: brightness(100%) blur(0);
-          filter: brightness(100%) blur(0);
+  filter: brightness(100%) blur(0);
 }
 
 .avatarnormal {
@@ -70,8 +70,8 @@ body {
 }
 
 .rippleout {
-  width: calc( max(142vw, 142vh) + 250px);
-  height: calc( max(142vw, 142vh) + 250px);
+  width: calc(max(142vw, 142vh) + 250px);
+  height: calc(max(142vw, 142vh) + 250px);
   /*
 	width: 600px;
 	height: 600px;*/
@@ -83,4 +83,10 @@ body {
   transition: left 1s;
   bottom: -50px;
   right: -30%;
+}
+.honk.brr-left {
+  transition: left 0.3s !important;
+}
+.honk.brr-right {
+  transition: right 0.3s !important;
 }

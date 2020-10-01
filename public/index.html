@@ -29,6 +29,8 @@
     <meta property="twitter:title" content="Flleeppyy - Home">
     <meta property="twitter:description" content="A Twitch Streamer, Music Producer, Developer, Graphics Designer, Game Creator, and many other things.">
     <meta property="twitter:image" content="https://fleepy.tv/images/banner_large.png">
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="assets/moving.js"></script>
     <script>
         var avatars = [ // Creates a table with the list of avatars from Ran and Chen
             "assets/images/avatar/ran/avatar1.png",
@@ -52,10 +54,21 @@
             "assets/images/avatar/chen/avatar9.png",
             "assets/images/avatar/chen/avatar10.png"
         ];
+
+        let clicked = 0
+        function honkhonk() {
+          if (clicked !== 3) return clicked++
+          else {
+            clicked = 99
+            alert("honk honk")
+            initChenMoving()
+          }
+        }
+
         // function chgimg(avatars){return avatars[Math.floor(Math.random()*avatars.length)];} // abandoned function to change the avatar image
         function chentip() {
-            alert('If you hold down shift and click the avatar, chen will run forever until you refresh the page c:')
-
+            // alert('If you hold down shift and click the avatar, chen will run forever until you refresh the page c:')
+            // just dont do this will remove soon TM
         }
         var running = false;
         var repeatrun = false;
@@ -111,11 +124,9 @@
                 }, 1000)
             }
 
-
         }
         $(function() {
             // When the page loads
-
             changeavatarimage();
             // Pick a random avatar and change it before the page fades in
             $("body").fadeIn(1000);
@@ -225,10 +236,10 @@
             <a href="https://u.fleepy.tv/discord" class="nav-item w-24 py-4 text-center">Discord</a>
         </div>
     </div>
-    <image class="honk" src="assets/images/chenrun.gif" onclick="chentip()" style="transition: right 1s linear; right: -30%; transform: scale(0.4) rotate(0deg); top: unset; bottom: -50px;"></image>
+    <image class="honk" src="assets/images/chenrun.gif" style="transition: right 1s linear; right: -30%; transform: scale(0.4) rotate(0deg); top: unset; bottom: -50px;"></image>
     <div id="maincontent">
         <div class="nametitle item">
-            <img onclick="chentip()" class="z-1" src="assets/images/Name.png">
+            <img onclick="honkhonk()" class="z-1" src="assets/images/Name.png">
         </div>
         <div class="avatar item">
             <img class="avatarnormal" src="">
@@ -241,7 +252,6 @@
                 <img class="discordicon" src="assets/images/icons/discordnormal.png">
             </a>
         </div>
-    </div>
     </div>
 </body>
 

@@ -9,7 +9,9 @@ import fs from "fs"
 import path from "path"
 
 const port = 8001
-const app = fastify()
+const app = fastify({
+  trustProxy: true,
+})
 
 app.addHook("onRequest", (req, _, next) => {
   console.log(`IP: ${req.ip} Requested ${req.url}`) // just do some logging
