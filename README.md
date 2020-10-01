@@ -9,4 +9,4 @@ Co-authors/Contributors (Name, (Discord), <Email>):
 - GeneralUltra758 (GeneralUltra758#0001) <gen.ultra758@gmail.com>
 - Joschua Schneider <joschua-schneider@web.de>
 - Timgor (timgor#4817)
-
+- Vottus#9433 (vottus#9433)
