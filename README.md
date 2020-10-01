@@ -1,12 +1,11 @@
 # fleepy.tv
 
-My website that I work on.
-With the help of a couple friends
+My website that I work on with the help of a couple friends and random kind contributors
 
 i totally know what the fuck im doing
 
-Co-authored-by: GeneralUltra758 <gen.ultra758@gmail.com>
-
-Co-authored-by: Joschua Schneider <joschua-schneider@web.de>
-
-Co-authored-by: Timgor
+Co-authors/Contributors (Name, (Discord), \<Email>):
+- GeneralUltra758 (GeneralUltra758#0001) <gen.ultra758@gmail.com>
+- Joschua Schneider <joschua-schneider@web.de>
+- Timgor (timgor#4817)
+- Vottus#9433 (vottus#9433)
