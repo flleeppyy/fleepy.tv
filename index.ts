@@ -29,7 +29,7 @@ app.register(fastifyStatic, {
 
 // Other files and shit
 
-app.get("/cirnobot/strings.json", (req, res) => {
+app.get("/cirnobot/strings.json", (_req, res) => {
   let html = ""
 
   const styleNode = "<style>body { white-space: pre }</script>"

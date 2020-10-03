@@ -1,7 +1,5 @@
-module.exports = {
-  theme: {
-    extend: {},
-  },
-  variants: {},
-  plugins: [],
-}
+export const theme = {
+  extend: {},
+};
+export const variants = {};
+export const plugins = [];

@@ -35,7 +35,7 @@ img.kofiimg {
 span.kofitext {
   color: #fff !important;
   letter-spacing: -0.15px !important;
-  text-wrap: none;
+  word-wrap: none;
   vertical-align: middle;
   line-height: 33px !important;
   padding: 0;

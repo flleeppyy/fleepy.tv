@@ -125,7 +125,7 @@ window.initChenMoving = () => {
    * @param {number} val New thing value
    */
   const setThing = (val) => {
-    // TODO: do this with CSS animations instead of
+    // ToDO: do this with CSS animations instead of
     // for-looping tenths, we can do better than this
     for (let i = 0.1; i < val; i += 0.4) {
       if (!keyDown) return
