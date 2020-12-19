@@ -1,17 +1,15 @@
 {
   "name": "frontpage",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "My website that I work on. With the help of a couple friends",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "start": "tsc && ts-node .",
-    "dev": "nodemon -e ts,js,json --exec ts-node .",
-    "build:css": "postcss public/assets/main.css -o public/assets/style.css",
-    "build:css:prod": "env NODE_ENV=production; postcss public/assets/main.css -o public/assets/style.css"
+    "start": "node .",
+    "dev": "nodemon -e ts,js,json index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flleeppyy/fleepy.tv.git"
+    "url": "https://github.com/flleeppyy/fleepy.tv.git"
   },
   "author": "",
   "license": "ISC",

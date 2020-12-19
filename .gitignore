@@ -26,3 +26,6 @@ fleepy.tv-master.zip
 node_modules
 .vs
 public/other_stuff
+logging.log
+node.sh
+npm-debug.log
