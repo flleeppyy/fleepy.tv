@@ -30,3 +30,4 @@ logging.log
 node.sh
 npm-debug.log
 index.js
+public/js/main.js
