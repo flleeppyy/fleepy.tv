@@ -10,10 +10,10 @@
 */
 
 /**
- * @param {hue} hue
- * @param {Percentage..String} saturation
- * @returns {String}
- */
+* @param {hue} hue
+* @param {Percentage..String} saturation
+* @returns {String}
+*/
 class Hsl { // I honestly dont know why the fuck im doing this. probably to practice and memorize classes.
   hue: number;
   saturation: number;
@@ -38,7 +38,7 @@ class Hsl { // I honestly dont know why the fuck im doing this. probably to prac
   toString() {
     return `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%)`
   }
-
+  
   toHSLA(alpha?:number) {
     alpha = alpha || 100
     if (alpha > 100) {
@@ -67,12 +67,12 @@ class Link {
 // @ts-ignore
 $.fn.randomize = function(selector){
   (selector ? this.find(selector) : this).parent().each(function(){
-      // @ts-ignore
-      $(this).children(selector).sort(function(){
-          return Math.random() - 0.5;
-      }).detach().appendTo(this);
+    // @ts-ignore
+    $(this).children(selector).sort(function(){
+      return Math.random() - 0.5;
+    }).detach().appendTo(this);
   });
-
+  
   return this;
 };
 
@@ -80,9 +80,9 @@ $(() => {
   const main = $('main');
   $('html').css('background','none');
   (() => { 
-
+    
   })();
-
+  
   $('#chen').on('click', function() {
     //@ts-ignore
     $("links").randomize("button");
@@ -111,6 +111,7 @@ $(() => {
   const links = [
     new Link("Bandcamp", "https://flleeppyy.bandcamp.com/", "img/icons/bandcamp.png", "#4B5154", "white"),
     new Link("Spotify", "https://open.spotify.com/artist/5d88PKcv3BK7d4K9LFpPJM", "img/icons/spotify.png", "#1DB954", "white"),
+    new Link("Ko-Fi", 'https://ko-fi.com/flleeppyy', "img/icons/kofi.png", "#29abe0", "white"),
     new Link("Twitter", "https://twitter.com/", "img/icons/twitter.png", "#1da1f2", "white"),
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
     new Link("YouTube", "https://u.fleepy.tv/youtube", "img/icons/youtube.png", "#ff1111", "white"),
@@ -120,24 +121,30 @@ $(() => {
   ];
   
   links.forEach(link => {
-    const button = $(`<button><img src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`)
+    const button = $(`<button href="${link.href}"><img src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`)
+    console.log(button)
     button.attr('onclick', `window.location = '${link.href}'`)
+    // button.attr('onclick', `console.log(this, event)`)
     button.css({
       "background": link.bgColor || "white",
       "color": link.textColor || "black"
     })
     button.appendTo('links')
-    const businessEmail = "Business Email"
-    if (link.title === businessEmail) {
-      // button.children('p').css({"font-size": ".9em"})
-    }
-    button.on('click', e => {
+    button.on("mousedown", "a.external", e => {
       e.preventDefault();
-      if (link.title === businessEmail) {
-        return
+      if (link.title === "Business Email") {
+        return;
       }
       $('#fallbackContainer').fadeIn(100)
       main.fadeOut(400)
+    })
+    
+    // We have to use normal javascript (not jquery) to add the mouse down listener because JQuery doesn't detect middle click or right click as a click event.
+    button[0].addEventListener('mousedown', e => { // fuck you jquery
+      if (e.which === 2) {
+        e.preventDefault()
+        window.open(link.href, "_blank")
+      }
     })
   });
   
@@ -184,7 +191,7 @@ $(() => {
         wdipitt.on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(event){ 
           wdipitt.css('max-height', '100%')
           $(this).off(event);
-      });
+        });
       }, 400);
     },
     onTypingPaused: () => {
