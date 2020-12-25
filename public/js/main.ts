@@ -162,8 +162,8 @@ $(() => {
       } else {
         $('#process').html('bash*')
       }
-      // main.fadeIn(400);
-      // $('#loadingContainer').fadeOut(400);
+      main.fadeIn(400);
+      $('#loadingContainer').fadeOut(400);
       let wdipitt = $('#whydidiputinthisthing')
       wdipitt.fadeIn(400)
       setTimeout(() => { // Avatar and text hue rotate
