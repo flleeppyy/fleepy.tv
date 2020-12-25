@@ -1,0 +1,163 @@
+@font-face {
+  font-family: tf2;
+  src: url(tf2.ttf);
+}
+
+html {
+  /*height: 100%;*/
+}
+
+body {
+  background: rgb(36, 14, 11);
+  background-image: -moz-linear-gradient(
+    0deg,
+    rgba(36, 14, 11, 1) 0%,
+    rgba(72, 42, 21, 1) 100%
+  );
+  background-image: -webkit-linear-gradient(
+    0deg,
+    rgba(36, 14, 11, 1) 0%,
+    rgba(72, 42, 21, 1) 100%
+  );
+  background-image: linear-gradient(
+    0deg,
+    rgba(36, 14, 11, 1) 0%,
+    rgba(72, 42, 21, 1) 100%
+  );
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: tf2;
+  font-size: 40px;
+  color: #e9dcaf;
+  /* outline: #63352e 2px solid; */
+  -webkit-text-stroke: 2px #63352e;
+  paint-order: stroke;
+}
+
+h2 {
+  font-family: tf2;
+  font-size: 30px;
+  color: #e9dcaf;
+  margin: 0;
+}
+
+.smallerh2 {
+  font-size: 20px;
+}
+
+.flex {
+  overflow: hidden;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  /* width: 100vw; */
+  margin: 0;
+  /* height: 100vh; */
+}
+
+.row-flex {
+  display: flex;
+  text-align: center;
+  /* flex-direction: row; */
+  /* align-items: center; */
+  margin: 10px;
+  /* align-content: center; */
+  justify-content: center;
+}
+
+.item {
+  position: relative;
+  margin: 10px;
+}
+
+.logo {
+  -webkit-box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 19px -2px rgba(0, 0, 0, 0.75);
+  border-radius: 100%;
+  border: #e5d69e 4px solid;
+  max-width: 100px;
+  margin: 25px;
+}
+
+button {
+  background-color: #e9dcaf;
+  color: #482a15;
+  font-family: tf2;
+  font-size: 40px;
+  padding: 5px;
+  border: #c96e1a 3px solid;
+  cursor: pointer;
+}
+
+.version {
+  background-color: #653f24;
+  padding: 10px;
+  border: #e8dcaf 3px solid;
+  margin: 10px;
+  width: 300px;
+  -webkit-box-shadow: 0px 0px 44px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 44px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 44px -2px rgba(0, 0, 0, 0.75);
+}
+
+.discordembed {
+  margin: 15px;
+  position: relative;
+}
+
+.outer-stroke {
+  -webkit-text-stroke: 2px #63352e;
+  paint-order: stroke;
+}
+
+.filesize {
+  padding: 0 8px;
+}
+
+#barbox {
+  position: relative;
+  display: flex;
+  margin: 15px;
+  background-color: #2e2e2e;
+  padding: 10px;
+  border: #7e7e7e 3px solid;
+  width: 260px;
+  -webkit-box-shadow: 0px 0px 44px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 44px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 44px -2px rgba(0, 0, 0, 0.75);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#barbox h2 {
+  color: #eeeeee !important;
+}
+#barbar {
+  margin: 6px;
+  width: 100%;
+  background-color: #3b3b3b;
+}
+
+#barprogress {
+  /* width: 1%; */
+  height: 30px;
+}
+.good {
+  background-color: ;
+}
+
+.bad {
+  background-color: ;
+}

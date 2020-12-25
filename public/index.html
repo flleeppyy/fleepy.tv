@@ -1,16 +1,17 @@
-<!--
-    Co-authored-by: GeneralUltra758 <gen.ultra758@gmail.com>
-    Co-authored-by: Joschua Schneider <joschua-schneider@web.de>
--->
 <html>
-
 <head>
+    <script>
+        document.createElement('links', {"is":"div"})
+        document.createElement('z', {"is":"span"})
+    </script>
+    <style>
+        html { background: black }
+    </style>
     <title>Flleeppyy</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?" />
-    <link rel="stylesheet" type="text/css" href="assets/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css'/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <!-- Primary Meta Tags -->
     <title>Flleeppyy - Home</title>
     <meta name="title" content="Flleeppyy - Home">
@@ -27,34 +28,83 @@
     <meta property="twitter:title" content="Flleeppyy - Home">
     <meta property="twitter:description" content="A Twitch Streamer, Music Producer, Developer, Graphics Designer, Game Creator, and many other things.">
     <meta property="twitter:image" content="https://fleepy.tv/images/banner_large.png">
-    <script>
-        var avatars = [ // Creates a table with the list of avatars from Ran and Chen
-            "assets/images/avatar/ran/avatar1.png",
-            "assets/images/avatar/ran/avatar2.png",
-            "assets/images/avatar/ran/avatar3.png",
-            "assets/images/avatar/ran/avatar4.png",
-            "assets/images/avatar/ran/avatar5.png",
-            "assets/images/avatar/ran/avatar6.png",
-            "assets/images/avatar/ran/avatar7.png",
-            "assets/images/avatar/ran/avatar8.png",
-            "assets/images/avatar/ran/avatar9.png",
-            "assets/images/avatar/ran/avatar10.png",
-            "assets/images/avatar/chen/avatar1.png",
-            "assets/images/avatar/chen/avatar2.png",
-            "assets/images/avatar/chen/avatar3.png",
-            "assets/images/avatar/chen/avatar4.png",
-            "assets/images/avatar/chen/avatar5.png",
-            "assets/images/avatar/chen/avatar6.png",
-            "assets/images/avatar/chen/avatar7.png",
-            "assets/images/avatar/chen/avatar8.png",
-            "assets/images/avatar/chen/avatar9.png",
-            "assets/images/avatar/chen/avatar10.png"
-        ];
-    </script>
+    <script async src="https://arc.io/widget.min.js#rYxxjvEb"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js'></script>    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <script src="js/w3color.js"></script>
 </head>
-
 <body>
-
+    <div id="anti-darkreader" style="display: none;">
+        <div class="infobox" style="width: 24em">
+            <h2>Hey!</h2>
+            My site doesn't show well with dark reader, so if you want to see the nice colors and stuff, you should turn it off for this website then reload the page.
+            <button onclick="$('#anti-darkreader').fadeOut(200)">Alright</button>
+        </div>
+    </div>
+    <div id="loadingContainer" style="color:snow">
+        <script>
+            document.write(`
+            <pre>
+                <code id="loadingCode">
+                    <z class="light-green">chen@chen-laptop-uwu</z>:<z class="sky-blue">/mount/storage/dev/fleepy.tv</z>$ <z id="typeThis"></z>
+                </code>
+            </pre>
+            `)
+        </script>
+        <noscript>
+            <pre>
+                <code id="loadingCode">
+                    <span class="light-green">chen@chen-laptop-uwu</span>:<span class="sky-blue">/mount/storage/dev/fleepy.tv</span>$ yarn start
+                    yarn: <span class="light-red">This page does not work without Javascript. Please enable it.</span>
+                    <span class="light-green">chen@chen-laptop-uwu</span>:<span class="sky-blue">/mount/storage/dev/fleepy.tv</span>$ <span contenteditable>welp, time to rm -rf /</span><span class="typed-cursor typed-cursor--blink>"> </span>
+                </code>
+            </pre>
+        </noscript>
+        <div id="tmux-container">
+            <div id="tmux-line">
+                <script>document.write('<span>[fleepytv-0:<span id="process">bash*</span></span>')</script>
+                <noscript>
+                    <span>[fleepytv-0:<span id="process">yarn*</span></span>
+                </noscript>
+                <span style="text-align: right;">"chen-laptop-uwu"<script>
+                    const date = new Date();
+                    let hour = date.getHours;
+                    if (hour.length < 2) { hour = '0' + date.getHours().toString(); } else { hour = date.getHours() }
+                    let minute = date.getMinutes();
+                    if (minute.length < 2) { minute = '0' + date.getMinutes().toString(); } else { minute = date.getMinutes() }
+                    const day = date.getDate();
+                    const month = date.toString().split(' ')[1];
+                    const year = date.getFullYear().toString().slice(2)
+                    document.write(` ${hour}:${minute} ${day}-${month}-${year}`)</script>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <main style="display: none;">
+        <div id="2ndBgCanvas">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/marisaandreimu.jpg" alt="Marisa and Reimu playing pocky game" style="display:none">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/YES.png" alt="Chen and Ran playing pocky game" style="display:none">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/3428874.png" alt="My Chen profile picture by @hemogurobin_a1c on Twitter" style="display:none">
+        </div>
+        <canvas id="bgCanvas"></canvas>
+        <script src="js/bg.js"></script>
+        <div id="whydidiputinthisthing" dropshadow>
+            <div class="infobox" id="mainbox" >
+                <img id="chen" src="img/avatars/hemogurobin.png" alt="Cute chen by @hemogurobin_a1c on Twitter">
+                <div id="header">
+                    <h2 id="name" class="noselect">Flleeppyy</h2>
+                    <p id="subtitle" class="noselect">someone irrelevant</p>
+                </div>
+                <links></links>
+                <a id="githubFooter" href="https://github.com/flleeppyy/fleepy.tv">View this page on Github</a>
+                
+            </div>
+        </div>
+    </main>
+    <script src="js/main.js" ></script>
+    <link rel="stylesheet" href="css/main.css">
 </body>
-
 </html>

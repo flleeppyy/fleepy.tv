@@ -1,11 +1,13 @@
 {
   "name": "frontpage",
-  "version": "2.0.0",
-  "description": "My website that I work on. With the help of a couple friends",
+  "version": "2.0.9",
+  "description": "My website that I work on. ",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon -e ts,js,json index.js"
+    "start": "tsc && PORT=8001 ts-node .",
+    "dev": "PORT=8080 ts-node-dev .",
+    "publicmain": "tsc --watch public/js/main.ts",
+    "sass:watch": "sass --watch ."
   },
   "repository": {
     "type": "git",
@@ -18,12 +20,19 @@
   },
   "homepage": "https://github.com/flleeppyy/fleepy.tv#readme",
   "dependencies": {
-    "@types/node": "^14.11.2",
+    "@types/jquery": "^3.5.5",
+    "@types/node": "^14.14.14",
+    "@types/toastr": "^2.1.38",
+    "@types/typed.js": "^2.0.9",
+    "browserify": "^17.0.0",
     "cheerio": "^1.0.0-rc.3",
     "fastify": "^3.5.0",
     "fastify-static": "^3.2.0",
+    "sass": "^1.30.0",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.3"
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.0.3",
+    "uniq": "^1.0.1"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.2",
