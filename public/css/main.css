@@ -5,7 +5,7 @@
 
 body {
   font-family: "IBM Plex Sans";
-  margin: 0%;
+  margin: 0;
   height: 100vh;
   background: black;
 }
@@ -51,7 +51,9 @@ main *[dropshadow] {
   z-index: -10000;
   max-width: 100vw;
   max-height: 100vh;
+  top: 0;
   overflow: hidden;
+  transform: scale(1.2);
 }
 
 h2 {
@@ -226,6 +228,9 @@ links button .linkTitle p {
   background: #0db110;
   color: black;
 }
+#loadingContainer #tmux-container #tmux-line span {
+  z-index: 10000;
+}
 
 @keyframes newtypedjsBlink {
   0% {
@@ -251,7 +256,7 @@ links button .linkTitle p {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently
-     supported by Chrome, Edge, Opera and Firefox */
+  supported by Chrome, Edge, Opera and Firefox */
 }
 
 /*# sourceMappingURL=main.css.map */
