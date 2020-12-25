@@ -11,4 +11,4 @@ This is my website that I work on every now and then.
 
 ## License
 
-This project is licensed under the terms of the GNU GPLv3 license.
+This project is licensed under the terms of the [GNU GPLv3 license](https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE).
