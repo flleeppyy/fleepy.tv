@@ -1,3 +1,6 @@
+/* Copyright (C) 2021 Flleeppyy (Micah Jinkerson)
+ https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE */
+
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 *, *:before, *:after {
   box-sizing: border-box;
@@ -224,6 +227,10 @@ links {
     
     .light-red {
       color: #ff6464;
+    }
+
+    .dark-grey {
+      color: #808080;
     }
     
     .typed-cursor {

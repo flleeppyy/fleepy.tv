@@ -1,12 +1,15 @@
-// FYI, THIS IS COMPILED TYPESCRIPT IF IT ENDS IN .JS
+// Copyright (C) 2021 Flleeppyy (Micah Jinkerson)
+// https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE
 
-// note to self, dont use quotes or double quotes in scripts. it fucks with Reindent Lines in vscode
+// FYI, THIS IS COMPILED TYPESCRIPT IF IT ENDS IN .JS
 /**
 * Throughout the script, you'll see a few self initiated functions or whatever the fuck you want to call them.
 * they look like this: (() => { ... })()
 * This is to keep the scopes seperated for certain things.
 * I just get overly paranoid about accidentally mixing up variable and function names.
 * 9 * / 10 i always forget the ending curly brackets and i always wonder why some shit doesnt work
+
+note to self, dont use quotes or double quotes in scripts. it fucks with Reindent Lines in vscode
 */
 
 /**
@@ -47,6 +50,7 @@ class Hsl { // I honestly dont know why the fuck im doing this. probably to prac
     return `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}, ${alpha})`;
   }
 }
+
 class Link {
   title: string;
   href: string;
@@ -79,17 +83,39 @@ $.fn.randomize = function(selector){
 $(() => {
   const main = $('main');
   $('html').css('background','none');
-  (() => { 
-    
-  })();
-  
   $('#chen').on('click', function() {
     //@ts-ignore
     $("links").randomize("button");
   });
   
   (() => { // random subtitle
-    const subtitles = ["some irrelevant", "yes im stupid", "this page is badly coded. seriously, look at the <a href='https://github.com/flleeppyy/fleepy.tv'>repo</a>.", "yeah i make music, but is it good?", "bad coding practices all around", "i like synthesizers", "i want a Mother 32 and a DFAM", "i love chen :3", "i absolutely adore chen", "chen is very cute!","htfcirno2000 is very awesome", "cheeeeeeeeeeeeeeeeen"]
+    const subtitles = [
+      "some irrelevant",
+      "yes im stupid",
+      "this page is badly coded. seriously, look at the <a href='https://github.com/flleeppyy/fleepy.tv' onclick='return false'>repo</a>.",
+      "yeah i make music, but is it good?",
+      "bad coding practices all around",
+      "i like synthesizers",
+      "i want a Mother 32 and a DFAM",
+      "i love chen :3",
+      "i absolutely adore chen",
+      "chen is very cute!",
+      "<a href='https://twitter.com/htfcirno2000'>htfcirno2000</a> is very awesome :3",
+      "<a href='https://twitter.com/smolespi'>Espi</a> is very cool, talented, and awesome c:",
+      "<a href='https://twitter.com/_mianyaa>Mia</a> is very sweet and kind ^w^",
+      "cheeeeeeeeeeeeeeeeen",
+      "CHEN!",
+      "wish i could downloadmoreram.com",
+      "do you ever just feel like afdlkajshdfkajwefiueafhiew woefhawefijw",
+      "yes i have a screwed up sleep schedule",
+      "uwu?",
+      "owo",
+      "òwó",
+      "I spend my time not watching anime, but writing bad code",
+      "my music is the definition of hot garbage",
+      "hot garbage",
+      "did you know, if you stop thinking, you wont be able to think?",
+    ]
     const ST = $('#subtitle')
     const setST = () => ST.html(subtitles[Math.round(Math.random() * subtitles.length)])
     setST()
@@ -157,6 +183,8 @@ $(() => {
   })
   
   let paused = false;
+  let fallback = false
+  let wdipitt = $('#whydidiputinthisthing');
   // @ts-ignore
   var typed = new Typed('#typeThis', {
     strings: ['yarn start^100\r^200\n<strong>`yarn run v1.22.5`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`'],
@@ -171,22 +199,12 @@ $(() => {
       }
       main.fadeIn(400);
       $('#loadingContainer').fadeOut(400);
-      let wdipitt = $('#whydidiputinthisthing')
       wdipitt.fadeIn(400)
       setTimeout(() => { // Avatar and text hue rotate
-        const saturation = 100;
-        const interval = 30;
-        let hue = 0;
-        setInterval(() => {
-          (hue >= 360) ? hue = 0 : '';
-          hue++
-          $('#chen').css('border', `0.3em solid ` + new Hsl(hue, saturation, 90).toString());
-          wdipitt.css('border', (`0.3em solid ` + new Hsl(hue, 100, 80).toString()));
-          $('#name').css('color', new Hsl(hue, saturation, 90).toString());
-        }, interval)
-        $('')
+        if (fallback !== true) {
+          startHue();
+        }
         wdipitt.css('max-width', '100%')
-        
         // https://stackoverflow.com/questions/18143899/jquery-run-function-after-css-transition-is-done#18144024
         wdipitt.on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(event){ 
           wdipitt.css('max-height', '100%')
@@ -197,10 +215,36 @@ $(() => {
     onTypingPaused: () => {
       if (paused !== true) {
         $('#process').html('yarn*')
-        paused = true
+        paused = true;
       }
     }
   });
+
+  $(document).on('keydown', e => {
+    if (e.key === ' ') {
+      if (fallback === true) return;
+      fallback = true;
+      startHue();
+      wdipitt.css('transition', 'none')
+      $('#loadingContainer').fadeOut(100);
+      main.fadeIn(100);
+      wdipitt.css('max-width', '100%');
+      wdipitt.css('max-height', '100%');
+    }
+  });
+
+  function startHue() {
+    const saturation = 100;
+    const interval = 30;
+    let hue = 0;
+    setInterval(() => {
+      (hue >= 360) ? hue = 0 : '';
+      hue++
+      $('#chen').css('border', `0.3em solid ` + new Hsl(hue, saturation, 90).toString());
+      wdipitt.css('border', (`0.3em solid ` + new Hsl(hue, 100, 80).toString()));
+      $('#name').css('color', new Hsl(hue, saturation, 90).toString());
+    }, interval)
+  }
   (() => {
     let darkreaderint = 0;
     let darkreader = setInterval(() => {
@@ -210,6 +254,5 @@ $(() => {
         clearInterval(darkreader)
       }
     }, 200)
-  })()
+  })();
 })
-

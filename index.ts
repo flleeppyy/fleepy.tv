@@ -1,3 +1,5 @@
+// Copyright (C) 2021 Flleeppyy (Micah Jinkerson)
+// https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE
 import fastify from 'fastify'
 import fastifyStatic from 'fastify-static'
 import * as fs from 'fs'

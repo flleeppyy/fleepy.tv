@@ -1,22 +1,15 @@
-(function() {
-  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function(callback) {
-    window.setTimeout(callback, 1 / 60);
-  };
-  window.requestAnimationFrame = requestAnimationFrame;
-})();
+// Source of script: https://bashooka.com/coding/web-background-animation-effects/
+// Heavily modified
 
-// Terrain stuff.
-var background = document.getElementById("bgCanvas"),
+let background = document.getElementById("bgCanvas"),
   bgCtx = background.getContext("2d"),
   width = window.innerWidth,
   height = window.innerHeight;
 
-// (height < 400) ? height = 400 : height;
-
 background.width = width;
 background.height = height;
+let entities = [];
 
-// Second canvas used for the stars
 bgCtx.fillStyle = '#1e1429';
 bgCtx.fillRect(0, 0, width, height);
 
@@ -47,6 +40,7 @@ Star.prototype.update = function() {
   }
 }
 
+// shooting
 function ShootingStar() {
   this.reset();
 }
@@ -83,7 +77,6 @@ ShootingStar.prototype.update = function() {
   }
 }
 
-var entities = [];
 
 // init the stars
 for (var i = 0; i < height; i++) {
@@ -101,10 +94,8 @@ for (var i = 0; i < height; i++) {
 function animate() {
   bgCtx.fillStyle = '#1e1429';
   bgCtx.fillRect(0, 0, width, height);
-  bgCtx.fillStyle = '#ffffff';
-  bgCtx.strokeStyle = '#ffffff';
   
-  var entLen = entities.length;
+  let entLen = entities.length;
 
   while (entLen--) {
     entities[entLen].update();
@@ -113,7 +104,7 @@ function animate() {
 }
 animate()
 
-$(window).resize(() => {
+$(window).on('resize', () => {
   height = window.innerHeight;
   width = window.innerWidth;
   background.width = width
