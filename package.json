@@ -1,6 +1,5 @@
 {
   "name": "frontpage",
-  "version": "2.2.3",
   "description": "My website that I work on. ",
   "main": "index.js",
   "scripts": {

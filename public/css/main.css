@@ -1,5 +1,5 @@
 /* Copyright (C) 2021 Flleeppyy (Micah Jinkerson)
- https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE */
+https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE */
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
 *, *:before, *:after {
   box-sizing: border-box;
@@ -186,6 +186,7 @@ links button .linkTitle p {
 #copyrightbox span {
   align-self: flex-end;
   margin: 10px;
+  pointer-events: all;
 }
 
 #loadingContainer {
