@@ -73,6 +73,13 @@ h2 {
   position: fixed;
   z-index: 100000;
   background: black;
+  .infobox {
+    color: white;
+    border-radius: 8px;
+    button {
+      padding: 4px;
+    }
+  }
 }
 
 #whydidiputinthisthing {
@@ -166,6 +173,10 @@ links {
     $width: 12em;
     width: $width;
     max-width: $width;
+    transition: transform .2s;
+    &:hover {
+      transform: scale(1.2);
+    }
     img {
       padding: 0 .5em;
       margin: 0 2em;
@@ -196,10 +207,12 @@ links {
   justify-content: center;
   pointer-events: none;
   // flex-direction: column;
-  span {
+  div {
     align-self: flex-end;
-    margin: 10px;
-    pointer-events: all;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 }
 

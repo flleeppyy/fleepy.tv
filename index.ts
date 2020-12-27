@@ -5,7 +5,7 @@ import fastifyStatic from 'fastify-static'
 import * as fs from 'fs'
 import path from 'path'
 
-const port = Number(process.env.PORT) ??8001
+const port = Number(process.env.PORT) ?? 8001
 const app = fastify({
   trustProxy: true,
 })

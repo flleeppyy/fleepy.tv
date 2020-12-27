@@ -148,7 +148,7 @@ $(() => {
     new Link("Twitter", "https://twitter.com/", "img/icons/twitter.png", "#1da1f2", "white"),
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
     new Link("YouTube", "https://u.fleepy.tv/youtube", "img/icons/youtube.png", "#ff1111", "white"),
-    new Link("Discord", "https://u.fleepy.tv/discord", "img/icons/discord.png", "#7289DA", "white"),
+    new Link("Discord Server", "https://u.fleepy.tv/discord", "img/icons/discord.png", "#7289DA", "white"),
     new Link("GitHub", "https://github.com/github", "img/icons/github.png", "#111213", "white"),
     new Link("Business Email", "mailto:flleeppyybusiness@gmail.com", "img/icons/email.png", "white", "#111213"),
   ];
@@ -186,16 +186,10 @@ $(() => {
   let wdipitt = $('#whydidiputinthisthing');
   // @ts-ignore
   var typed = new Typed('#typeThis', {
-    strings: ['yarn start^100\r^200\n<strong>`yarn run v1.22.5`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`'],
+    strings: ['^200yarn start^100\r^200\n<strong>`yarn run v1.22.5`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`'],
     typeSpeed: 40,
     shuffle: true,
     onStringTyped: () => {
-      if (paused !== true) {
-        $('#process').html('yarn*')
-        paused = true
-      } else {
-        $('#process').html('bash*')
-      }
       main.fadeIn(400);
       $('#loadingContainer').fadeOut(400);
       wdipitt.fadeIn(400)
@@ -214,6 +208,7 @@ $(() => {
     onTypingPaused: () => {
       if (paused !== true) {
         $('#process').html('yarn*')
+        console.log('set to yarn typing paused')
         paused = true;
       }
     }
@@ -254,4 +249,9 @@ $(() => {
       }
     }, 200)
   })();
+
+  $('#morecpinfo').on('click', e => {
+    e.preventDefault();
+
+  })
 })

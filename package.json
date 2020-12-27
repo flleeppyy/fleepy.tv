@@ -3,7 +3,7 @@
   "description": "My website that I work on. ",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && PORT=8001 ts-node .",
+    "start": "yarn sass . && tsc && PORT=8001 ts-node .",
     "dev": "PORT=8080 ts-node-dev .",
     "publicmain": "tsc --watch public/js/main.ts",
     "sass:watch": "sass --watch ."
