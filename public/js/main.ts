@@ -88,7 +88,7 @@ $(() => {
     $("links").randomize("button");
   });
   
-  (() => { // random subtitle
+  (() => { // random subtitles
     const subtitles = [
       "some irrelevant",
       "yes im stupid",
@@ -102,7 +102,7 @@ $(() => {
       "chen is very cute!",
       "<a href='https://twitter.com/htfcirno2000'>htfcirno2000</a> is very awesome :3",
       "<a href='https://twitter.com/smolespi'>Espi</a> is very cool, talented, and awesome c:",
-      "<a href='https://twitter.com/_mianyaa>Mia</a> is very sweet and kind ^w^",
+      "<a href='https://twitter.com/_mianyaa'>Mia</a> is cewl ^w^",
       "cheeeeeeeeeeeeeeeeen",
       "CHEN!",
       "wish i could downloadmoreram.com",
@@ -114,10 +114,17 @@ $(() => {
       "I spend my time not watching anime, but writing bad code",
       "my music is the definition of hot garbage",
       "hot garbage",
-      "did you know, if you stop thinking, you wont be able to think?",
+      "did you know, if you stop thinking, you wont be able to think?"
     ]
     const ST = $('#subtitle')
-    const setST = () => ST.html(subtitles[Math.round(Math.random() * subtitles.length)])
+    let prevST: number;
+    const setST: Function = () => { // ITS CLEARLY A FUNCTION... CLEARLY
+      const a: number = Math.floor(Math.random() * subtitles.length)
+      const b: string = subtitles[a];
+      if (a === prevST) {return setST()}
+      prevST = a;
+      ST.html(b)
+    }
     setST()
     ST.on('click', () => {
       setST()
@@ -147,7 +154,7 @@ $(() => {
   ];
   
   links.forEach(link => {
-    const button = $(`<button href="${link.href}"><img src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`)
+    const button = $(`<button href="${link.href}" class="dropshadow"><img src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`)
     console.log(button)
     button.attr('onclick', `window.location = '${link.href}'`)
     // button.attr('onclick', `console.log(this, event)`)
@@ -173,14 +180,6 @@ $(() => {
       }
     })
   });
-  
-  $('#fallbackButton').click(e => {
-    e.preventDefault();
-    window.stop();
-    main.fadeIn(400);
-    $('#fallbackContainer').fadeOut(400)
-    toastr.info('Stopped window loading.')
-  })
   
   let paused = false;
   let fallback = false

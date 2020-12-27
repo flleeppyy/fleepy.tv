@@ -33,6 +33,12 @@ a :active {
   color: lightgrey;
 }
 
+.dropshadow {
+  -webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
+  box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
+}
+
 main {
   margin: 0;
   display: flex;
@@ -41,11 +47,6 @@ main {
   flex-direction: column;
   color: snow;
   height: 100vh;
-}
-main *[dropshadow] {
-  -webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
-  box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
 }
 
 #bgCanvas {
