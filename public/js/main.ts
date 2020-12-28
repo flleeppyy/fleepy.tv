@@ -152,7 +152,7 @@ $(() => {
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
     new Link("YouTube", "https://u.fleepy.tv/youtube", "img/icons/youtube.png", "#ff1111", "white"),
     // new Link("Discord Server", "https://u.fleepy.tv/discord", "img/icons/discord.png", "#7289DA", "white"),
-    new Link("GitHub", "https://github.com/github", "img/icons/github.png", "#111213", "white"),
+    new Link("GitHub", "https://github.com/flleeppyy", "img/icons/github.png", "#111213", "white"),
     new Link("Business Email", "mailto:flleeppyybusiness@gmail.com", "img/icons/email.png", "white", "#111213"),
   ];
   
@@ -200,6 +200,7 @@ $(() => {
         if (fallback !== true) {
           startHue();
         }
+        fallback = true;
         wdipitt.css('max-width', '100%')
         // https://stackoverflow.com/questions/18143899/jquery-run-function-after-css-transition-is-done#18144024
         wdipitt.on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(event){ 
