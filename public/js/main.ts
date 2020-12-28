@@ -100,9 +100,9 @@ $(() => {
       "i love chen :3",
       "i absolutely adore chen",
       "chen is very cute!",
-      "<a href='https://twitter.com/htfcirno2000'>htfcirno2000</a> is very awesome :3",
-      "<a href='https://twitter.com/smolespi'>Espi</a> is very cool, talented, and awesome c:",
-      "<a href='https://twitter.com/_mianyaa'>Mia</a> is cewl ^w^",
+      "<a href='https://twitter.com/htfcirno2000' onclick='return false'>htfcirno2000</a> is very awesome :3",
+      "<a href='https://twitter.com/smolespi' onclick='return false'>Espi</a> is very cool, talented, and awesome c:",
+      "<a href='https://twitter.com/_mianyaa' onclick='return false'>Mia</a> is cewl ^w^",
       "cheeeeeeeeeeeeeeeeen",
       "CHEN!",
       "wish i could downloadmoreram.com",
@@ -130,6 +130,9 @@ $(() => {
       setST()
     })
   })();
+
+
+
   
   // All this does is check every 50ms to see if Arc loaded, then set the z-index to a not retardedly high number.
   // this is simply to hide it on the terminal screen. It shows once the terminal is gone. purely asthetic
@@ -148,7 +151,7 @@ $(() => {
     new Link("Twitter", "https://twitter.com/", "img/icons/twitter.png", "#1da1f2", "white"),
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
     new Link("YouTube", "https://u.fleepy.tv/youtube", "img/icons/youtube.png", "#ff1111", "white"),
-    new Link("Discord Server", "https://u.fleepy.tv/discord", "img/icons/discord.png", "#7289DA", "white"),
+    // new Link("Discord Server", "https://u.fleepy.tv/discord", "img/icons/discord.png", "#7289DA", "white"),
     new Link("GitHub", "https://github.com/github", "img/icons/github.png", "#111213", "white"),
     new Link("Business Email", "mailto:flleeppyybusiness@gmail.com", "img/icons/email.png", "white", "#111213"),
   ];
