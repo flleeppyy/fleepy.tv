@@ -208,8 +208,8 @@ links {
   pointer-events: none;
   // flex-direction: column;
   div {
-    align-self: flex-end;
     display:flex;
+    align-self: flex-end;
     justify-content: center;
     flex-direction: column;
     align-items: center;

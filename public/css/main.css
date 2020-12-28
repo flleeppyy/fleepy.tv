@@ -196,8 +196,8 @@ links button .linkTitle p {
   pointer-events: none;
 }
 #copyrightbox div {
-  align-self: flex-end;
   display: flex;
+  align-self: flex-end;
   justify-content: center;
   flex-direction: column;
   align-items: center;
