@@ -9,7 +9,8 @@ logging.log
 node.sh
 npm-debug.log
 tsconfig.tsbuildinfo
-*.js
+.js
 !arc-sw.js
 !w3color.js
 !keycode.js
+.css
