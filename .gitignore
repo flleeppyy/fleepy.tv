@@ -1,33 +1,15 @@
-design psd images/ANIME-PICTURES.NET_-_611695-1920x1080-original-aenami-highres-wide+image-sky-signed.jpg
-design psd images/s - 2158375 -   _3 3girls animal_ears blush bow braid brown_hair cat_ears cat_tail chen crossed_arms detached_s.png
-design psd images/s - 2172765 -   _p 1girl adapted_costume alphes_(style) animal_ears bare_arms brown_eyes brown_hair cat_ears ca.png
-design psd images/s - 2227850 -   ___ =3 2girls animal_ears blonde_hair blush brown_hair cat_ears chen chibi fox_tail grin hat lo.jpg
-design psd images/s - 2267950 -   2girls animal_ears blonde_hair blush brown_hair cat_ears cat_tail chen earrings fox_ears fox_ta.jpg
-design psd images/s - 2271064 -   _3 _x ;_ ___ 2girls animal_ears black_hair blush brown_hair bunny bunny_ears carrot_necklace ca.jpg
-design psd images/s - 2273268 -   _3 _d ^_^ ^o^ 3girls animal_ears blonde_hair blood blush_stickers brown_hair cat_ears chen dres.jpg
-design psd images/s - 2280784 -   2girls adapted_costume alternate_headwear blonde_hair blue_sky brown_eyes brown_hair cat_tail c.jpg
-design psd images/s - 2314685 -   _o 1girl animal_ears bow brown_hair cat cat_ears cat_tail chen cross-eyed dress earrings fang h.png
-design psd images/s - 2861166 -   _3 1girl animal_ears brown_hair cat_ears cat_tail chen closed_mouth commentary_request fang foo.png
-design psd images/s - 3910313 -   1girl aburaage adapted_costume animal_ears bangs blonde_hair blush breasts cowboy_shot detached_sleeves dress food food_i.jpg
-design psd images/s - 3922828 -   1girl animal_ears bangs blonde_hair doll dress fox_ears fox_tail hat hat_removed headwear_removed holding japa long_sleev.png
-design psd images/s - 3925851 -   4girls all_fours animal_ears ascot bandage black_dress blonde_hair bun_cover bunny_ears commentary_request crescent doubl.jpg
-design psd images/s - 3931950 -   4girls animal_ears black_dress blazer blonde_hair blue_hair blush breasts bunny_ears crescent double_bun dress dress_shir.png
-design psd images/s - 3936663 -   1girl animal_ears blonde_hair blush bra breasts brown_eyes cleavage dated eyebrows_visible_through_hair fox_ears fox_tail.png
-design psd images/s - 3980890 -   1girl blonde_hair fox_tail hat looking_at_viewer mozukuzu_(manukedori) multiple_tails short_hair sleeves_past_wrists smil.png
-design psd images/s - 3999264 -   _d 1girl brown_hair commentary_request cosplay eyebrows_visible_through_hair fang fox_tail hands_in_opposite_sleeves hat.png
-design psd images/s - 4197453 -   1girl aura blonde_hair breasts brooch closed_mouth commentary_request dress eyebrows_visible_through_hair eyes_visible_th.png
-design psd images/s - 4215457 -   1girl animal_ears arm_at_side arm_up bangs bare_arms bare_legs bare_shoulders bikini blonde_hair blue_bikini breasts clea.jpg
-design psd images/s - 4358991 -   2girls animal_ears bangs blush bow bowtie breasts brown_eyes brown_hair cat_ears chen commentary_request dress earrings e.png
-design psd images/s - 4361359 -   1girl animal_ears blonde_hair blush breasts eyebrows_visible_through_hair fox_ears fox_tail frills long_hair looking_at_v.jpg
+./design psd images/
 design psd images.zip
 design.png
 design.psd
-fleepy.tv-master.zip
 node_modules
 .vs
-public/other_stuff
+src/public/other_stuff
 logging.log
 node.sh
 npm-debug.log
-index.js
-public/js/main.js
+tsconfig.tsbuildinfo
+*.js
+!arc-sw.js
+!w3color.js
+!keycode.js

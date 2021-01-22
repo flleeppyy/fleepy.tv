@@ -82,10 +82,43 @@ $.fn.randomize = function(selector){
 
 $(() => {
   const main = $('main');
+  const wdipitt = $('#whydidiputinthisthing');
+  const bgNotice =$('#backgroundOnlyNotice')
   $('html').css('background','none');
-  $('#chen').on('click', function() {
+  $('#chen').on('click', function(e) {
+    if (e.ctrlKey) {
+      bgNotice.fadeIn(400)
+      setTimeout(() => {
+        bgNotice.fadeOut(400)
+      },1100)
+      return wdipitt.fadeOut(200)
+    }
     //@ts-ignore
     $("links").randomize("button");
+  });
+  let isMouseDown = false
+  $("#chen").on('mousedown', (e) => {
+    isMouseDown = true;
+    setTimeout(() => {
+      if (isMouseDown) {
+        bgNotice.fadeIn(400)
+        setTimeout(() => {
+          bgNotice.fadeOut(400)
+        },1100)
+        return wdipitt.fadeOut(200)
+      }
+    }, 1000)
+  })
+  $("#chen").on('mouseup', (e) => {
+    isMouseDown = false
+  })
+  
+  main.on('mousedown', () => {
+    wdipitt.fadeIn(200)
+  });
+  
+  $(document).on('keydown', () => {
+    wdipitt.fadeIn(200)
   });
   
   (() => { // random subtitles
@@ -100,9 +133,9 @@ $(() => {
       "i love chen :3",
       "i absolutely adore chen",
       "chen is very cute!",
-      "<a href='https://twitter.com/htfcirno2000' onclick='return false'>htfcirno2000</a> is very awesome :3",
-      "<a href='https://twitter.com/smolespi' onclick='return false'>Espi</a> is very cool, talented, and awesome c:",
-      "<a href='https://twitter.com/_mianyaa' onclick='return false'>Mia</a> is cewl ^w^",
+      "<a href='https://twitter.com/htfcirno2000'>htfcirno2000</a> is very awesome :3",
+      "<a href='https://twitter.com/smolespi'>Espi</a> is very cool, talented, and awesome c:",
+      "<a href='https://twitter.com/_mianyaa'>Mia</a> is cewl ^w^",
       "cheeeeeeeeeeeeeeeeen",
       "CHEN!",
       "wish i could downloadmoreram.com",
@@ -114,7 +147,8 @@ $(() => {
       "I spend my time not watching anime, but writing bad code",
       "my music is the definition of hot garbage",
       "hot garbage",
-      "did you know, if you stop thinking, you wont be able to think?"
+      "did you know, if you stop thinking, you wont be able to think?",
+      "god i love yuri, most beautiful thing ever, girls in bliss"
     ]
     const ST = $('#subtitle')
     let prevST: number;
@@ -130,9 +164,9 @@ $(() => {
       setST()
     })
   })();
-
-
-
+  
+  
+  
   
   // All this does is check every 50ms to see if Arc loaded, then set the z-index to a not retardedly high number.
   // this is simply to hide it on the terminal screen. It shows once the terminal is gone. purely asthetic
@@ -158,7 +192,7 @@ $(() => {
   
   links.forEach(link => {
     const button = $(`<button href="${link.href}" class="dropshadow"><img src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`)
-    console.log(button)
+    // console.log(button)
     button.attr('onclick', `window.location = '${link.href}'`)
     // button.attr('onclick', `console.log(this, event)`)
     button.css({
@@ -186,9 +220,8 @@ $(() => {
   
   let paused = false;
   let fallback = false
-  let wdipitt = $('#whydidiputinthisthing');
   // @ts-ignore
-  var typed = new Typed('#typeThis', {
+  new Typed('#typeThis', {
     strings: ['^200yarn start^100\r^200\n<strong>`yarn run v1.22.5`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`'],
     typeSpeed: 40,
     shuffle: true,
@@ -212,12 +245,13 @@ $(() => {
     onTypingPaused: () => {
       if (paused !== true) {
         $('#process').html('yarn*')
-        console.log('set to yarn typing paused')
+        // console.log('set to yarn typing paused')
         paused = true;
       }
     }
   });
-
+  
+  
   $(document).on('keydown', e => {
     if (e.key === ' ') {
       if (fallback === true) return;
@@ -230,7 +264,7 @@ $(() => {
       wdipitt.css('max-height', '100%');
     }
   });
-
+  
   function startHue() {
     const saturation = 100;
     const interval = 30;
@@ -253,9 +287,9 @@ $(() => {
       }
     }, 200)
   })();
-
+  
   $('#morecpinfo').on('click', e => {
     e.preventDefault();
-
   })
+  
 })
