@@ -13,4 +13,4 @@ tsconfig.tsbuildinfo
 !arc-sw.js
 !w3color.js
 !keycode.js
-.css
+*.css
