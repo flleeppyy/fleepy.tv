@@ -2,6 +2,7 @@
 // https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE
 
 // FYI, THIS IS COMPILED TYPESCRIPT IF IT ENDS IN .JS
+
 /**
 * Throughout the script, you'll see a few self initiated functions or whatever the fuck you want to call them.
 * they look like this: (() => { ... })()
@@ -21,7 +22,6 @@ class Hsl { // I honestly dont know why the fuck im doing this. probably to prac
   hue: number;
   saturation: number;
   lightness: number;
-  
   
   constructor(hue:number, saturation:number, lightness:number) {
     this.hue = hue;
@@ -68,8 +68,12 @@ class Link {
     this.iconCss = iconCss!;
   }
 }
-// @ts-ignore
-$.fn.randomize = function(selector){
+
+interface JQuery {
+  randomize: Function
+}
+
+$.fn.randomize = function(selector: HTMLSelectElement){
   (selector ? this.find(selector) : this).parent().each(function(){
     // @ts-ignore
     $(this).children(selector).sort(function(){
@@ -85,17 +89,23 @@ $(() => {
   const wdipitt = $('#whydidiputinthisthing');
   const bgNotice =$('#backgroundOnlyNotice')
   $('html').css('background','none');
+  
+  let tempDisableChen = true;
   $('#chen').on('click', function(e) {
     if (e.ctrlKey) {
       bgNotice.fadeIn(400)
+      
+      tempDisableChen = true;
       setTimeout(() => {
+        
+        tempDisableChen = false
         bgNotice.fadeOut(400)
       },1100)
       return wdipitt.fadeOut(200)
     }
-    //@ts-ignore
     $("links").randomize("button");
   });
+  
   let isMouseDown = false
   $("#chen").on('mousedown', (e) => {
     isMouseDown = true;
@@ -109,16 +119,24 @@ $(() => {
       }
     }, 1000)
   })
+  
   $("#chen").on('mouseup', (e) => {
     isMouseDown = false
   })
-  
-  main.on('mousedown', () => {
+  function fadeIn(e: any) {
     wdipitt.fadeIn(200)
+  }
+  
+  main.on('mousedown', (e) => {
+    if (tempDisableChen === true) return;
+    fadeIn(e)
   });
   
-  $(document).on('keydown', () => {
-    wdipitt.fadeIn(200)
+  $(document).on('keydown', (e) => {
+    
+    if (tempDisableChen === true) return;
+    if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) return;
+    fadeIn(e)
   });
   
   (() => { // random subtitles
@@ -165,9 +183,6 @@ $(() => {
     })
   })();
   
-  
-  
-  
   // All this does is check every 50ms to see if Arc loaded, then set the z-index to a not retardedly high number.
   // this is simply to hide it on the terminal screen. It shows once the terminal is gone. purely asthetic
   const setArcZI = setInterval(() => { 
@@ -185,7 +200,6 @@ $(() => {
     new Link("Twitter", "https://twitter.com/", "img/icons/twitter.png", "#1da1f2", "white"),
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
     new Link("YouTube", "https://u.fleepy.tv/youtube", "img/icons/youtube.png", "#ff1111", "white"),
-    // new Link("Discord Server", "https://u.fleepy.tv/discord", "img/icons/discord.png", "#7289DA", "white"),
     new Link("GitHub", "https://github.com/flleeppyy", "img/icons/github.png", "#111213", "white"),
     new Link("Business Email", "mailto:flleeppyybusiness@gmail.com", "img/icons/email.png", "white", "#111213"),
   ];

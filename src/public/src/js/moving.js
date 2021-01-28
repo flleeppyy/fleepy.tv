@@ -1,4 +1,4 @@
-window.initChenMoving = () => {
+export default window.initChenMoving = () => {
   /**
    * Settings
    * -------------------
