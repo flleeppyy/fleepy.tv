@@ -27,6 +27,7 @@ w3color.prototype = {
     this.valid = color.valid;
   }
 };
+
 function toColorObject(color) {
   let x, y, typ, arr = [], arrlength, i, opacity, match, a, hue, sat, rgb, colornames = [], colorhexs = [];
   color = w3trim(color.toLowerCase());
@@ -296,3 +297,5 @@ function w3SetColorsByAttribute() {
     }
   }
 }
+
+module.exports = w3color

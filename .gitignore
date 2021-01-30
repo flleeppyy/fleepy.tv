@@ -4,7 +4,7 @@ design.png
 design.psd
 node_modules
 .vs
-src/public/other_stuff
+other_stuff
 logging.log
 node.sh
 npm-debug.log
