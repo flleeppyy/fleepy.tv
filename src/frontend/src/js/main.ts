@@ -132,19 +132,5 @@ $(() => {
       $('#name').css('color', new Hsl(hue, saturation, 90).toString());
     }, interval)
   }
-  (() => {
-    let darkreaderint = 0;
-    let darkreader = setInterval(() => {
-      if (darkreaderint > 50) clearInterval(darkreader)
-      if ($('.darkreader').length > 0) {
-        $('#anti-darkreader').fadeIn(200)
-        clearInterval(darkreader)
-      }
-    }, 200)
-  })();
-  
-  $('#morecpinfo').on('click', e => {
-    e.preventDefault();
-  })
   
 })

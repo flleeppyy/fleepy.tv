@@ -37,6 +37,12 @@ module.exports = {
    resolve: {
       extensions: [ '.tsx', '.ts', '.js' ],
    },
+   plugins: [
+      new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery"
+      })
+  ],
    output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'src/public/dist'),

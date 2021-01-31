@@ -1,1 +1,1 @@
-const main = require('js/main')
+import {} from './js/main'
