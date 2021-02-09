@@ -1,0 +1,204 @@
+<!-- Copyright (C) 2021 Flleeppyy (Micah Jinkerson) https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE -->
+<html>
+<head>
+    <script>
+        document.createElement('links', {"is":"div"})
+        document.createElement('z', {"is":"span"})
+    </script>
+    <style>
+        html { background: black }
+    </style>
+    <title>Flleeppyy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css'/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.8, user-scalable=no">
+    <!-- Primary Meta Tags -->
+    <title>Flleeppyy - Home</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?" />
+    <meta name="title" content="Flleeppyy - Home">
+    <meta name="description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fleepy.tv/">
+    <meta property="og:title" content="Flleeppyy - Home">
+    <meta property="og:description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
+    <meta property="og:image" content="https://fleepy.tv/img/banner_large.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:creator" content="@flleeppyy">
+    <meta property="twitter:site" content="@flleeppyy">
+    <meta property="twitter:url" content="https://fleepy.tv/">
+    <meta property="twitter:title" content="Flleeppyy - Home">
+    <meta property="twitter:description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
+    <meta property="twitter:image" content="https://fleepy.tv/favicon.ico">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script> -->
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script> -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js'></script>    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <!-- <script src="js/w3color.js"></script> -->
+</head>
+<body>
+    <div id="anti-darkreader" style="display: none;">
+        <div class="infobox" style="width: 24em">
+            <h2>Hey!</h2>
+            My site doesn't show well with dark reader, so if you want to see the nice colors and stuff, you should turn it off for this website then reload the page.
+            <button onclick="$('#anti-darkreader').fadeOut(200)">Alright</button>
+        </div>
+    </div>
+    <div id="loadingContainer" style="color:snow">
+        <script>
+            document.write(`
+            <pre>
+                <code id="loadingCode">
+                    <z class="dark-grey"> # Please keep in mind that this website is meant to be viewed on a modern desktop browser. </z>
+                    <z class="dark-grey"> # Hit space to skip terminal intro</z>
+                    <z class="light-green">chen@chen-laptop-uwu</z>:<z class="sky-blue">/mount/storage/dev/fleepy.tv</z>$ <z id="typeThis"></z>
+                </code>
+            </pre>
+            `)
+        </script>
+        <noscript>
+            <pre>
+                <code id="loadingCode">
+                    <span class="light-green">chen@chen-laptop-uwu</span>:<span class="sky-blue">/mount/storage/dev/fleepy.tv</span>$ yarn start
+                    yarn: <span class="light-red">This page does not work without Javascript. Please enable it.</span>
+                    <span class="light-green">chen@chen-laptop-uwu</span>:<span class="sky-blue">/mount/storage/dev/fleepy.tv</span>$ <span contenteditable>welp, time to rm -rf /</span><span class="typed-cursor typed-cursor--blink>"> </span>
+                </code>
+            </pre>
+        </noscript>
+        <div id="tmux-container">
+            <div id="tmux-line">
+                <script>document.write('<span>[fleepytv-0:<span id="process">bash*</span></span>')</script>
+                <noscript>
+                    <span>[fleepytv-0:<span id="process">yarn*</span></span>
+                </noscript>
+                <span style="text-align: right;">"chen-laptop-uwu"<script>
+                    const date = new Date();
+                    let hour = date.getHours;
+                    if (hour.length < 2) { hour = '0' + date.getHours().toString(); } else { hour = date.getHours() }
+                    let minute = date.getMinutes();
+                    if (minute.length < 2) { minute = '0' + date.getMinutes().toString(); } else { minute = date.getMinutes() }
+                    const day = date.getDate();
+                    const month = date.toString().split(' ')[1];
+                    const year = date.getFullYear().toString().slice(2)
+                    document.write(` ${hour}:${minute} ${day}-${month}-${year}`)</script>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <main style="display: none;">
+        <!-- <div id="2ndBgCanvas">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/marisaandreimu.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/YES.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/3428874.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/120557.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/123048.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/123139.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/149403.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/159201.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/165298.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/20198.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/205588.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/214185.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/215569.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/217769.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/217830.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/230812.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/237263.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/243009.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/243010.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/243018.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/263292.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/287549.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/307375.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/308404.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/329754.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/434483.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/444589.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/47357.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/481545.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/484757.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/515681.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/545647.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/545671.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/558100.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/591726.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/595806.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/673460.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/673960.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/683057.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/684477.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/684699.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/685388.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/685481.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/691453.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/692058.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/695099.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/697002.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/700306.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/701369.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/701370.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/706022.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/711812.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/714219.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/715849.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/720840.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/728091.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/730113.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/740318.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/755606.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/761511.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/781750.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/783212.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/785461.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/786350.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/789461.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/791114.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/792485.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/801831.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/807585.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/816710.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/838017.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/839159.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/841397.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/84857.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/871561.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/874884.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/902243.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/910365.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/915109.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/940162.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/966727.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/967302.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/969459.png">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/976075.jpg">
+            <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/994170.png">
+        </div> -->
+        <canvas id="bgCanvas"></canvas>
+        <script src="js/bg.js"></script>
+        <div id="backgroundOnlyNotice" style="display: none;">
+            <h1>Press any key to return to menu<br>or click anywhere</h1>
+        </div>
+        <div id="whydidiputinthisthing" class="dropshadow">
+            <div id="copyrightbox">
+                <div>
+                    <span>Copyright (C) 2021 <a href="https://fleepy.tv">Flleeppyy</a></span>
+                    <!-- <span href="#" id="morecrinfo">Click me for more information</span> -->
+                </div>
+            </div>
+            <div class="infobox" id="mainbox">
+                <img id="chen" src="img/avatars/hemogurobin.png" class="dropshadow" alt="Cute chen by @hemogurobin_a1c on Twitter">
+                <div id="header">
+                    <h2 id="name" class="noselect">Flleeppyy</h2>
+                    <p id="subtitle" class="noselect">someone irrelevant</p>
+                </div>
+                <links></links>
+                <a id="githubFooter" href="https://github.com/flleeppyy/fleepy.tv">View this page on Github</a>
+            </div>
+        </div>
+    </main>
+    <script src="js/main.js" ></script>
+    <link rel="stylesheet" href="css/main.css?v=2">
+</body>
+</html>

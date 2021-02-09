@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "src/frontend/src/dist",
+    "typings": ["src/frontend/src/ts/typings"]
+  },
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "src/backend",
+    "src/frontend/src/arc-sw.js"
+  ]
+}
