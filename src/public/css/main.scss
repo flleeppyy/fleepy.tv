@@ -96,6 +96,21 @@ h2 {
   transition: max-width $curve $widthtime, max-height $curve $heighttime;
 }
 
+#backgroundOnlyNotice {
+  display: flex;
+  position: absolute; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  h1 {
+    word-wrap: normal;
+    align-self: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
 .infobox {
   display: flex;
   justify-content: center;
@@ -207,6 +222,7 @@ links {
   justify-content: center;
   pointer-events: none;
   // flex-direction: column;
+  padding: 4px;
   div {
     display:flex;
     align-self: flex-end;

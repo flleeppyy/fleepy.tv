@@ -5,7 +5,9 @@ import fastifyStatic from 'fastify-static'
 import * as fs from 'fs'
 import path from 'path'
 
-const port = Number(process.env.PORT) ?? 8001
+const envPort = Number(process.env.PORT)
+const port = (envPort === NaN) ? envPort : 8001
+
 const app = fastify({
   trustProxy: true,
 })

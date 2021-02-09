@@ -10,9 +10,9 @@ function w3color(color, elmnt) {
 }
 w3color.prototype = {
   toHexString : function () {
-    var r = toHex(this.red);
-    var g = toHex(this.green);
-    var b = toHex(this.blue);
+    let r = toHex(this.red);
+    let g = toHex(this.green);
+    let b = toHex(this.blue);
     return "#" +  r + g + b;
   },
   attachValues : function(color) {
@@ -27,50 +27,50 @@ w3color.prototype = {
     this.valid = color.valid;
   }
 };
-function toColorObject(c) {
-  var x, y, typ, arr = [], arrlength, i, opacity, match, a, hue, sat, rgb, colornames = [], colorhexs = [];
-  c = w3trim(c.toLowerCase());
-  x = c.substr(0,1).toUpperCase();
-  y = c.substr(1);
+function toColorObject(color) {
+  let x, y, typ, arr = [], arrlength, i, opacity, match, a, hue, sat, rgb, colornames = [], colorhexs = [];
+  color = w3trim(color.toLowerCase());
+  x = color.substr(0,1).toUpperCase();
+  y = color.substr(1);
   a = 1;
   if ((x == "R" || x == "Y" || x == "G" || x == "C" || x == "B" || x == "M" || x == "W") && !isNaN(y)) {
-    if (c.length == 6 && c.indexOf(",") == -1) {
+    if (color.length == 6 && color.indexOf(",") == -1) {
     } else {
-      c = "ncol(" + c + ")";
+      color = "ncol(" + color + ")";
     }
   }
-  if (c.length != 3 && c.length != 6 && !isNaN(c)) {c = "ncol(" + c + ")";}
-  if (c.indexOf(",") > 0 && c.indexOf("(") == -1) {c = "ncol(" + c + ")";}  
-  if (c.substr(0, 3) == "rgb" || c.substr(0, 3) == "hsl" || c.substr(0, 3) == "hwb" || c.substr(0, 4) == "ncol" || c.substr(0, 4) == "cmyk") {
-    if (c.substr(0, 4) == "ncol") {
-      if (c.split(",").length == 4 && c.indexOf("ncola") == -1) {
-        c = c.replace("ncol", "ncola");
+  if (color.length != 3 && color.length != 6 && !isNaN(color)) {color = "ncol(" + color + ")";}
+  if (color.indexOf(",") > 0 && color.indexOf("(") == -1) {color = "ncol(" + color + ")";}  
+  if (color.substr(0, 3) == "rgb" || color.substr(0, 3) == "hsl" || color.substr(0, 3) == "hwb" || color.substr(0, 4) == "ncol" || color.substr(0, 4) == "cmyk") {
+    if (color.substr(0, 4) == "ncol") {
+      if (color.split(",").length == 4 && color.indexOf("ncola") == -1) {
+        color = color.replace("ncol", "ncola");
       }
       typ = "ncol";
-      c = c.substr(4);
-    } else if (c.substr(0, 4) == "cmyk") {
+      color = color.substr(4);
+    } else if (color.substr(0, 4) == "cmyk") {
       typ = "cmyk";
-      c = c.substr(4);
+      color = color.substr(4);
     } else {
-      typ = c.substr(0, 3);
-      c = c.substr(3);
+      typ = color.substr(0, 3);
+      color = color.substr(3);
     }
     arrlength = 3;
     opacity = false;
-    if (c.substr(0, 1).toLowerCase() == "a") {
+    if (color.substr(0, 1).toLowerCase() == "a") {
       arrlength = 4;
       opacity = true;
-      c = c.substr(1);
+      color = color.substr(1);
     } else if (typ == "cmyk") {
       arrlength = 4;
-      if (c.split(",").length == 5) {
+      if (color.split(",").length == 5) {
         arrlength = 5;
         opacity = true;
       }
     }
-    c = c.replace("(", "");
-    c = c.replace(")", "");
-    arr = c.split(",");
+    color = color.replace("(", "");
+    color = color.replace(")", "");
+    arr = color.split(",");
     if (typ == "rgb") {
       if (arr.length != arrlength) {
         return emptyObject();
@@ -129,13 +129,13 @@ function toColorObject(c) {
       rgb = cmykToRgb(arr[0], arr[1], arr[2], arr[3]);
       if (opacity == true) {a = Number(arr[4]);}
     }
-  } else if (c.substr(0, 3) == "ncs") {
-    rgb = ncsToRgb(c);
+  } else if (color.substr(0, 3) == "ncs") {
+    rgb = ncsToRgb(color);
   } else {
     match = false;
     colornames = getColorArr('names');
     for (i = 0; i < colornames.length; i++) {
-      if (c.toLowerCase() == colornames[i].toLowerCase()) {
+      if (color.toLowerCase() == colornames[i].toLowerCase()) {
         colorhexs = getColorArr('hexs');
         match = true;
         rgb = {
@@ -147,14 +147,14 @@ function toColorObject(c) {
       }
     }
     if (match == false) {
-      c = c.replace("#", "");
-      if (c.length == 3) {c = c.substr(0,1) + c.substr(0,1) + c.substr(1,1) + c.substr(1,1) + c.substr(2,1) + c.substr(2,1);}
-      for (i = 0; i < c.length; i++) {
-        if (!isHex(c.substr(i, 1))) {return emptyObject(); }
+      color = color.replace("#", "");
+      if (color.length == 3) {color = color.substr(0,1) + color.substr(0,1) + color.substr(1,1) + color.substr(1,1) + color.substr(2,1) + color.substr(2,1);}
+      for (i = 0; i < color.length; i++) {
+        if (!isHex(color.substr(i, 1))) {return emptyObject(); }
       }
-      arr[0] = parseInt(c.substr(0,2), 16);
-      arr[1] = parseInt(c.substr(2,2), 16);
-      arr[2] = parseInt(c.substr(4,2), 16);
+      arr[0] = parseInt(color.substr(0,2), 16);
+      arr[1] = parseInt(color.substr(2,2), 16);
+      arr[2] = parseInt(color.substr(4,2), 16);
       for (i = 0; i < 3; i++) {
         if (isNaN(arr[i])) {return emptyObject(); }
       }
@@ -168,7 +168,7 @@ function toColorObject(c) {
   return colorObject(rgb, a, hue, sat);
 }
 function colorObject(rgb, a, h, s) {
-  var hsl, hwb, cmyk, ncol, color, hue, sat;
+  let hsl, hwb, cmyk, ncol, color, hue, sat;
   if (!rgb) {return emptyObject();}
   if (a === null) {a = 1;}
   hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
@@ -199,18 +199,18 @@ function emptyObject() {
     valid : false
   };
 }
-function roundDecimals(c) {
-  c.red = Number(c.red.toFixed(0));
-  c.green = Number(c.green.toFixed(0));
-  c.blue = Number(c.blue.toFixed(0));
-  c.hue = Number(c.hue.toFixed(0));
-  c.sat = Number(c.sat.toFixed(2));
-  c.lightness = Number(c.lightness.toFixed(2));
-  c.opacity = Number(c.opacity.toFixed(2));
-  return c;
+function roundDecimals(color) {
+  color.red = Number(color.red.toFixed(0));
+  color.green = Number(color.green.toFixed(0));
+  color.blue = Number(color.blue.toFixed(0));
+  color.hue = Number(color.hue.toFixed(0));
+  color.sat = Number(color.sat.toFixed(2));
+  color.lightness = Number(color.lightness.toFixed(2));
+  color.opacity = Number(color.opacity.toFixed(2));
+  return color;
 }
 function hslToRgb(hue, sat, light) {
-  var t1, t2, r, g, b;
+  let t1, t2, r, g, b;
   hue = hue / 60;
   if ( light <= 0.5 ) {
     t2 = light * (sat + 1);
@@ -232,7 +232,7 @@ function hueToRgb(t1, t2, hue) {
   else return t1;
 }
 function rgbToHsl(r, g, b) {
-  var min, max, i, l, s, maxcolor, h, rgb = [];
+  let min, max, i, l, s, maxcolor, h, rgb = [];
   rgb[0] = r / 255;
   rgb[1] = g / 255;
   rgb[2] = b / 255;
@@ -269,7 +269,7 @@ function rgbToHsl(r, g, b) {
   return {h : h, s : s, l : l};
 }
 function toHex(n) {
-  var hex = n.toString(16);
+  let hex = n.toString(16);
   while (hex.length < 2) {hex = "0" + hex; }
   return hex;
 }
@@ -287,7 +287,7 @@ window.w3color = w3color;
 })();
 
 function w3SetColorsByAttribute() {
-  var z, i, att;
+  let z, i, att;
   z = document.getElementsByTagName("*");
   for (i = 0; i < z.length; i++) {
     att = z[i].getAttribute("data-w3-color");
