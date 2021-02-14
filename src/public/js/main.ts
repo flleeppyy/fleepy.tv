@@ -148,7 +148,8 @@ $(() => {
       "my music is the definition of hot garbage",
       "hot garbage",
       "did you know, if you stop thinking, you wont be able to think?",
-      "god i love yuri, most beautiful thing ever, girls in bliss"
+      "god i love yuri, most beautiful thing ever",
+      "h"
     ]
     const ST = $('#subtitle')
     let prevST: number;
@@ -183,6 +184,7 @@ $(() => {
     new Link("Spotify", "https://open.spotify.com/artist/5d88PKcv3BK7d4K9LFpPJM", "img/icons/spotify.png", "#1DB954", "white"),
     new Link("Ko-Fi", 'https://ko-fi.com/flleeppyy', "img/icons/kofi.png", "#29abe0", "white"),
     new Link("Twitter", "https://twitter.com/", "img/icons/twitter.png", "#1da1f2", "white"),
+    new Link("Telegram", "https://t.me/flleeppyy", "img/icons/telegram.png", "white"),
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
     new Link("YouTube", "https://u.fleepy.tv/youtube", "img/icons/youtube.png", "#ff1111", "white"),
     // new Link("Discord Server", "https://u.fleepy.tv/discord", "img/icons/discord.png", "#7289DA", "white"),
