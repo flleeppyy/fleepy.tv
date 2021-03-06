@@ -5,9 +5,9 @@
   "main": "index.js",
   "website": "https://fleepy.tv",
   "scripts": {
-    "start": "yarn sass:build && tsc && PORT=8001 ts-node ./src",
+    "start": "yarn sass:build && tsc && NODE_ENV=production PORT=8001 ts-node ./src",
     "dev": "yarn sass:build && nodemon --ext 'ts' --watch 'src' --exec 'tsc && NODE_ENV=development PORT=8080 ts-node ./src'",
-    "sass:watch": "nodemon --ext 'scss' --watch 'src' --exec 'sass --embed-source-map --update --style=compressed .'",
+    "sass:watch": "sass --watch --embed-source-map --update --style=compressed .",
     "sass:build": "sass --embed-source-map --style=compressed ."
   },
   "repository": {

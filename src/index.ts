@@ -5,6 +5,7 @@ import fastifyStatic from 'fastify-static'
 import * as fs from 'fs'
 import path from 'path'
 
+const env = process.env.NODE_ENV
 const envPort = Number(process.env.PORT)
 const port = (envPort === NaN) ? envPort : 8001
 
@@ -12,7 +13,12 @@ const app = fastify({
   trustProxy: true,
 })
 
-app.addHook("onRequest", (req, _, next) => {
+app.addHook("onRequest", (req, res, next) => {
+  if (env === "development") {
+    res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
+    res.header("Expires", "-1");
+    res.header("Pragma", "no-cache");
+  }
   console.log(`IP: ${req.headers['cf-connecting-ip'] || req.ip} Requested ${req.url}`)
   next()
 })

@@ -135,7 +135,6 @@ $(() => {
       "chen is very cute!",
       "<a href='https://twitter.com/htfcirno2000'>htfcirno2000</a> is very awesome :3",
       "<a href='https://twitter.com/smolespi'>Espi</a> is very cool, talented, and awesome c:",
-      "<a href='https://twitter.com/_mianyaa'>Mia</a> is cewl ^w^",
       "cheeeeeeeeeeeeeeeeen",
       "CHEN!",
       "wish i could downloadmoreram.com",
@@ -148,7 +147,8 @@ $(() => {
       "my music is the definition of hot garbage",
       "hot garbage",
       "did you know, if you stop thinking, you wont be able to think?",
-      "god i love yuri, most beautiful thing ever",
+      "god i love yuri, most beautiful thing ever, girls in bliss",
+      "cute and stupid.",
       "h"
     ]
     const ST = $('#subtitle')
@@ -187,7 +187,7 @@ $(() => {
     new Link("Telegram", "https://t.me/flleeppyy", "img/icons/telegram.png", "white"),
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
     new Link("YouTube", "https://u.fleepy.tv/youtube", "img/icons/youtube.png", "#ff1111", "white"),
-    // new Link("Discord Server", "https://u.fleepy.tv/discord", "img/icons/discord.png", "#7289DA", "white"),
+    new Link("Steam", "https://steamcommunity.com/id/flleeppyy/", "img/icons/steam.png", "white", "black"),
     new Link("GitHub", "https://github.com/flleeppyy", "img/icons/github.png", "#111213", "white"),
     new Link("Business Email", "mailto:flleeppyybusiness@gmail.com", "img/icons/email.png", "white", "#111213"),
   ];
