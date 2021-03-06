@@ -9,6 +9,10 @@ logging.log
 node.sh
 npm-debug.log
 tsconfig.tsbuildinfo
+# YOU BITCH
+# JUST FUCKING IGNORE THE FILE
+**/*.js
+*js
 .js
 !arc-sw.js
 !w3color.js
