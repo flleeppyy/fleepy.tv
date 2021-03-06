@@ -125,7 +125,7 @@ $(() => {
     const subtitles = [
       "some irrelevant",
       "yes im stupid",
-      "this page is badly coded. seriously, look at the <a href='https://github.com/flleeppyy/fleepy.tv' onclick='return false'>repo</a>.",
+      "this page is badly coded. seriously, look at the <a href='https://github.com/flleeppyy/fleepy.tv'>repo</a>.",
       "yeah i make music, but is it good?",
       "bad coding practices all around",
       "i like synthesizers",
