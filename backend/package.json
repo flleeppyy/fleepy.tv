@@ -1,0 +1,10 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^3.14.1",
+    "fastify-static": "^4.0.1"
+  }
+}

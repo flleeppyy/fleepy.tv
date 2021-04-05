@@ -10,6 +10,7 @@
 *.php text
 *.css text
 *.js text
+*.ts
 *.json text
 *.htm text
 *.html text

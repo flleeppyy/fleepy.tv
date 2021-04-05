@@ -1,0 +1,224 @@
+<!-- Copyright (C) 2021 Flleeppyy (Micah Jinkerson)
+  https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE -->
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <title>Fleepy.tv</title>
+    <script async src="https://arc.io/widget.min.js#rYxxjvEb"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+      *, *:before, *:after {
+        box-sizing: inherit;
+        font-family: 'IBM Plex Sans';
+      }
+      body {
+        margin: 0%;
+        height: 100vh;
+        background: black;
+      }
+      main {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: snow;
+        height: 100vh;
+      }
+      main *[fuckyoucss] {
+        -webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
+        -moz-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
+        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.55);
+      }
+      
+      #bgCanvas {
+        position: absolute;
+        z-index: -10000;
+      }
+      
+      h2 {
+        font-size: x-large;
+      }
+      
+      #infobox {
+        margin: 1em;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background: #333333;
+        border-radius: 8px;
+        max-width: 32em;
+        padding: 12px;
+      }
+      #infobox * {
+        margin: 6px;
+        align-self: center;
+      }
+      
+      body #chen {
+        margin: 1em;
+        display: block;
+        overflow: hidden;
+        width: 10em;
+        min-height: 10em;
+        border-radius: 100%;
+        border: 0.3em solid snow;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.55);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.55);
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.55);
+      }
+      
+      button, input[type='button'] {
+        background-color:#ffffff;
+        border-radius: 2px;
+        padding: 8px;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main style="display: none;">
+      <canvas id="bgCanvas"></canvas>
+      <div id="infobox" fuckyoucss>
+        <h2>404 Not found</h2>
+        <p>chen couldnt find what you were looking for :c</p>
+        <img id="chen" src="/img/sadchen.png">
+        <button onclick="window.location ='/'">Go home</button>
+      </div>
+    </main>
+    <script src="https://www.w3schools.com/lib/w3color.js"></script>
+    <script>
+      // Source of script: https://bashooka.com/coding/web-background-animation-effects/
+      // Heavily modified
+      // Compiled typescript
+      var background = document.getElementById("bgCanvas"), bgCtx = background.getContext("2d"), width = window.innerWidth, height = window.innerHeight;
+      background.width = width;
+      background.height = height;
+      var entities = [];
+      bgCtx.fillStyle = '#1e1429';
+      bgCtx.fillRect(0, 0, width, height);
+      var Star = /** @class */ (function () {
+        function Star(options) {
+          var _this = this;
+          this.update = function () {
+            _this.x -= _this.speed;
+            // this.y += 0.1
+            if (_this.x < 0) {
+              _this.reset();
+            }
+            else {
+              bgCtx.fillRect(_this.x, _this.y, _this.size, _this.size);
+              bgCtx.fillStyle = _this.color;
+            }
+          };
+          this.reset = function () {
+            _this.size = Math.random() * 2;
+            _this.speed = Math.random() * 1;
+            _this.x = width;
+            _this.y = Math.random() * height;
+          };
+          this.size = Math.random() * 2;
+          this.speed = Math.random() * 1;
+          this.x = options.x;
+          this.y = options.y;
+          // @ts-ignore
+          this.color = w3color("hsl(" + Math.floor(Math.random() * 360) + ",100%,80%)").toHexString();
+        }
+        return Star;
+      }());
+      var ShootingStar = /** @class */ (function () {
+        function ShootingStar() {
+          var _this = this;
+          this.reset = function () {
+            _this.x = Math.random() * width;
+            _this.y = 0;
+            _this.len = (Math.random() * 80) + 20;
+            _this.speed = (Math.random() * 10) + 6;
+            _this.size = (Math.random() * 1) + 0.1;
+            _this.waitTime = new Date().getTime() + (Math.random() * 3000) + 500;
+            _this.active = false;
+          };
+          this.update = function () {
+            if (_this.active) {
+              _this.x -= _this.speed;
+              _this.y += _this.speed;
+              if (_this.x < 0 || _this.y >= height) {
+                _this.reset();
+              }
+              else {
+                bgCtx.lineWidth = _this.size;
+                bgCtx.beginPath();
+                bgCtx.moveTo(_this.x, _this.y);
+                bgCtx.lineTo(_this.x + _this.len, _this.y - _this.len);
+                bgCtx.stroke();
+              }
+            }
+            else {
+              if (_this.waitTime < new Date().getTime()) {
+                _this.active = true;
+              }
+            }
+          };
+          this.x = Math.random() * width;
+          this.y = 0;
+          this.len = (Math.random() * 80) + 20;
+          this.speed = (Math.random() * 10) + 6;
+          this.size = (Math.random() * 1) + 0.1;
+          // this is used so the shooting stars arent constant
+          this.waitTime = new Date().getTime() + (Math.random() * 3000) + 500;
+          this.active = false;
+          this.reset();
+        }
+        return ShootingStar;
+      }());
+      // init the stars
+      for (var i = 0; i < height; i++) {
+        entities.push(new Star({
+          x: Math.random() * width,
+          y: Math.random() * height
+        }));
+      }
+      // Add 2 shooting stars that just cycle.
+      // entities.push(new ShootingStar());
+      // entities.push(new ShootingStar());
+      //animate background
+      var animate = function () {
+        bgCtx.fillStyle = '#1e1429';
+        bgCtx.fillRect(0, 0, width, height);
+        var entLen = entities.length;
+        while (entLen--) {
+          entities[entLen].update();
+        }
+        requestAnimationFrame(animate);
+      };
+      animate();
+      $(window).on('resize', function () {
+        height = window.innerHeight;
+        width = window.innerWidth;
+        background.width = width;
+        background.height = height;
+        bgCtx.fillRect(0, 0, width, height);
+        entities = [];
+        // entities.push(new ShootingStar());
+        // entities.push(new ShootingStar());
+        for (var i = 0; i < height; i++) {
+          entities.push(new Star({
+            x: Math.random() * width,
+            y: Math.random() * height
+          }));
+        }
+        // animate()
+      });
+    </script>
+    <script>
+      
+      $(() => {
+        $('main').fadeIn(400)
+      })
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "sass:watch": "sass --watch --embed-source-map --update --style=compressed .",
+    "sass:build": "sass --embed-source-map --style=compressed ."
+  },
+  "dependencies": {
+    "@types/color": "^3.0.1",
+    "@types/jquery": "^3.5.5",
+    "@types/toastr": "^2.1.38",
+    "@types/typed.js": "^2.0.9",
+    "browserify": "^17.0.0",
+    "color": "^3.1.3",
+    "jquery": "^3.6.0",
+    "toastr": "^2.1.4",
+    "tsify": "^5.0.2",
+    "typed.js": "^2.0.12"
+  }
+}
