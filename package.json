@@ -2,10 +2,9 @@
   "name": "fleepy.tv",
   "author": "Flleeppyy",
   "description": "My website that I work on.",
-  "main": "index.js",
   "website": "https://fleepy.tv",
   "scripts": {
-    "installall": "cd frontend && yarn && cd ../backend && yarn",
+    "installall": "yarn && cd frontend && yarn && cd ../backend && yarn",
     "buildall": "shx rm -rf frontend/src/js && yarn frontend:sass:build && yarn frontend:build:prod",
     "build": "yarn buildall",
     "all": "yarn installall && yarn buildall",
