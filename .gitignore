@@ -4,17 +4,15 @@ design.png
 design.psd
 node_modules
 .vs
-src/public/other_stuff
+frontend/src/other_stuff
 logging.log
 node.sh
 npm-debug.log
 tsconfig.tsbuildinfo
-# YOU BITCH
-# JUST FUCKING IGNORE THE FILE
-**/*.js
 *js
 .js
 !arc-sw.js
 !w3color.js
 !keycode.js
+!eslintrc.js
 *.css
