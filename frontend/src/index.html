@@ -67,7 +67,7 @@
             <div id="tmux-line">
                 <script>document.write('<span>[fleepytv-0:<span id="process">bash*</span></span>')</script>
                 <noscript>
-                    <span>[fleepytv-0:<span id="process">yarn*</span></span>
+                    <span>[fleepytv-0:<span id="process">bash*</span></span>
                 </noscript>
                 <span style="text-align: right;">"chen-laptop-uwu"<script>
                     const date = new Date();
@@ -75,10 +75,11 @@
                     if (hour.length < 2) { hour = '0' + date.getHours().toString(); } else { hour = date.getHours() }
                     let minute = date.getMinutes();
                     if (minute.length < 2) { minute = '0' + date.getMinutes().toString(); } else { minute = date.getMinutes() }
-                    const day = date.getDate();
+                    const day = String(date.getDate())
                     const month = date.toString().split(' ')[1];
                     const year = date.getFullYear().toString().slice(2)
-                    document.write(` ${hour}:${minute} ${day}-${month}-${year}`)</script>
+                    console.log(day.length)
+                    document.write(` ${hour}:${minute} ${(day.length > 1) ? day : `0${day}`}-${month}-${year}`)</script>
                 </span>
             </div>
         </div>
@@ -173,7 +174,6 @@
             <img src="https://fleepy.tv/other_stuff/backgrounds/other_backgrounds/994170.png">
         </div> -->
         <canvas id="bgCanvas"></canvas>
-        <script src="js/bg.js"></script>
         <div id="backgroundOnlyNotice" style="display: none;">
             <h1>Press any key to return to menu<br>or click anywhere</h1>
         </div>

@@ -21,7 +21,12 @@ window.$ = $;
     $("html").css("background","none");
     $("main").fadeIn(400);
   });
-  // (await import ("./dev")).default();
+  if (window.location.hostname === "127.0.0.1" || 
+      window.location.hostname === "localhost" || 
+      window.location.hostname === "0.0.0.0")
+  {
+    (await import("./modules/dev")).default();
+  }
   (await import("./modules/typingAnim")).default();
   (await import("./modules/bg")).default();
   (await import("./modules/bgClick")).default();

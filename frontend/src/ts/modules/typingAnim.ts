@@ -5,6 +5,7 @@ export default (): void => {
   const main = $("main");
   const parentBox = $("#parentBox");
   let paused = false;
+  let pausedCount = 0;
   let fallback = false;
   new Typed("#typeThis", {
     strings: ["^200yarn start^100\r^200\n<strong>`yarn run v1.22.5`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`"],
@@ -28,8 +29,10 @@ export default (): void => {
       }, 400);
     },
     onTypingPaused: () => {
-      console.log("paused");
-      if (paused !== true) {
+      pausedCount++;
+      console.log(pausedCount);
+
+      if (paused !== true && pausedCount === 2) {
         $("#process").html("yarn*");
         // console.log('set to yarn typing paused')
         paused = true;

@@ -9,9 +9,54 @@ const env = process.env.NODE_ENV;
 const envPort = Number(process.env.PORT);
 const port = (isNaN(NaN)) ? envPort : 8001;
 
+const dev = (env === "development") ? true : false;
+
+(async () => {
+  if (dev) {
+    const io = await import("socket.io").then(e => {
+      return new e.Server(8081, {
+        cors: {
+          origin: "http://127.0.0.1:8080",
+          methods: ["GET", "POST"]
+        }
+      });
+    });
+    
+    // const files = [
+    //   "index.html",
+    //   "js/bundle.js"
+    // ];
+    // files.forEach(file => {
+    //   fs.watchFile(path.join(__dirname, "../../frontend/src/", file), {
+    //     interval: 500
+    //   }, () => {
+    //     io.send("refresh");
+    //   });
+    // });
+    
+    fs.watchFile(path.join(__dirname, "../../frontend/src/index.html"), {
+      interval: 500
+    }, () => {
+      io.send("refreshpage");
+    });
+    fs.watchFile(path.join(__dirname, "../../frontend/src/js/bundle.js"), {
+      interval: 500
+    }, () => {
+      io.send("refreshpage");
+    });
+    fs.watchFile(path.join(__dirname, "../../frontend/src/css/main.css"), {
+      interval: 500
+    }, () => {
+      io.send("refreshcss");
+    });
+    
+  }
+})();
+
 const app = fastify({
   trustProxy: true,
 });
+
 
 app.addHook("onRequest", (req, res, next) => {
   if (env === "development") {

@@ -1,18 +1,9 @@
-./design psd images/
-design psd images.zip
-design.png
-design.psd
 node_modules
-.vs
 frontend/src/other_stuff
-logging.log
-node.sh
 npm-debug.log
 tsconfig.tsbuildinfo
 *js
 .js
 !arc-sw.js
-!w3color.js
-!keycode.js
 !eslintrc.js
 *.css
