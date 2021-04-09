@@ -24,6 +24,7 @@
     "socket.io-client": "^4.0.1",
     "toastr": "^2.1.4",
     "tsify": "^5.0.2",
-    "typed.js": "^2.0.12"
+    "typed.js": "^2.0.12",
+    "uglifyjs": "^2.4.11"
   }
 }
