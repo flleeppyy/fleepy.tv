@@ -5,6 +5,10 @@
   "main": "index.js",
   "website": "https://fleepy.tv",
   "scripts": {
+    "installall": "cd frontend && yarn && cd ../backend && yarn",
+    "buildall": "rm frontend/src/js/* && yarn frontend:sass:build && yarn frontend:build:prod",
+    "build": "yarn buildall",
+    "all": "yarn installall && yarn buildall",
     "backend:start": "yarn --cwd backend start",
     "backend:dev": "yarn --cwd backend dev",
     "frontend:sass:watch": "yarn --cwd frontend sass:watch",

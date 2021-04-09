@@ -32,7 +32,7 @@ export default (): void => {
   ];
   
   links.forEach(link => {
-    const button = $(`<button href="${link.href}" class="dropshadow"><img src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`);
+    const button = $(`<button href="${link.href}" class="dropshadow"><img alt="${link.title}" src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`);
     // console.log(button)
     button.attr("onclick", `window.location = '${link.href}'`);
     // button.attr('onclick', `console.log(this, event)`)
