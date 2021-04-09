@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "license": "MIT",
+  "scripts": {
+    "start": "NODE_ENV=production PORT=8001 ts-node ./src",
+    "dev": "nodemon --ext 'ts' --watch 'src' --exec 'NODE_ENV=development PORT=8080 ts-node ./src'"
+  },
   "dependencies": {
     "fastify": "^3.14.1",
     "fastify-static": "^4.0.1"

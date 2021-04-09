@@ -5,10 +5,13 @@
   "main": "index.js",
   "website": "https://fleepy.tv",
   "scripts": {
-    "start": "yarn sass:build && tsc && NODE_ENV=production PORT=8001 ts-node ./src",
-    "dev": "yarn sass:build && nodemon --ext 'ts' --watch 'src' --exec 'tsc && NODE_ENV=development PORT=8080 ts-node ./src'",
+    "backend:start": "yarn --cwd backend start",
+    "backend:dev": "yarn --cwd backend dev",
     "frontend:sass:watch": "yarn --cwd frontend sass:watch",
-    "frontend:sass:build": "yarn --cwd frontend sass:build"
+    "frontend:sass:build": "yarn --cwd frontend sass:build",
+    "frontend:build:dev": "yarn --cwd frontend build:dev",
+    "frontend:build:prod": "yarn --cwd frontend build:prod",
+    "frontend:build:devwatch": "yarn --cwd frontend build:devwatch"
   },
   "repository": {
     "type": "git",

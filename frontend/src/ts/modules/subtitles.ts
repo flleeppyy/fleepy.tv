@@ -1,4 +1,4 @@
-export default () => {
+export default ():void => {
   const subtitles = [
     "some irrelevant",
     "yes im stupid",
@@ -30,10 +30,10 @@ export default () => {
   ];
   const ST = $("#subtitle");
   let prevST: number;
-  const setST: Function = () => { // ITS CLEARLY A FUNCTION... CLEARLY
+  const setST = () => {
     const a: number = Math.floor(Math.random() * subtitles.length);
     const b: string = subtitles[a];
-    if (a === prevST) {return setST();}
+    if (a === prevST) {setST(); return;} 
     prevST = a;
     ST.html(b);
   };
@@ -41,4 +41,5 @@ export default () => {
   ST.on("click", () => {
     setST();
   });
+  return;
 };

@@ -1,9 +1,27 @@
-export default () => {
-  const main = $('main');
+class Link {
+  title: string;
+  href: string;
+  icon: string; // icon must be a 1:1 ratio and perfectly hitting the edges of the icon
+  bgColor: string;
+  textColor: string;
+  iconCss: string;
+  
+  constructor (title?:string, href?:string, icon?:string, bgColor?:string, textColor?:string, iconCss?:string) {
+    this.title = title || "Title";
+    this.href = href || "https://fleepy.tv";
+    this.icon = icon || "img/icons/questionmark.png";
+    this.bgColor = bgColor || "white" || "#ffffff";
+    this.textColor = textColor || "black" || "#000000";
+    this.iconCss = iconCss!;
+  }
+}
+
+export default (): void => {
+  const main = $("main");
   const links = [
     new Link("Bandcamp", "https://flleeppyy.bandcamp.com/", "img/icons/bandcamp.png", "#4B5154", "white"),
     new Link("Spotify", "https://open.spotify.com/artist/5d88PKcv3BK7d4K9LFpPJM", "img/icons/spotify.png", "#1DB954", "white"),
-    new Link("Ko-Fi", 'https://ko-fi.com/flleeppyy', "img/icons/kofi.png", "#29abe0", "white"),
+    new Link("Ko-Fi", "https://ko-fi.com/flleeppyy", "img/icons/kofi.png", "#29abe0", "white"),
     new Link("Twitter", "https://twitter.com/flleeppyy", "img/icons/twitter.png", "#1da1f2", "white"),
     new Link("Telegram", "https://t.me/flleeppyy", "img/icons/telegram.png", "white"),
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
@@ -14,30 +32,31 @@ export default () => {
   ];
   
   links.forEach(link => {
-    const button = $(`<button href="${link.href}" class="dropshadow"><img src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`)
+    const button = $(`<button href="${link.href}" class="dropshadow"><img src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`);
     // console.log(button)
-    button.attr('onclick', `window.location = '${link.href}'`)
+    button.attr("onclick", `window.location = '${link.href}'`);
     // button.attr('onclick', `console.log(this, event)`)
     button.css({
       "background": link.bgColor || "white",
       "color": link.textColor || "black"
-    })
-    button.appendTo('links')
+    });
+    button.appendTo("links");
     button.on("mousedown", "a.external", e => {
       e.preventDefault();
       if (link.title === "Business Email") {
         return;
       }
-      $('#fallbackContainer').fadeIn(100)
-      main.fadeOut(400)
-    })
+      $("#fallbackContainer").fadeIn(100);
+      main.fadeOut(400);
+    });
     
     // We have to use normal javascript (not jquery) to add the mouse down listener because JQuery doesn't detect middle click or right click as a click event.
-    button[0].addEventListener('mousedown', e => { // fuck you jquery
+    button[0].addEventListener("mousedown", e => { // fuck you jquery
       if (e.which === 2) {
-        e.preventDefault()
-        window.open(link.href, "_blank")
+        e.preventDefault();
+        window.open(link.href, "_blank");
       }
-    })
+    });
   });
-}
+  return;
+};

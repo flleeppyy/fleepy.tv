@@ -1,7 +1,7 @@
 export default () => {
-  const parentBox = $('#parentBox');
-  const bgNotice = $('#backgroundOnlyNotice')
-  // $('#chen').on('click', function(e) {
+  const parentBox = $("#parentBox");
+  const bgNotice = $("#backgroundOnlyNotice");
+  // $("#chen").on("click", function(e) {
   //   if (e.ctrlKey) {
   //     bgNotice.fadeIn(400)
   //     setTimeout(() => {
@@ -14,7 +14,7 @@ export default () => {
   // });
   
   // let isMouseDown = false
-  // $("#chen").on('mousedown', (e) => {
+  // $("#chen").on("mousedown", (e) => {
   //   isMouseDown = true;
   //   setTimeout(() => {
   //     if (isMouseDown) {
@@ -26,15 +26,15 @@ export default () => {
   //     }
   //   }, 1000)
   // })
-  // $("#chen").on('mouseup', (e) => {
+  // $("#chen").on("mouseup", (e) => {
   //   isMouseDown = false
   // })
   
-  // main.on('mousedown', () => {
+  // main.on("mousedown", () => {
   //   parentBox.fadeIn(200)
   // });
   
-  // $(document).on('keydown', () => {
+  // $(document).on("keydown", () => {
   //   parentBox.fadeIn(200)
   // });
-}
+};

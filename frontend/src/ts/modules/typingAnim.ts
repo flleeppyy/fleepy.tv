@@ -1,10 +1,11 @@
 import {startHue as startHue} from "./hue";
+import Typed from "typed.js";
 
-export default () => {
+export default (): void => {
   const main = $("main");
+  const parentBox = $("#parentBox");
   let paused = false;
   let fallback = false;
-  // @ts-ignore
   new Typed("#typeThis", {
     strings: ["^200yarn start^100\r^200\n<strong>`yarn run v1.22.5`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`"],
     typeSpeed: 40,
@@ -27,6 +28,7 @@ export default () => {
       }, 400);
     },
     onTypingPaused: () => {
+      console.log("paused");
       if (paused !== true) {
         $("#process").html("yarn*");
         // console.log('set to yarn typing paused')
@@ -48,4 +50,5 @@ export default () => {
       parentBox.css("max-height", "100%");
     }
   });
+  return;
 };
