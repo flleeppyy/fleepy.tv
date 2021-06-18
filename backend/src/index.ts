@@ -16,13 +16,13 @@ const dev = (env === "development") ? true : false;
     const io = await import("socket.io").then(e => {
       return new e.Server(8081, {
         cors: {
-          origin: "http://127.0.0.1:8080",
-          methods: ["GET", "POST"]
+          methods: ["GET", "POST"],
+          origin: ["http://127.0.0.1:8080", "http://fumo.cirnosystems.xyz:8080"]
         }
       });
     });
     
-    // const files = [
+    // const files = []]\
     //   "index.html",
     //   "js/bundle.js"
     // ];
@@ -57,12 +57,22 @@ const app = fastify({
   trustProxy: true,
 });
 
+if (dev) {
+  app.get("/dev", (req, res) => {
+    if (dev) {
+      res.send({dev: true});
+    } else {
+      res.send({dev: false});
+    }
+  })
+}
 
 app.addHook("onRequest", (req, res, next) => {
   if (env === "development") {
     res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
     res.header("Expires", "-1");
     res.header("Pragma", "no-cache");
+    res.header("x-dev", "true")
   }
   console.log(`IP: ${req.headers["cf-connecting-ip"] || req.ip} Requested ${req.url}`);
   next();

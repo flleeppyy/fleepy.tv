@@ -1,5 +1,6 @@
 interface Window {
-  $: JQueryStatic
+  $: JQueryStatic;
+  dev: boolean;
 }
 
 declare let $: Window["$"];

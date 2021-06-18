@@ -20,10 +20,12 @@ export default (): void => {
           startHue();
         }
         fallback = true;
-        parentBox.css("max-width", "100%");
+        // parentBox.css("max-width", "100%");
+        parentBox.css("opacity", "100%");
         // https://stackoverflow.com/questions/18143899/jquery-run-function-after-css-transition-is-done#18144024
         parentBox.on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(event){ 
-          parentBox.css("max-height", "100%");
+        // parentBox.css("max-width", "100%");
+          parentBox.css("opacity", "100%");
           $(this).off(event);
         });
       }, 400);

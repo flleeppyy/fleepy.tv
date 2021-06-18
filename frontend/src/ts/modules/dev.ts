@@ -1,9 +1,11 @@
 import io from "socket.io-client";
 
 export default (): void => {
-  const socket = io("http://127.0.0.1:8081");
+  console.warn("INFO | Dev enabled")
+  const socketLocation = `http://${window.location.hostname}:8081`
+  const socket = io(socketLocation);
   const style = $("<style></style>").appendTo("head");
-  
+  console.log("INFO | socket location: " + socketLocation)
   fetchCss();
   function fetchCss() {
     $.get("/css/main.css", (data) => {
