@@ -4,6 +4,7 @@
   "description": "My website that I work on.",
   "website": "https://fleepy.tv",
   "scripts": {
+    "upgradeall": "yarn upgrade && cd frontend && yarn upgrade && cd ../backend && yarn upgrade",
     "installall": "yarn && cd frontend && yarn && cd ../backend && yarn",
     "buildall": "shx rm -rf frontend/src/js && yarn frontend:sass:build && yarn frontend:build:prod",
     "build": "yarn buildall",
