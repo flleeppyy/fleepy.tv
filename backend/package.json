@@ -8,7 +8,6 @@
     "dev": "nodemon --ext 'ts' --watch 'src' --exec 'NODE_ENV=development PORT=8080 ts-node ./src'"
   },
   "dependencies": {
-    "@types/socket.io": "^2.1.13",
     "fastify": "^3.14.1",
     "fastify-static": "^4.0.1",
     "socket.io": "^4.0.1"
