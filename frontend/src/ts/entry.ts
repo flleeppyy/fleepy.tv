@@ -5,7 +5,7 @@ window.$ = $;
 
 (async () => {
   const devFetch = await axios.get("/dev");
-  console.log(devFetch) 
+  console.log(devFetch);
   // @ts-ignore
   $.fn.randomize = function(selector){
     (selector ? this.find(selector) : this).parent().each(function(){

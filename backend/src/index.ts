@@ -57,15 +57,15 @@ const app = fastify({
   trustProxy: true,
 });
 
-if (dev) {
-  app.get("/dev", (req, res) => {
-    if (dev) {
-      res.send({dev: true});
-    } else {
-      res.send({dev: false});
-    }
-  })
-}
+
+app.get("/dev", (req, res) => {
+  if (dev) {
+    res.send({dev: true});
+  } else {
+    res.send({dev: false});
+  }
+})
+
 
 app.addHook("onRequest", (req, res, next) => {
   if (env === "development") {
