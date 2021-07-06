@@ -3,27 +3,41 @@
 <head>
     <script async src="https://arc.io/widget.min.js#rYxxjvEb" crossorigin="anonymous"></script>
     <script>
-        document.createElement('links', {"is":"div"})
-        document.createElement('z', {"is":"span"})
+        document.createElement('links', {"is":"div"});
+        document.createElement('z', {"is":"span"});
+        function getDate() {
+            const date = new Date();
+            const hour = `0${date.getHours()}`.slice(-2);
+            const minute = `0${date.getMinutes()}`.slice(-2);
+            const day = String(date.getDate())}.slice(-2);
+            const month = date.toString().split(' ')[1];
+            const year = date.getFullYear().toString().slice(2);
+            return ` ${hour}:${minute} 0${day}-${month}-${year}`;
+        }
     </script>
     <style>
-        html { background: black }
+        html {
+            background: black
+        }
     </style>
     <title>Flleeppyy</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" crossorigin="anonymous">
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css' rel='stylesheet' crossorigin="anonymous"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet" crossorigin="anonymous"/>
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    
     <!-- Primary Meta Tags -->
     <title>Flleeppyy - Home</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?" />
     <meta name="title" content="Flleeppyy - Home">
     <meta name="description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fleepy.tv/">
     <meta property="og:title" content="Flleeppyy - Home">
     <meta property="og:description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
     <meta property="og:image" content="https://fleepy.tv/img/banner_large.png">
+    
     <!-- Twitter -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:creator" content="@flleeppyy">
@@ -51,7 +65,7 @@
                     <z class="light-green">chen@chen-laptop-uwu</z>:<z class="sky-blue">/mount/storage/dev/fleepy.tv</z>$ <z id="typeThis"></z>
                 </code>
             </pre>
-            `)
+            `);
         </script>
         <noscript>
             <pre>
@@ -64,21 +78,8 @@
         </noscript>
         <div id="tmux-container">
             <div id="tmux-line">
-                <script>document.write('<span>[fleepytv-0:<span id="process">bash*</span></span>')</script>
-                <noscript>
-                    <span>[fleepytv-0:<span id="process">bash*</span></span>
-                </noscript>
-                <span style="text-align: right;">"chen-laptop-uwu"<script>
-                    const date = new Date();
-                    let hour = date.getHours;
-                    if (hour.length < 2) { hour = '0' + date.getHours().toString(); } else { hour = date.getHours() }
-                    let minute = date.getMinutes();
-                    if (minute.length < 2) { minute = '0' + date.getMinutes().toString(); } else { minute = date.getMinutes() }
-                    const day = String(date.getDate())
-                    const month = date.toString().split(' ')[1];
-                    const year = date.getFullYear().toString().slice(2)
-                    console.log(day.length)
-                    document.write(` ${hour}:${minute} ${(day.length > 1) ? day : `0${day}`}-${month}-${year}`)</script>
+                [fleepytv-0:<span id="process">bash*</span></span>
+                <span style="text-align: right;">"chen-laptop-uwu"<script>document.write(getDate());</script>
                 </span>
             </div>
         </div>
@@ -195,7 +196,7 @@
             </div>
         </div>
     </main>
-    <script src="js/bundle.js?v=142fgsfds" ></script>
-    <link rel="stylesheet" href="css/main.css?v=44fas">
+    <script src="js/bundle.js?" ></script>
+    <link rel="stylesheet" href="css/main.css?">
 </body>
 </html>
