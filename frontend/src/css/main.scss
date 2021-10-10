@@ -1,4 +1,4 @@
-/* Copyright (C) 2021 Flleeppyy (Micah Jinkerson)
+/* Copyright (C) 2021 Flleeppyy (Chen Jinkerson)
 https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
@@ -152,7 +152,8 @@ h2 {
   width: $size;
   min-height: $size;
   border-radius: 100%;
-  border: 0.4em solid snow;
+  border: none;
+  // border: 0.4em solid snow;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   transform: scale(1);

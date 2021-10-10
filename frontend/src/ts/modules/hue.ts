@@ -45,7 +45,7 @@ export function startHue(): void {
     if (window.disableHue == false) {
       (hue >= 360) ? hue = 0 : "";
       hue++;
-      $("#chen").css("border", "0.3em solid " + new Hsl(hue, saturation, 90).toString());
+      // $("#chen").css("border", "0.3em solid " + new Hsl(hue, saturation, 90).toString());
       parentBox.css("border", ("0.3em solid " + new Hsl(hue, 100, 80).toString()));
       $("#name").css("color", new Hsl(hue, saturation, 90).toString());
     }

@@ -37,5 +37,5 @@ window.$ = $;
   (await import("./modules/arc")).default();
   (await import("./modules/links")).default();
   (await import("./modules/subtitles")).default();
-  (await import("./modules/darkreader")).default();
+  // (await import("./modules/darkreader")).default(); // no longer needed
 })();
