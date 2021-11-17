@@ -128,22 +128,17 @@ export default (): void => {
   };
   animate();
   
-  $(window).on("resize", () => {
+  window.addEventListener("resize", () => {
     height = window.innerHeight;
     width = window.innerWidth;
     background.width = width;
     background.height = height;
     bgCtx.fillRect(0, 0, width, height);
     entities = [];
-    // entities.push(new ShootingStar());
-    // entities.push(new ShootingStar());
     
     for (let i = 0; i < height; i++) {
-      entities.push(new Star({
-        x: Math.random() * width,
-        y: Math.random() * height
-      }));
-    }
-    // animate()
+      entities[i].x += (width - window.innerWidth) / 2;
+      entities[i].y += (height - window.innerHeight) / 2;
+    }  
   });
 };
