@@ -12,7 +12,7 @@
             const day = String(date.getDate()).slice(-2);
             const month = date.toString().split(' ')[1];
             const year = date.getFullYear().toString().slice(2);
-            return ` ${hour}:${minute} 0${day}-${month}-${year}`;
+            return `${hour}:${minute} ${day}-${month}-${year}`;
         }
     </script>
     <style>
@@ -46,7 +46,6 @@
     <meta property="twitter:title" content="Flleeppyy - Home">
     <meta property="twitter:description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
     <meta property="twitter:image" content="https://fleepy.tv/favicon.ico">
-    <script src="js/bundle.js?"></script>
     <link rel="stylesheet" href="css/main.css?">
 </head>
 <body>
@@ -58,17 +57,15 @@
         </div>
     </div> -->
     <div id="loadingContainer" style="color:snow">
-        <script>
-            document.write(`
-            <pre>
-                <code id="loadingCode">
-                    <z class="dark-grey"> # Please keep in mind that this website is meant to be viewed on a modern desktop browser. </z>
-                    <z class="dark-grey"> # Hit space to skip terminal intro</z>
-                    <z class="light-green">chen@chen-laptop-uwu</z>:<z class="sky-blue">/mount/storage/dev/fleepy.tv</z>$ <z id="typeThis"></z>
-                </code>
-            </pre>
-            `);
-        </script>
+        <pre>
+            <code id="loadingCode">
+                <span class="dark-grey"> # Please keep in mind that this website is meant to be viewed on a modern desktop browser. </span>
+                <span class="dark-grey"> # Hit space to skip terminal intro</span>
+                <span class="light-green">chen@chen-laptop-uwu</span>:<span class="sky-blue">/mount/storage/dev/fleepy.tv</span>$ <span id="typeThis"></span>
+            </code>
+        </pre>
+        <!-- <script>
+        </script> -->
         <noscript>
             <pre>
                 <code id="loadingCode">
@@ -80,8 +77,8 @@
         </noscript>
         <div id="tmux-container">
             <div id="tmux-line">
-                [fleepytv-0:<span id="process">bash*</span></span>
-                <span style="text-align: right;">"chen-laptop-uwu"<script>document.write(getDate());</script>
+                <span>[fleepytv-0:<span id="process">bash*</span></span>
+                <span style="text-align: right;">"chen-laptop-uwu" <script>document.write(getDate());</script>
                 </span>
             </div>
         </div>
@@ -199,5 +196,6 @@
             </div>
         </div>
     </main>
+    <script src="js/bundle.js?3=asdfh9f"></script>
 </body>
 </html>

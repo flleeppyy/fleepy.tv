@@ -1,4 +1,4 @@
-import {startHue as startHue} from "./hue";
+import startHue from "./hue";
 import Typed from "typed.js";
 
 export default (): void => {
@@ -7,7 +7,7 @@ export default (): void => {
   let paused = false;
   let pausedCount = 0;
   let fallback = false;
-  new Typed("#typeThis", {
+  new Typed(document.getElementById("typeThis"), {
     strings: ["^200yarn start^100\r^200\n<strong>`yarn run v1.22.15`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`"],
     typeSpeed: 40,
     shuffle: true,
@@ -16,9 +16,9 @@ export default (): void => {
       $("#loadingContainer").fadeOut(400);
       parentBox.fadeIn(400);
       setTimeout(() => { // Avatar and text hue rotate
-        if (fallback !== true) {
-          startHue();
-        }
+        // if (fallback !== true) {
+        //   startHue();
+        // }
         fallback = true;
         // parentBox.css("max-width", "100%");
         parentBox.css("opacity", "100%");
@@ -29,14 +29,12 @@ export default (): void => {
           $(this).off(event);
         });
       }, 400);
+      
     },
     onTypingPaused: () => {
       pausedCount++;
-      console.log(pausedCount);
-
       if (paused !== true && pausedCount === 2) {
         $("#process").html("yarn*");
-        // console.log('set to yarn typing paused')
         paused = true;
       }
     }
@@ -47,7 +45,7 @@ export default (): void => {
     if (e.key === " ") {
       if (fallback === true) return;
       fallback = true;
-      startHue();
+      // startHue();
       parentBox.css("transition", "none");
       $("#loadingContainer").fadeOut(100);
       main.fadeIn(100);

@@ -6,17 +6,16 @@
   "scripts": {
     "sass:watch": "sass --watch --embed-source-map --update --style=compressed .",
     "sass:build": "sass --embed-source-map --style=compressed .",
-    "build": "browserify './src/ts/entry.ts' -p tsify",
-    "build:dev": "yarn build --debug --outfile src/js/bundle.js",
-    "build:prod": "yarn build --outfile src/js/bundle_unfresh.js && uglifyjs --compress --output src/js/bundle.js src/js/bundle_unfresh.js",
-    "build:devwatch": "cross-env nodemon --ext 'ts' --watch 'src/ts' --exec 'yarn build:dev'"
+    "build": "browserify './src/ts/entry.ts' -p tsify -d",
+    "build:dev": "yarn build --outfile src/js/bundle.js",
+    "build:prod": "yarn build --outfile src/js/bundle_unfresh.js && uglifyjs --compress --output src/js/bundle.js src/js/bundle_unfresh.js --source-map \"filename='bundle.js.map'\"",
+    "build:devwatch": "nodemon --ext 'ts' --watch 'src/ts' --exec 'yarn build:dev'"
   },
   "dependencies": {
     "@types/color": "^3.0.1",
     "@types/jquery": "^3.5.5",
     "@types/socket.io-client": "^1.4.36",
     "@types/toastr": "^2.1.38",
-    "axios": "^0.21.1",
     "browserify": "^17.0.0",
     "color": "^3.1.3",
     "jquery": "^3.6.0",

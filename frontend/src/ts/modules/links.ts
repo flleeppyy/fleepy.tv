@@ -23,6 +23,7 @@ export default (): void => {
     new Link("Spotify", "https://open.spotify.com/artist/5d88PKcv3BK7d4K9LFpPJM", "img/icons/spotify.png", "#1DB954", "white"),
     new Link("Ko-Fi", "https://ko-fi.com/flleeppyy", "img/icons/kofi.png", "#29abe0", "white"),
     new Link("Twitter", "https://twitter.com/flleeppyy", "img/icons/twitter.png", "#1da1f2", "white"),
+    new Link("Twitch", "https://twitch.tv/flleeppyy", "img/icons/twitch.png", "#5e3b9c", "white"),
     new Link("Telegram", "https://t.me/flleeppyy", "img/icons/telegram.png", "white"),
     new Link("Tumblr", "https://flleeppyy.tumblr.com", "img/icons/tumblr.png", "#36465d", "white", "border-radius: 100%"),
     new Link("YouTube", "https://u.fleepy.tv/youtube", "img/icons/youtube.png", "#ff1111", "white"),

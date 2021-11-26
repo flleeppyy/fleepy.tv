@@ -2,15 +2,32 @@
 // Heavily modified
 
 import color from "color";
+
+// Im making these functions because im fucking lazy
+Number.prototype.toPrecisionFloat = function(num: number = 2) {
+// @ts-ignore
+  return parseFloat(this.valueOf().toPrecision(num))
+}
+
+// also theres probably a better way to do this but.. fuck u lol
+Number.prototype.toInt = function() {
+  // @ts-ignore
+  return parseFloat(this.valueOf().toFixed())
+}
+
 export default (): void => {
-  const background = <HTMLCanvasElement>document.getElementById("bgCanvas");
-  const bgCtx = <CanvasRenderingContext2D>background.getContext("2d");
+  const background = document.getElementById("bgCanvas") as HTMLCanvasElement;
+  const bgCtx = background.getContext("2d") as CanvasRenderingContext2D;
   let width = window.innerWidth;
   let height = window.innerHeight;
   
   background.width = width;
   background.height = height;
   let entities: Array<Star> = [];
+  // @ts-ignore
+  window.entities = entities;
+  // @ts-ignore
+  window.bgCtx = bgCtx;
   
   bgCtx.fillStyle = "#1e1429";
   bgCtx.fillRect(0, 0, width, height);
@@ -22,11 +39,11 @@ export default (): void => {
     y: number;
     color: string;
     
-    constructor(options: starConstructor) {
-      this.size = Math.random() * 2;
-      this.speed = Math.random() * 1;
-      this.x = options.x;
-      this.y = options.y;
+    constructor(options: { x: any; y: any; }) {
+      this.size = (Math.random() * 2).toPrecisionFloat();
+      this.speed = (Math.random()).toPrecisionFloat()
+      this.x = options.x.toPrecisionFloat();
+      this.y = options.y.toPrecisionFloat(3);
       this.color = color(`hsl(${Math.floor(Math.random() * 360)},100%,80%)`).string();
     }
     
@@ -36,16 +53,21 @@ export default (): void => {
       if (this.x < 0) { 
         this.reset();
       } else {
-        bgCtx.fillRect(this.x, this.y, this.size, this.size);
+        // bgCtx.fillRect(this.x, this.y, this.size, this.size);
+        // bgCtx.fillStyle = this.color;
+        // fill circle
+        bgCtx.beginPath();
+        bgCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
         bgCtx.fillStyle = this.color;
+        bgCtx.fill();
       }
     }
     
     reset = () => {
-      this.size = Math.random() * 2;
-      this.speed = Math.random() * 1;
-      this.x = width;
-      this.y = Math.random() * height;
+      this.size = (Math.random() * 2).toPrecisionFloat();
+      this.speed = (Math.random() * 1).toPrecisionFloat();
+      this.x = width.toPrecisionFloat();
+      this.y = (Math.random() * height).toPrecisionFloat(2);
     }
   }
   
@@ -134,11 +156,14 @@ export default (): void => {
     background.width = width;
     background.height = height;
     bgCtx.fillRect(0, 0, width, height);
-    entities = [];
     
+
+    // good enough but it wont really do.
     for (let i = 0; i < height; i++) {
-      entities[i].x += (width - window.innerWidth) / 2;
-      entities[i].y += (height - window.innerHeight) / 2;
+      try {
+        entities[i].x += (width - window.innerWidth) / 2;
+        entities[i].y += (height - window.innerHeight) / 2;
+      } catch(e) {}
     }  
   });
 };

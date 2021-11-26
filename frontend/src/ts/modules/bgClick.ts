@@ -1,17 +1,19 @@
 export default () => {
+  console.log(this);
   const parentBox = $("#parentBox");
   const bgNotice = $("#backgroundOnlyNotice");
-  // $("#chen").on("click", function(e) {
-  //   if (e.ctrlKey) {
-  //     bgNotice.fadeIn(400)
-  //     setTimeout(() => {
-  //       bgNotice.fadeOut(400)
-  //     },1100)
-  //     return parentBox.fadeOut(200)
-  //   }
-  //   //@ts-ignore
-  //   $("links").randomize("button");
-  // });
+  $("#chen").on("click", function(e) {
+    if (e.ctrlKey) {
+      bgNotice.fadeIn(400)
+      setTimeout(() => {
+        bgNotice.fadeOut(400)
+      },1100)
+      return parentBox.fadeOut(200)
+    }
+    //@ts-ignore
+    // $("links").randomize("button");
+    randomizeChildren(document.querySelector("links"));
+  });
   
   // let isMouseDown = false
   // $("#chen").on("mousedown", (e) => {
@@ -30,11 +32,19 @@ export default () => {
   //   isMouseDown = false
   // })
   
-  // main.on("mousedown", () => {
-  //   parentBox.fadeIn(200)
-  // });
+  document.querySelector("main").onmousedown = () => {
+    if (parentBox.css("display") === "none") {
+      parentBox.fadeIn(200);
+    }
+  };
   
-  // $(document).on("keydown", () => {
-  //   parentBox.fadeIn(200)
-  // });
+  document.onkeydown = (event) => {
+    
+    // if the key is alphanumerical, or space, fadeIn
+
+    if (event.key.match(/[a-zA-Z0-9 ]/) && parentBox.css("display") === "none") {
+      parentBox.fadeIn(200)
+    }
+    //
+  };
 };

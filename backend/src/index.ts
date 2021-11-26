@@ -60,9 +60,9 @@ const app = fastify({
 
 app.get("/dev", (req, res) => {
   if (dev) {
-    res.send({dev: true});
+    res.send(0x01);
   } else {
-    res.send({dev: false});
+    res.send(0x00);
   }
 })
 
