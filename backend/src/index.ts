@@ -1,4 +1,4 @@
-// Copyright (C) 2021 Flleeppyy (Chen Jinkerson)
+// Copyright (C) 2022 Flleeppyy (Chen Jinkerson)
 // https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE
 import fastify from "fastify";
 import fastifyStatic from "fastify-static";
