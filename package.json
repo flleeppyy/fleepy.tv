@@ -9,6 +9,7 @@
     "buildall": "shx rm -rf frontend_fancy/src/js && yarn frontend_fancy:sass:build && yarn frontend_fancy:build:prod",
     "build": "yarn buildall",
     "all": "yarn installall && yarn buildall",
+    "backend:build": "yarn --cwd backend build",
     "backend:start": "yarn --cwd backend start",
     "backend:dev": "yarn --cwd backend dev",
     "frontend_fancy:sass:watch": "yarn --cwd frontend_fancy sass:watch",
