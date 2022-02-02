@@ -5,17 +5,17 @@
   "website": "https://fleepy.tv",
   "scripts": {
     "upgradeall": "yarn upgrade && cd frontend && yarn upgrade && cd ../backend && yarn upgrade",
-    "installall": "yarn && cd frontend && yarn && cd ../backend && yarn",
-    "buildall": "shx rm -rf frontend/src/js && yarn frontend:sass:build && yarn frontend:build:prod",
+    "installall": "yarn && cd frontend_fancy && yarn && cd ../backend && yarn",
+    "buildall": "shx rm -rf frontend_fancy/src/js && yarn frontend_fancy:sass:build && yarn frontend_fancy:build:prod",
     "build": "yarn buildall",
     "all": "yarn installall && yarn buildall",
     "backend:start": "yarn --cwd backend start",
     "backend:dev": "yarn --cwd backend dev",
-    "frontend:sass:watch": "yarn --cwd frontend sass:watch",
-    "frontend:sass:build": "yarn --cwd frontend sass:build",
-    "frontend:build:dev": "yarn --cwd frontend build:dev",
-    "frontend:build:prod": "yarn --cwd frontend build:prod",
-    "frontend:build:devwatch": "yarn --cwd frontend build:devwatch"
+    "frontend_fancy:sass:watch": "yarn --cwd frontend_fancy sass:watch",
+    "frontend_fancy:sass:build": "yarn --cwd frontend_fancy sass:build",
+    "frontend_fancy:build:dev": "yarn --cwd frontend_fancy build:dev",
+    "frontend_fancy:build:prod": "yarn --cwd frontend_fancy build:prod",
+    "frontend_fancy:build:devwatch": "yarn --cwd frontend_fancy build:devwatch"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "shx": "^0.3.3",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.1.1",
+    "tsconfig-paths": "^3.12.0",
     "typescript": "^4.0.3",
     "uniq": "^1.0.1"
   }

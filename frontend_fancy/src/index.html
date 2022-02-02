@@ -1,0 +1,114 @@
+<!-- Copyright (C) 2022 Flleeppyy (Chen Jinkerson) https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE -->
+<html>
+<head>
+    <script async src="https://arc.io/widget.min.js#rYxxjvEb" crossorigin="anonymous"></script>
+    <script>
+        document.createElement('links', {"is":"div"});
+        document.createElement('z', {"is":"span"});
+        function getDate() {
+            const date = new Date();
+            const hour = `0${date.getHours()}`.slice(-2);
+            const minute = `0${date.getMinutes()}`.slice(-2);
+            const day = String(date.getDate()).slice(-2);
+            const month = date.toString().split(' ')[1];
+            const year = date.getFullYear().toString().slice(2);
+            return `${hour}:${minute} ${day}-${month}-${year}`;
+        }
+    </script>
+    <style>
+        html {
+            background: black
+        }
+    </style>
+    <title>Flleeppyy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet" crossorigin="anonymous"/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    
+    <!-- Primary Meta Tags -->
+    <title>Flleeppyy - Home</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?" />
+    <meta name="title" content="Flleeppyy - Home">
+    <meta name="description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fleepy.tv/">
+    <meta property="og:title" content="Flleeppyy - Home">
+    <meta property="og:description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
+    <meta property="og:image" content="https://fleepy.tv/img/banner_large.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:creator" content="@flleeppyy">
+    <meta property="twitter:site" content="@flleeppyy">
+    <meta property="twitter:url" content="https://fleepy.tv/">
+    <meta property="twitter:title" content="Flleeppyy - Home">
+    <meta property="twitter:description" content="A musician, developer, graphics designer and some other things. also i love chen, she is cute">
+    <meta property="twitter:image" content="https://fleepy.tv/favicon.ico">
+    <link rel="stylesheet" href="css/main.css?">
+</head>
+<body>
+    <!-- <div id="anti-darkreader" style="display: none;">
+        <div class="infobox" style="width: 24em">
+            <h2>Hey!</h2>
+            My site doesn't show well with dark reader, so if you want to see the nice colors and stuff, you should turn it off for this website then reload the page.
+            <button onclick="$('#anti-darkreader').fadeOut(200)">Alright</button>
+        </div>
+    </div> -->
+    <div id="loadingContainer" style="color:snow">
+        <pre>
+            <code id="loadingCode">
+                <span class="dark-grey"> # Please keep in mind that this website is meant to be viewed on a modern desktop browser. </span>
+                <span class="dark-grey"> # Hit space to skip terminal intro</span>
+                <span class="light-green">chen@chen-laptop-uwu</span>:<span class="sky-blue">/mount/storage/dev/fleepy.tv</span>$ <span id="typeThis"></span>
+            </code>
+        </pre>
+        <!-- <script>
+        </script> -->
+        <noscript>
+            <pre>
+                <code id="loadingCode">
+                    <span class="light-green">chen@chen-laptop-uwu</span>:<span class="sky-blue">/mount/storage/dev/fleepy.tv</span>$ yarn start
+                    yarn: <span class="light-red">This page does not work without Javascript. Please enable it.</span>
+                    <span class="light-green">chen@chen-laptop-uwu</span>:<span class="sky-blue">/mount/storage/dev/fleepy.tv</span>$ <span contenteditable>welp, time to rm -rf /</span><span class="typed-cursor typed-cursor--blink>"> </span>
+                </code>
+            </pre>
+        </noscript>
+        <div id="tmux-container">
+            <div id="tmux-line">
+                <span>[fleepytv-0:<span id="process">bash*</span></span>
+                <span style="text-align: right;">"chen-laptop-uwu" <script>document.write(getDate());</script>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <main style="display: none;">
+        <canvas id="bgCanvas"></canvas>
+        <div id="backgroundOnlyNotice" style="display: none;">
+            <h1>Press any key to return to menu<br>or click anywhere</h1>
+        </div>
+        <div id="parentBox" class="dropshadow">
+            <div id="copyrightbox">
+                <div>
+                    <span>Copyright (C) 2022 <a href="https://fleepy.tv">Flleeppyy</a></span>
+                    <!-- <span href="#" id="morecrinfo">Click me for more information</span> -->
+                </div>
+            </div>
+            <div class="infobox" id="mainbox">
+                <!-- <img id="chen" src="img/avatars/hemogurobin.png" class="dropshadow" alt="Cute chen by @hemogurobin_a1c on Twitter"> -->
+                <img id="chen" src="img/avatars/trans.png" class="dropshadow" alt="Arist @osa_kuri on Twitter (NSFW warning)">
+                <div id="header">
+                    <h2 id="name" class="noselect">Flleeppyy</h2>
+                    <p id="subtitle" class="noselect">someone irrelevant</p>
+                </div>
+                <links></links>
+                <a id="githubFooter" href="https://github.com/flleeppyy/fleepy.tv">View this page on Github</a>
+                <a rel="me" href="https://gensokyo.social/@flleeppyy" alt="had to put link here if i want the site to verify its my site on my profile *shrug*">Gensokyo.social Profile</a>
+            </div>
+        </div>
+    </main>
+    <script src="js/bundle.js?3=asdfh9f"></script>
+</body>
+</html>

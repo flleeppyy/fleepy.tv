@@ -2,91 +2,148 @@
 // https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE
 import fastify from "fastify";
 import fastifyStatic from "fastify-static";
-import * as fs from "fs";
+import fastifyCors from "fastify-cors";
+import fs from "fs";
 import path from "path";
+import ejs from "ejs";
+import axios from "axios";
+import ws from "ws";
+// import socketio from "socket.io";
+import { randomSubtitle } from "./api/subtitles";
+import {links} from "./api/links";
+import { logger } from "./utils/logger";
 
 const env = process.env.NODE_ENV;
-const envPort = Number(process.env.PORT);
-const port = (isNaN(NaN)) ? envPort : 8001;
+const port = isNaN(NaN) ? Number(process.env.PORT) : 8001;
 
-const dev = (env === "development") ? true : false;
+async function checkDev() {
+  if (env === "development") {
+    const wsPort = 8081;
 
-(async () => {
-  if (dev) {
-    const io = await import("socket.io").then(e => {
-      return new e.Server(8081, {
-        cors: {
-          methods: ["GET", "POST"],
-          origin: ["http://127.0.0.1:8080", "http://fumo.cirnosystems.xyz:8080"]
+    // const io = new socketio.Server(8081, {
+    //   cors: {
+    //     methods: ["GET", "POST"],
+    //     origin: "*"
+    //   }
+    // })
+    const io = new ws.Server({
+      port: wsPort,
+    });
+
+    logger.info(`Socket listening at ws://127.0.0.1:${wsPort}`);
+    io.once("listening", () => {
+      const files = [
+        {
+          path: "../../frontend_fancy/src/index.html",
+          action: "refreshPage"
+        }, {
+          path: "../../frontend_fancy/src/js/bundle.js",
+          action: "refreshPage"
+        }, {
+          path: "../../frontend_fancy/src/css/main.css",
+          action: "refreshCss"
+        }, {
+          path: "./index.ejs/",
+          action: "refreshPage"
+        }, {
+          path: "../../public/js/main.js",
+          action: "refreshPage"
+        }, {
+          path: "../../public/css/styles.css",
+          action: "refreshCss"
+        }, {
+          path: "../../public/js/logger.js",
+          action: "refreshPage"
         }
+      ];
+  
+      files.forEach(file => {
+        fs.watchFile(path.join(__dirname, file.path), {
+          interval: 500
+        }, () => {
+          io.clients.forEach(socket => socket.send(JSON.stringify(file)));
+        });
+      });
+
+      io.on("connection", (socket) => {
+        socket.send("hihi");
       });
     });
-    
-    // const files = []]\
-    //   "index.html",
-    //   "js/bundle.js"
-    // ];
-    // files.forEach(file => {
-    //   fs.watchFile(path.join(__dirname, "../../frontend/src/", file), {
-    //     interval: 500
-    //   }, () => {
-    //     io.send("refresh");
-    //   });
-    // });
-    
-    fs.watchFile(path.join(__dirname, "../../frontend/src/index.html"), {
-      interval: 500
-    }, () => {
-      io.send("refreshpage");
-    });
-    fs.watchFile(path.join(__dirname, "../../frontend/src/js/bundle.js"), {
-      interval: 500
-    }, () => {
-      io.send("refreshpage");
-    });
-    fs.watchFile(path.join(__dirname, "../../frontend/src/css/main.css"), {
-      interval: 500
-    }, () => {
-      io.send("refreshcss");
-    });
-    
   }
-})();
+}
 
 const app = fastify({
   trustProxy: true,
+  logger: logger,
+  // disableRequestLogging: false
 });
 
+const init = async () => {
 
-app.get("/dev", (req, res) => {
-  if (dev) {
-    res.send(0x01);
-  } else {
-    res.send(0x00);
-  }
-})
+  app.register(fastifyCors, {
+    origin: "*",
+    methods: ["GET", "POST"]
+  })
+  app.get("/dev", (req, res) => {
+    if (env === "development") {
+      res.send(0x01);
+    } else {
+      res.send(0x00);
+    }
+  })
+  
+  app.addHook("onRequest", (req, res, next) => {
+    if (env === "development") {
+      res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
+      res.header("Expires", "-1");
+      res.header("Pragma", "no-cache");
+      res.header("x-dev", "true")
+    }
+    // console.log(`IP: ${req.headers["cf-connecting-ip"] || req.ip} Requested ${req.url}`);
+    next();
+  });
 
+  app.register(fastifyStatic, {
+    root: path.join(__dirname, "../../public"),
+    wildcard: true,
+    prefix: "/",
+  });
+  
+  app.register(fastifyStatic, {
+    root: path.join(__dirname, "../../frontend_fancy/src"),
+    wildcard: true,
+    prefix: "/fancy",
+    decorateReply: false // the reply decorator has been added by the first plugin registration
+  });
 
-app.addHook("onRequest", (req, res, next) => {
-  if (env === "development") {
-    res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
-    res.header("Expires", "-1");
-    res.header("Pragma", "no-cache");
-    res.header("x-dev", "true")
-  }
-  console.log(`IP: ${req.headers["cf-connecting-ip"] || req.ip} Requested ${req.url}`);
-  next();
-});
+  app.get("/fancy", (req, res) => {
+    res.redirect("/fancy/");
+  })
 
-app.register(fastifyStatic, {
-  root: path.join(__dirname, "../../frontend/src"),
-  wildcard: true,
-});
+  // Fancy frontend @ ../frontend/index.html
+  app.get("/", async (req, res) => {
+    res.type("text/html");
+    await res.send(await ejs.renderFile(path.join(__dirname, "index.ejs"), {
+      subtitle: randomSubtitle(),
+      links
+    }));
+  });
+  
+  (await import("./api/links")).default(app);
+  (await import("./api/subtitles")).default(app);
+  
+  app.setNotFoundHandler((req, res) => {
+    res.type("text/html");
+    return res.status(404).send(fs.readFileSync(path.join(__dirname, "errors/404.html")));
+  });
 
-app.setNotFoundHandler((req, res) => {
-  res.header("Content-Type", "text/html");
-  res.type("text/html");
-  return res.status(404).send(fs.readFileSync(path.join(__dirname, "errors/404.html")));
-});
-app.listen(port, "0.0.0.0", () => console.log(`listening at http://localhost:${port}`));
- 
+  return;
+}
+
+const start = async () => {
+  await checkDev();
+  await init();
+  await app.listen(port);
+}
+
+start();
