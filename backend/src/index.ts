@@ -75,7 +75,7 @@ async function checkDev() {
 const app = fastify({
   trustProxy: true,
   logger: logger,
-  // disableRequestLogging: false
+  disableRequestLogging: env === "development" ? false : true,
 });
 
 const init = async () => {

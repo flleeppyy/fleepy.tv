@@ -4,6 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": "./src",
+    "outDir": "./dist",
     "checkJs": false,
     "declaration": false,
     "emitDecoratorMetadata": true,
