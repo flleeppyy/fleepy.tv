@@ -31,7 +31,7 @@ export default async () => {
   const main = $("main");
   
   const linksApi = await fetch("/api/links");
-  const links = await linksApi.json() as Link[];
+  const links = (await linksApi.json()).links as Link[];
   links.forEach(link => {
     const button = $(`<button href="${link.href}" class="dropshadow"><img alt="${link.title}" src="${link.icon}" ${link.iconCss ? `style="${link.iconCss}"` : ""}><div class="linkTitle"><p>${link.title}</p></div></button>`);
     // console.log(button)
