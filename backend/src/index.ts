@@ -79,6 +79,8 @@ const app = fastify({
   disableRequestLogging: env === "development" ? false : true,
 });
 
+const fakeHash = crypto.randomBytes(8).toString("hex");
+
 const init = async () => {
 
   app.register(fastifyCors, {
@@ -100,7 +102,7 @@ const init = async () => {
       res.header("Pragma", "no-cache");
       res.header("x-dev", "true")
     }
-    // console.log(`IP: ${req.headers["cf-connecting-ip"] || req.ip} Requested ${req.url}`);
+    logger.info(`IP: ${req.headers["cf-connecting-ip"] || req.ip} Requested ${req.url}`);
     next();
   });
 
@@ -127,7 +129,7 @@ const init = async () => {
     await res.send(await ejs.renderFile(path.join(__dirname, "index.ejs"), {
       subtitle: randomSubtitle(),
       links,
-      fakeHash: crypto.randomBytes(8).toString("hex")
+      fakeHash
     }));
   });
   
