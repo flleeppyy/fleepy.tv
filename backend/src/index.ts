@@ -8,6 +8,7 @@ import path from "path";
 import ejs from "ejs";
 import axios from "axios";
 import ws from "ws";
+import crypto from "crypto";
 // import socketio from "socket.io";
 import { randomSubtitle } from "./api/subtitles";
 import {links} from "./api/links";
@@ -125,7 +126,8 @@ const init = async () => {
     res.type("text/html");
     await res.send(await ejs.renderFile(path.join(__dirname, "index.ejs"), {
       subtitle: randomSubtitle(),
-      links
+      links,
+      fakeHash: crypto.randomBytes(8).toString("hex")
     }));
   });
   

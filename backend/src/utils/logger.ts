@@ -20,4 +20,5 @@ const pinoOptions: pino.LoggerOptions = {
   },
 };
 
-export const logger = pino(process.env.NODE_ENV === "development" ? pinoOptions : {});
+// export const logger = pino(process.env.NODE_ENV === "development" ? pinoOptions : {});
+export const logger = pino(pinoOptions);
