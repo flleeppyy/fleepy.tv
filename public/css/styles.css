@@ -4,7 +4,7 @@
 }
 
 body {
-  margin: 8px;
+  margin: 2em;
   padding: 0;
   background: #1e1429
 }
@@ -15,12 +15,35 @@ body {
   width: fit-content;
 }
 
-.links {
-  border:#422c5a solid 2px;
+.box {
+  border:#4e2f69 solid 2px;
   background: #2a1c3a;
-  padding: 4px;
+  padding: .4em;
   width: fit-content;
   margin: 0 auto;
+}
+
+#linksAsBadges {
+  padding: 1em;
+  text-align: center;
+}
+
+#linksAsBadges > p {
+  /* margin: .6em; */
+}
+
+#linksAsBadges > a {
+  /* font-size: 0; */
+  /* margin: 2px; */
+  margin: 2px 0;
+  display: inline-block;
+
+}
+
+#otherBadges {
+  text-align: center;
+  margin: 8px auto;
+  font-size: 0;
 }
 
 a {
@@ -34,6 +57,19 @@ a {
 }
 
 footer {
-  padding-top: 8px;
   text-align: center;
 }
+
+table {
+  table-layout: fixed;
+  /* width: 100%; */
+  border-collapse: collapse;
+  /* border: 3px solid purple; */
+  padding: 0;
+}
+
+tr>td:first-child {
+  /* margin: 0 4px 0 0 */
+  padding: 0 1em 0 0;
+}
+/* Set columns to be wider */

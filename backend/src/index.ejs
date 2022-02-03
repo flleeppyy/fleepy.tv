@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <script async src="https://arc.io/widget.min.js#rYxxjvEb"></script>
   <title>Flleeppyy</title>
+  
   <style>
     @font-face {
       font-family: 'UniFont';
       src: url("/fonts/unifont.ttf");
     }
   </style>
+
   <link id="stl" rel="stylesheet" href="/css/styles.css">
   <meta http-equiv="Default-Style" content="Default">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=2.0">
   <meta name="theme-color" content="#FF70EA">
   <meta name="msapplication-TileColor" content="#FF70EA">
   <meta name="msapplication-TileImage" content="/favicon.ico">
@@ -27,8 +29,9 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://fleepy.tv/favicon.ico?" />
 </head>
 <body>
-  <div class="body" style="text-align: left; align-content: left;">
+  <div class="body">
     <div>
+      <!-- generated with https://www.coolgenerator.com/ascii-text-generator on Normal font -->
       <pre style="color: #FF82EC; text-align: center;">
 ______ _ _                                   
 |  ____| | |                                  
@@ -42,13 +45,12 @@ ______ _ _
                             <div style="text-align: center;"><%- subtitle %></div>
                             <br>
                           </div>
-    <div class="links">
+    <div class="box" id="linksTable">
       <table>
         <tbody>
           <tr style="text-decoration: underline;">
             Links:
           </tr>
-          <div id="links"> 
             <% links.forEach(element => { %>
               <tr>
                 <td>
@@ -59,10 +61,35 @@ ______ _ _
                 </td>
               </tr>
             <% }) %>
-          </div>
         </tbody>
       </table>
+    </div >
+    <div id="otherBadges">
+      <a href="https://github.com/flleeppyy/fleepy.tv">
+        <img src="/img/github_repo.png">
+      </a>
+      <a href="https://fleepy.tv/fancy">
+        <img src="/img/fancy.png">
+      </a>
     </div>
+    <script>
+      document.write(`
+      <div class="box" id="linksAsBadges">
+        <p>links as badges so it looks cooler</p>
+        <% let e=0; %>
+        <% links.forEach((element, index) => { %>
+          <% e++ %>
+          <% if (e == 4) { %>
+            <% e = 0; %>
+            <br>
+          <% } %>
+
+          <a href="<%= element.href %>" alt="<%= element.title %>">
+            <img src="<%= element.badgeUrl %>">
+          </a>
+        <% }) %>
+      </div>`)
+    </script>
     <p style="text-align: center; margin: 12px 0">Inspired by <a class="link" href="https://foxwells.garden">foxwells.garden</a> and <a class="link" href="https://utsuho.rocks">utsuho.rocks</a></p>
     <footer>
       <a href="https://fleepy.tv">
