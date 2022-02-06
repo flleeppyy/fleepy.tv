@@ -151,3 +151,11 @@ const start = async () => {
 }
 
 start();
+
+process.on("uncaughtException", (err) => {
+  logger.error(err);
+})
+
+process.on("unhandledRejection", (err) => {
+  logger.error(err);
+})
