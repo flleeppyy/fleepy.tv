@@ -8,7 +8,7 @@ export default (): void => {
   let pausedCount = 0;
   let fallback = false;
   new Typed(document.getElementById("typeThis"), {
-    strings: ["^200yarn start^100\r^200\n<strong>`yarn run v1.22.17`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`"],
+    strings: ["^200pnpm start^100\r^200\n<strong>`pnpm run v6.30.0`</strong>\r\n`$ tsc &amp;&amp; PORT=8001 ts-node .`\r\n^400 `listening at https://fleepy.tv\r\n`"],
     typeSpeed: 40,
     shuffle: true,
     onStringTyped: () => {
@@ -34,7 +34,7 @@ export default (): void => {
     onTypingPaused: () => {
       pausedCount++;
       if (paused !== true && pausedCount === 2) {
-        $("#process").html("yarn*");
+        $("#process").html("node*");
         paused = true;
       }
     }

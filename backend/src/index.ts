@@ -82,11 +82,11 @@ const app = fastify({
 const fakeHash = crypto.randomBytes(8).toString("hex");
 
 const init = async () => {
-
   app.register(fastifyCors, {
     origin: "*",
     methods: ["GET", "POST"]
-  })
+  });
+
   app.get("/dev", (req, res) => {
     if (env === "development") {
       res.send(0x01);
@@ -103,6 +103,7 @@ const init = async () => {
       res.header("x-dev", "true")
     }
     logger.info(`IP: ${req.headers["cf-connecting-ip"] || req.ip} Requested ${req.url}`);
+    // Inject html into the response of every request with text/html
     next();
   });
 
@@ -131,6 +132,14 @@ const init = async () => {
       links,
       fakeHash
     }));
+  });
+
+  // for .well-known paths, set mime type to text/plain
+  app.addHook("onRequest", (req, res, next) => {
+    if (req.url.startsWith("/.well-known")) {
+      res.type("text/plain");
+    }
+    next();
   });
   
   (await import("./api/links")).default(app);

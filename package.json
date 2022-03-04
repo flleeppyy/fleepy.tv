@@ -4,29 +4,25 @@
   "description": "My website that I work on.",
   "website": "https://fleepy.tv",
   "scripts": {
-    "upgradeall": "yarn upgrade && cd frontend && yarn upgrade && cd ../backend && yarn upgrade",
-    "installall": "yarn && cd frontend_fancy && yarn && cd ../backend && yarn",
-    "buildall": "shx rm -rf frontend_fancy/src/js && yarn frontend_fancy:sass:build && yarn frontend_fancy:build:prod",
-    "build": "yarn buildall",
-    "all": "yarn installall && yarn buildall",
-    "backend:build": "yarn --cwd backend build",
-    "backend:start": "yarn --cwd backend start",
-    "backend:dev": "yarn --cwd backend dev",
-    "frontend_fancy:sass:watch": "yarn --cwd frontend_fancy sass:watch",
-    "frontend_fancy:sass:build": "yarn --cwd frontend_fancy sass:build",
-    "frontend_fancy:build:dev": "yarn --cwd frontend_fancy build:dev",
-    "frontend_fancy:build:prod": "yarn --cwd frontend_fancy build:prod",
-    "frontend_fancy:build:devwatch": "yarn --cwd frontend_fancy build:devwatch"
+    "upgradeall": "pnpm upgrade && cd frontend_fancy && pnpm upgrade && cd ../backend && pnpm upgrade",
+    "installall": "pnpm install && cd frontend_fancy && pnpm install && cd ../backend && pnpm install",
+    "buildall": "shx rm -rf frontend_fancy/src/js && pnpm run frontend_fancy:sass:build && pnpm run frontend_fancy:build:prod",
+    "build": "pnpm run buildall",
+    "all": "pnpm run installall && pnpm run buildall",
+    "backend:build": "cd backend && pnpm run build",
+    "backend:start": "cd backend && pnpm run start",
+    "backend:dev": "cd backend && pnpm run dev",
+    "frontend_fancy:sass:watch": "cd frontend_fancy && pnpm run sass:watch",
+    "frontend_fancy:sass:build": "cd frontend_fancy && pnpm run sass:build",
+    "frontend_fancy:build:dev": "cd frontend_fancy && pnpm run build:dev",
+    "frontend_fancy:build:prod": "cd frontend_fancy && pnpm run build:prod",
+    "frontend_fancy:build:devwatch": "cd frontend_fancy && pnpm run build:devwatch"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/flleeppyy/fleepy.tv.git"
   },
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/flleeppyy/fleepy.tv/issues"
-  },
-  "homepage": "https://github.com/flleeppyy/fleepy.tv#readme",
+  "license": "Apache-2.0",
   "dependencies": {
     "@types/node": "^14.14.37",
     "@typescript-eslint/eslint-plugin": "^4.20.0",

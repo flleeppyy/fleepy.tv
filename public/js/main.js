@@ -5,9 +5,9 @@ const logger = new Logger({
 });
 
 async function checkDev() {
-  const checkDev = (await fetch("/dev")).text()
-  
-  if (checkDev) {
+  const checkDev = await (await fetch("/dev")).text();
+
+  if (checkDev == "1") {
     let cssBlob = await (await fetch("/css/styles.css")).blob();
     const stylesheet = document.querySelector("link[id='stl']");
     stylesheet.href = URL.createObjectURL(cssBlob);
