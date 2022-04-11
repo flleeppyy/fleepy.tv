@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production PORT=8001 node --require tsconfig-paths/register ./dist",
+    "dev": "cross-env nodemon --ext 'ts' --watch 'src' --exec 'cross-env NODE_ENV=development PORT=8080 ts-node --require tsconfig-paths/register ./src'",
+    "build": "tsc --project ./tsconfig.json && cp -r ./src/errors ./dist/errors && cp ./src/index.ejs ./dist/index.ejs",
+    "build:ie": "pnpm run ie:logger && pnpm run ie:main",
+    "ie:logger": "tsc src/public/js/logger.js --allowJs --target \"es3\" --lib \"es5\" --outFile \"src/public/js/logger_inet5.js\" ",
+    "ie:main": "tsc src/public/js/main_inet5_uncompiled.ts --target \"es3\" --lib \"es5,dom\" --outFile \"src/public/js/main_inet5.js\"  "
+  },
+  "dependencies": {
+    "@types/ejs": "^3.1.0",
+    "@types/ws": "^8.2.2",
+    "axios": "^0.25.0",
+    "cross-env": "^7.0.3",
+    "ejs": "^3.1.6",
+    "eta": "^1.12.3",
+    "fastify": "^3.14.1",
+    "fastify-cors": "^6.0.2",
+    "fastify-static": "^4.4.1",
+    "pino": "^7.6.5",
+    "pino-pretty": "^7.5.1",
+    "ws": "^8.4.2"
+  }
+}

@@ -76,7 +76,7 @@ export const links = [
   }
 ];
 
-export default(app : FastifyInstance) => {
+export default (app : FastifyInstance) => {
   app.get("/api/links", (req, res) => {
     res.send({
       links

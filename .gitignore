@@ -145,5 +145,9 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/node
 tsconfig.tsbuildinfo
 
-public/other_stuff
+webserver/src/public/other_stuff
 frontend_fancy/src/js
+webserver/src/public/js/main_inet5.js
+webserver/src/public/js/logger_inet5.js
+
+

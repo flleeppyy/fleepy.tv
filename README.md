@@ -5,10 +5,12 @@ This is my website that I work on every now and then.
 ## Running
 
 1. Clone this repo
-2. run `pnpm run`
-3. run `pnpm run start` or `pnpm run dev`
-4. https://localhost:8001 or https://localhost:8080
+2. run `pnpm install -r`
+3. run `pnpm i -g nodemon` because pnpm is stupid and doesnt like to inherit from parent node_modules
+4. run `pnpm frontend_fancy:build:prod` (this is for /fancy)
+5. run `pnpm run start` or `pnpm run dev`
+6. <https://localhost:8001> or <https://localhost:8080>
 
 ## License
 
-This project is licensed under the terms of the [GNU GPLv3 license](https://github.com/flleeppyy/fleepy.tv/blob/master/LICENSE)
+This project is licensed under the terms of the [MIT license](LICENSE).
