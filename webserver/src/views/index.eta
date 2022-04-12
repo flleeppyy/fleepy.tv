@@ -18,7 +18,7 @@
     </pre>
     <div style="text-align: center"><%- it.subtitle %></div>
     <noscript>
-      <div style="text-align: center">:pleading_emoji: no javascript?</div>
+      <div style="text-align: center">:pleading_emoji: no javascript? thats fine cause its not neccessary</div>
     </noscript>
 
     <br />
@@ -48,7 +48,7 @@
       <img src="/img/fancy.png" />
     </a>
   </div>
-  <%# Ignore all the errors below. its just the html parser shitting a brick. its all valid tho %>
+  <% // Ignore all the errors below. its just the html parser shitting a brick. its all valid tho %>
   <script>
     document.write('<div class="box" id="linksAsBadges">\n' +
       '<p>links as badges so it looks cooler</p>\n' +

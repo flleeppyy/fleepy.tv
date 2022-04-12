@@ -4,7 +4,6 @@ specifiers:
   '@types/ejs': ^3.1.0
   '@types/ws': ^8.2.2
   axios: ^0.25.0
-  core-js: ^3.21.1
   cross-env: ^7.0.3
   ejs: ^3.1.6
   eta: ^1.12.3
@@ -19,7 +18,6 @@ dependencies:
   '@types/ejs': 3.1.0
   '@types/ws': 8.2.2
   axios: 0.25.0
-  core-js: 3.21.1
   cross-env: 7.0.3
   ejs: 3.1.6
   eta: 1.12.3
@@ -176,11 +174,6 @@ packages:
   /cookie/0.4.2:
     resolution: {integrity: sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==}
     engines: {node: '>= 0.6'}
-    dev: false
-
-  /core-js/3.21.1:
-    resolution: {integrity: sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==}
-    requiresBuild: true
     dev: false
 
   /cross-env/7.0.3:
