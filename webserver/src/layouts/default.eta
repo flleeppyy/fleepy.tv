@@ -3,13 +3,14 @@
   <head>
     <script
       async
+      type="text/javascript"
       src="https://arc.io/widget.min.js#rYxxjvEb"
       crossorigin="anonymous"
     ></script>
     <title><%= it.title %></title>
     <%~ includeFile("../partials/metadata.eta", { title: it.title, description:
     it.description, }) %>
-    <style>
+    <style type="text/css">
       @font-face {
         font-family: "UniFont";
         src: url("/fonts/unifont.ttf");
@@ -21,6 +22,8 @@
     <!--[if gte IE 5]>
       <script type="text/javascript" src="/js/logger_inet5.js"></script>
       <script type="text/javascript" src="/js/main_inet5.js"></script>
+      <script type="text/javascript" src="/js/ie5_polyfills.js"></script>
+
     <![endif]-->
 
     <!--[if !IE]>

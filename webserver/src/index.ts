@@ -101,10 +101,15 @@ const init = async () => {
   app.get("/", async (req, res) => {
     res.type("text/html");
 
-    await res.send(await eta.renderFile("/views/index.eta", {
+    // @ts-ignore no
+    const rendered: string = await eta.renderFile("/views/index.eta", {
       subtitle: randomSubtitle(),
       links
-    }));
+    });
+
+    // Write to file
+    fs.writeFileSync(path.join(__dirname, "./test.html"), rendered);
+    await res.send(rendered);
   });
 
   // for .well-known paths, set mime type to text/plain
@@ -130,6 +135,7 @@ const start = async () => {
   }
   await init();
   await app.listen(port);
+  logger.info(`Webserver listening on port ${port}`);
 }
 
 start();

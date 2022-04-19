@@ -3,13 +3,16 @@
 var logger = new Logger({
   useDefaultColoring: false
 });
-
+logger.info("Logger initiated");
 function checkDev() {
   // new XHR
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "/dev", true);
   xhr.onreadystatechange = function() {
+    console.log(xhr.readyState, xhr.status, xhr.responseText);
     if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText == "1") {
+      // Date of page load
+      var date = new Date();
       var actions = {
         refreshpage: function() {
           logger.info("Refreshing page");
@@ -54,9 +57,30 @@ function checkDev() {
         }
       }
 
-      setInterval(function() {
+      function checkForModifiedFiles() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/updates", true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            eval("var data = " + xhr.responseText);
+            data.forEach(function(file) {
+              // Compare unix timestamp to the page load time
+              if (file.lastModified > date.getTime()) {
+                if (file.action == "refreshpage") {
+                  actions.refreshpage();
+                } else if (file.action == "refreshcss") {
+                  actions.refreshcss();
+                } else if (file.action == "refreshimg") {
+                  actions.refreshimg(file.relativepath);
+                }
+              }
+            })
+          }
+        }
+        xhr.send();
+      }
 
-      })
+      setTimeout(checkForModifiedFiles, 1000);
     }
   }
 }

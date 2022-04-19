@@ -20,7 +20,7 @@ class Logger {
       if (!config.useDefaultColoring instanceof Boolean) {
         throw new Error("useDefaultColoring not a boolean")
       }
-  
+
       this.config = config;
     }
   }
@@ -44,11 +44,11 @@ class Logger {
       obj.msg instanceof Number
     )
       nonString = true;
-  
+
     // if (obj.msg instanceof Object) {
     //   const object
     // }
-  
+
     const args = [
       `[${obj.date.toLocaleString().split(", ").join(" ")}] %c${obj.level}%c:` + (nonString ? "" : ` ${obj.msg}`),
       `color: ${this.levelColors[obj.level]};`,
@@ -56,14 +56,14 @@ class Logger {
     ];
 
     (nonString) ? args.push(obj.msg) : null;
-  
+
     if (this.config.useDefaultColoring) {
       console[obj.level.toLowerCase()].apply(this, args);
     } else {
-      console.log.apply(this, args);
+      console.log.apply(args);
     }
   }
-  
+
   info(msg) {
     logger._log({
       date: new Date(),

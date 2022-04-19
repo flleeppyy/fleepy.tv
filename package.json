@@ -13,6 +13,7 @@
     "webserver:start": "cd webserver && pnpm run start",
     "webserver:dev": "cd webserver && pnpm run dev",
     "webserver:build_ie": "cd webserver && pnpm run build:ie",
+    "webserver:build_ie:dev": "cd webserver && pnpm run build:ie:dev",
     "frontend_fancy:sass:watch": "cd frontend_fancy && pnpm run sass:watch",
     "frontend_fancy:sass:build": "cd frontend_fancy && pnpm run sass:build",
     "frontend_fancy:build:dev": "cd frontend_fancy && pnpm run build:dev",

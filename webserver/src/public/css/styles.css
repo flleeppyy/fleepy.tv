@@ -19,7 +19,7 @@ body {
   border:#4e2f69 solid 2px;
   background: #2a1c3a;
   padding: .4em;
-  width: fit-content;
+  width: 48em;
   margin: 0 auto;
 }
 
@@ -56,8 +56,9 @@ a {
   color: #ffa8f2
 }
 
-footer {
+#footer {
   text-align: center;
+  margin: 1em;
 }
 
 table {
@@ -72,4 +73,7 @@ tr>td:first-child {
   /* margin: 0 4px 0 0 */
   padding: 0 1em 0 0;
 }
-/* Set columns to be wider */
+
+img {
+  border: none;
+}

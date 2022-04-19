@@ -8,8 +8,9 @@
     "dev": "cross-env nodemon --ext 'ts' --watch 'src' --exec 'cross-env NODE_ENV=development PORT=8080 ts-node --require tsconfig-paths/register ./src'",
     "build": "tsc --project ./tsconfig.json && cp -r ./src/errors ./dist/errors && cp ./src/index.ejs ./dist/index.ejs",
     "build:ie": "pnpm run ie:logger && pnpm run ie:main",
-    "ie:logger": "tsc src/public/js/logger.js --allowJs --target \"es3\" --lib \"es5\" --outFile \"src/public/js/logger_inet5.js\" ",
-    "ie:main": "tsc src/public/js/main_inet5_uncompiled.ts --target \"es3\" --lib \"es5,dom\" --outFile \"src/public/js/main_inet5.js\"  "
+    "ie:logger": "tsc src/public/js/logger.js --allowJs --target \"es3\" --lib \"es5\" --outFile \"src/public/js/logger_inet5.js\"",
+    "ie:main": "tsc src/public/js/main_inet5_uncompiled.js --allowJs --target \"es3\" --lib \"es5,dom\" --outFile \"src/public/js/main_inet5.js\"",
+    "build:ie:dev": "nodemon --ext 'js' --watch 'src/public/js' --exec \"pnpm run build:ie\""
   },
   "dependencies": {
     "@types/ejs": "^3.1.0",

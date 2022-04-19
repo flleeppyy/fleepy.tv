@@ -6,7 +6,7 @@
 <div class="body">
   <div>
     <!-- generated with https://www.coolgenerator.com/ascii-text-generator on Normal font -->
-    <pre style="color: #ff82ec;" name="youre mom">
+    <pre style="color: #ff82ec;">
       ______ _ _
       |  ____| | |
       | |__  | | | ___  ___ _ __  _ __  _   _ _   _
@@ -21,35 +21,32 @@
       <div style="text-align: center">:pleading_emoji: no javascript? thats fine cause its not neccessary</div>
     </noscript>
 
-    <br />
+    <br>
   </div>
   <div class="box" id="linksTable">
     <table>
       <tbody>
-        <tr style="text-decoration: underline">
-          <!-- <span>Links:</span> -->
-        </tr>
         <% it.links.forEach(element => { %>
-        <tr>
-          <td><%= element.title %></td>
-          <td>
-            <a class="link" href="<%= element.href %>"><%= element.href %></a>
-          </td>
-        </tr>
+          <tr>
+            <td><%= element.title %></td>
+            <td>
+              <a class="link" href="<%= element.href %>"><%= element.href %></a>
+            </td>
+          </tr>
         <% }) %>
       </tbody>
     </table>
   </div>
   <div id="otherBadges">
     <a href="https://github.com/flleeppyy/fleepy.tv">
-      <img src="/img/github_repo.png" />
+      <img src="/img/github_repo.png" alt="Github icon with the text GITHUB REPO">
     </a>
     <a href="https://fleepy.tv/fancy">
-      <img src="/img/fancy.png" />
+      <img src="/img/fancy.png" alt="Button with the text FANCY">
     </a>
   </div>
   <% // Ignore all the errors below. its just the html parser shitting a brick. its all valid tho %>
-  <script>
+  <script type="text/javascript">
     document.write('<div class="box" id="linksAsBadges">\n' +
       '<p>links as badges so it looks cooler</p>\n' +
       <% let e=0; %>
@@ -60,8 +57,8 @@
           '<br>\n' +
         <% } %>
 
-        '<a href="<%= element.href %>" alt="<%= element.title %>">\n' +
-          '<img src="<%= element.badgeUrl %>">\n'+
+        '<a href="<%= element.href %>">\n' +
+          '<img src="<%= element.badgeUrl %>" alt="<%= element.title %>">\n'+
         '</a>\n' +
       <% }) %>
       '</div>\n'
@@ -72,18 +69,21 @@
     <a class="link" href="https://foxwells.garden">foxwells.garden</a> and
     <a class="link" href="https://utsuho.rocks">utsuho.rocks</a>
   </p>
-  <footer>
+  <div id="footer">
     <a href="https://fleepy.tv">
-      <img src="/img/fleepy.png" alt="Fleepy" />
+      <img src="/img/fleepy.png" alt="Fleepy">
     </a>
-    <br />
+    <br>
     <p>friends</p>
     <a href="https://utsuho.rocks/">
-      <img src="/img/utsuhorocks.png" alt="Utsuhorocks" />
+      <img src="/img/utsuhorocks.png" alt="Utsuhorocks">
     </a>
     <a href="https://foxwells.garden">
-      <img src="/img/foxwells.gif" alt="Foxwells Garden logo" />
+      <img src="/img/foxwells.gif" alt="Foxwells Garden logo">
     </a>
-  </footer>
+    <a href="https://kate.pet">
+      <img src="/img/kate.gif" alt="Kate">
+    </a>
+  </div>
 </div>
 
