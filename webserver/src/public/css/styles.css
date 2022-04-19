@@ -3,16 +3,29 @@
   color: whitesmoke
 }
 
+html {
+  display: table;
+}
+
 body {
-  margin: 2em;
+  margin: 2em auto;
   padding: 0;
-  background: #1e1429
+  background: #1e1429;
+  display: table-cell
 }
 
 .body {
-  /* align to center, do not use flex */
+  width: 100%;
+}
+
+#header {
+  /* width: 100%; */
   margin: 0 auto;
-  width: fit-content;
+  display: table;
+}
+
+#header > * {
+  vertical-align: middle;
 }
 
 .box {
@@ -62,6 +75,7 @@ a {
 }
 
 table {
+  border-spacing: 8px;;
   table-layout: fixed;
   /* width: 100%; */
   border-collapse: collapse;

@@ -3,29 +3,31 @@
   description: "Music producer, software developer and sysadmin.",
 }) %>
 
-<div class="body">
-  <div>
-    <!-- generated with https://www.coolgenerator.com/ascii-text-generator on Normal font -->
-    <pre style="color: #ff82ec;">
-      ______ _ _
-      |  ____| | |
-      | |__  | | | ___  ___ _ __  _ __  _   _ _   _
-      |  __| | | |/ _ \/ _ \ '_ \| '_ \| | | | | | |
-      | |    | | |  __/  __/ |_) | |_) | |_| | |_| |
-      |_|    |_|_|\___|\___| .__/| .__/ \__, |\__, |
-                           | |   | |     __/ | __/ |
-                           |_|   |_|    |___/ |___/
-    </pre>
-    <div style="text-align: center"><%- it.subtitle %></div>
-    <noscript>
-      <div style="text-align: center">:pleading_emoji: no javascript? thats fine cause its not neccessary</div>
-    </noscript>
+<table class="body">
+  <tr>
+    <td id="header">
+      <!-- generated with https://www.coolgenerator.com/ascii-text-generator on Normal font -->
+      <pre style="color: #ff82ec;">
+______ _ _
+|  ____| | |
+| |__  | | | ___  ___ _ __  _ __  _   _ _   _
+|  __| | | |/ _ \/ _ \ '_ \| '_ \| | | | | | |
+| |    | | |  __/  __/ |_) | |_) | |_| | |_| |
+|_|    |_|_|\___|\___| .__/| .__/ \__, |\__, |
+                     | |   | |     __/ | __/ |
+                     |_|   |_|    |___/ |___/
+      </pre>
+      <div style="text-align: center"><%- it.subtitle %></div>
+      <noscript>
+        <div style="text-align: center">:pleading_emoji: no javascript? thats fine cause its not neccessary</div>
+      </noscript>
 
-    <br>
-  </div>
-  <div class="box" id="linksTable">
+      <br>
+    </td>
+  </tr>
+  <tr class="box" id="linksTable">
     <table>
-      <tbody>
+      <tbody style="padding: 8px;">
         <% it.links.forEach(element => { %>
           <tr>
             <td><%= element.title %></td>
@@ -36,7 +38,7 @@
         <% }) %>
       </tbody>
     </table>
-  </div>
+  </tr>
   <div id="otherBadges">
     <a href="https://github.com/flleeppyy/fleepy.tv">
       <img src="/img/github_repo.png" alt="Github icon with the text GITHUB REPO">
@@ -85,5 +87,5 @@
       <img src="/img/kate.gif" alt="Kate">
     </a>
   </div>
-</div>
+</table>
 
