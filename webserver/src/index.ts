@@ -8,7 +8,7 @@ import crypto from "crypto";
 import { randomSubtitle } from "./api/subtitles";
 import {links} from "./api/links";
 import { logger } from "./utils/logger";
-import devWebSocket from "utils/devSocket";
+import devWebSocket from "./utils/devSocket";
 
 const env = process.env.NODE_ENV;
 const port = isNaN(Number(process.env.PORT)) ? 3000 : Number(process.env.PORT);
