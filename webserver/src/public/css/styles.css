@@ -18,9 +18,14 @@ body {
 .box {
   border:#4e2f69 solid 2px;
   background: #2a1c3a;
-  padding: .4em;
+  padding: 1em;
   width: fit-content;
   margin: 0 auto;
+  margin-top: 1em;
+}
+
+.box > h1,h2,h3,h4,h5,h6 {
+  text-align: center;
 }
 
 #linksAsBadges {
@@ -28,17 +33,30 @@ body {
   text-align: center;
 }
 
-#linksAsBadges > p {
-  /* margin: .6em; */
-}
-
 #linksAsBadges > a {
   /* font-size: 0; */
   /* margin: 2px; */
   margin: 2px 0;
   display: inline-block;
-
 }
+
+#nameheader {
+  display:inline-grid;
+  /* margin: 0 auto; */
+  width: 100%;
+}
+
+#nameheader > pre {
+  width: fit-content;
+  text-align: unset;
+}
+
+#nameheader > * {
+  margin: 4px auto;
+  width: fit-content;
+  text-align: center;
+}
+
 
 #otherBadges {
   text-align: center;

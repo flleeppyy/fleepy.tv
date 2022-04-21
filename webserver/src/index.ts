@@ -11,7 +11,7 @@ import { logger } from "./utils/logger";
 import devWebSocket from "utils/devSocket";
 
 const env = process.env.NODE_ENV;
-const port = isNaN(NaN) ? Number(process.env.PORT) : 8001;
+const port = isNaN(Number(process.env.PORT)) ? 3000 : Number(process.env.PORT);
 
 const app = fastify({
   trustProxy: true,
@@ -37,11 +37,12 @@ const init = async () => {
     views: "./views",
     globalConstants: {
       fakeHash: fakeHash,
-      isDev: env === "development"
-    }
+      isDev: env === "development",
+      randomSubtitle,
+      links,
+    },
   });
 
-  console.log(eta.config);
   // Catch fastify errors
   app.setErrorHandler((error, request, reply) => {
     reply.type("application/json");
@@ -98,14 +99,33 @@ const init = async () => {
     res.redirect("/fancy/");
   })
 
-  app.get("/", async (req, res) => {
-    res.type("text/html");
+  // app.get("/", async (req, res) => {
+  //   res.type("text/html");
 
-    await res.send(await eta.renderFile("/views/index.eta", {
-      subtitle: randomSubtitle(),
-      links
-    }));
+  //   await res.send(await eta.renderFile("/views/index.ejs", {
+  //     links
+  //   }));
+  // });
+
+  // Go through views and create a route for each one
+  fs.readdirSync(path.join(__dirname, "/views")).filter(e => e.endsWith("ejs")).forEach(async (file) => {
+    const route = file.replace(".ejs", "");
+    if (file.indexOf(".ejs") !== -1) {
+      if (route === "index") {
+        app.get("/", async (req, res) => {
+          res.type("text/html");
+          await res.send(await eta.renderFile(`/views/${route}.ejs`, {}));
+        });
+        return
+      } 
+
+      app.get("/" + route, async (req, res) => {
+        res.type("text/html");
+        await res.send(await eta.renderFile(`/views/${file}`, {}));
+      });
+    }
   });
+
 
   // for .well-known paths, set mime type to text/plain
   app.addHook("onRequest", (req, res, next) => {
@@ -130,6 +150,8 @@ const start = async () => {
   }
   await init();
   await app.listen(port);
+  logger.info("Server listening on port " + port);
+  
 }
 
 start();

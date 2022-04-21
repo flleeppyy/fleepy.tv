@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://arc.io/widget.min.js#rYxxjvEb"
+      crossorigin="anonymous"
+    ></script>
+    <title><%~ it.title %></title>
+    <%~ includeFile("../partials/metadata.ejs", { title: it.title, description:
+    it.description, }) %>
+    <style>
+      @font-face {
+        font-family: "UniFont";
+        src: url("/fonts/unifont.ttf");
+      }
+    </style>
+  </head>
+  <body>
+    <%~ it.body %>
+    <script src="/js/logger.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/oneko.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<div id="navbar" style="text-align: center; margin: 4px;">
+  <% let links = [
+    {
+    title: "Home",
+    href: "/"
+  }, {
+    title: "Fancy (Deprecated)",
+    href: "/fancy"
+  }, /* {
+    title: "About",
+    href: "/about"
+  }, {
+    title: "Contact",
+    href: "/contact"
+  },*/ {
+    title: "Tools",
+    href: "/tools"
+  }
+  ]; %>
+  <% links.forEach(element => { %>
+    <span>
+      <a href="<%= element.href %>"><%= element.title %></a>
+    </span>
+    <% if (element != links[links.length - 1]) { %>
+      |
+    <% } %>
+  <% }) %>
+</div>

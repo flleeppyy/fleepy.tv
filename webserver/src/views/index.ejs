@@ -1,0 +1,72 @@
+<% layout("../layouts/default.ejs", {
+  title: "Home",
+  description: "Music producer, software developer and sysadmin.",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../partials/nameheader.ejs"); %>
+  <%~ includeFile("../partials/navbar.ejs"); %> 
+  <div class="box" id="linksTable">
+    <table>
+      <tbody>
+        <tr style="text-decoration: underline">
+          <!-- <span>Links:</span> -->
+        </tr>
+        <% E.globalConstants.links.forEach(element => { %>
+        <tr>
+          <td><%= element.title %></td>
+          <td>
+            <a class="link" href="<%~ element.href %>"><%= element.href %></a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <div id="otherBadges">
+    <a href="https://github.com/flleeppyy/fleepy.tv">
+      <img src="/img/github_repo.png" />
+    </a>
+    <a href="https://fleepy.tv/fancy">
+      <img src="/img/fancy.png" />
+    </a>
+  </div>
+  <% // Ignore all the errors below. its just the html parser shitting a brick. its all valid tho %>
+  
+  <div class="box" id="linksAsBadges" style="display: none;">
+    <p>links as badges so it looks cooler</p>
+    <% E.globalConstants.links.forEach((element, index) => { %>
+      <% if (index % 4 == 3 ) { %> 
+        <br>
+      <% } %>
+      <a href="<%= element.href %>" alt="<%= element.title %>">
+        <img src="<%= element.badgeUrl %>">
+      </a>
+    <% }) %> 
+  </div>
+  <script>
+    document.getElementById("linksAsBadges").style.display = "inherit";
+  </script>
+    
+  <p style="text-align: center; margin: 12px 0">
+    Inspired by
+    <a class="link" href="https://foxwells.garden">foxwells.garden</a> and
+    <a class="link" href="https://utsuho.rocks">utsuho.rocks</a>
+  </p>
+  <footer>
+    <p>friends</p>
+    <a href="https://fleepy.tv">
+      <img src="/img/fleepy.png" alt="Fleepy" />
+    </a>
+    <a href="https://utsuho.rocks/">
+      <img src="/img/utsuhorocks.png" alt="Utsuho Reiuji next to the text Utsuho rocks" />
+    </a>
+    <a href="https://foxwells.garden">
+      <img src="/img/foxwells.gif" alt="Foxwells Garden logo" />
+    </a>
+    <a href="https://adryd.com">
+      <img src="/img/adryd.png" alt="Witch hat next to the text Adryd">
+    </a>
+  </footer>
+</div>
+
