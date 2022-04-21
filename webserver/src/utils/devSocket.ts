@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { logger } from "./logger";
 import http from "http";
+import { randomUUID } from "crypto";
 
 // export default () => {
 //   const wsPort = 8081;
@@ -83,7 +84,7 @@ export default function() {
   ];
 
   io.once("listening", () => {
-    logger.info(`Dev socket listening at http://::1:${wsPort}`);
+    logger.info(`Devsocket ws listening at ws://::1:${wsPort}`);
     items.forEach(item => {
       let folders = [];
       if (Array.isArray(item.folder)) {
@@ -99,22 +100,26 @@ export default function() {
             logger.error(err);
             return;
           }
-
           files.forEach((file) => {
-            const filePath = path.join(__dirname, folder, file);
+            // if the path is in public, we need to set the relative path to /
+            // Ex: "..\public\js\example.js" => "/js/example.js"
+            const relativePath = path.join(folder, file).replace(/\.\.\\public\\/g, "/").replace(/\\/g, "/");
+
             const fileInfo = {
-              relativePath: path.join(folder, file),
+              id: randomUUID(),
+              relativePath,
               lastModified: Date.now(),
               action: item.action
             }
-            files.push();
+            watchingFiles.push(fileInfo);
+            const filePath = path.join(folder, file);
             fs.watchFile(filePath, {
               interval: 500
             }, () => {
               if (item.action == "refreshimg") {
 
                 // The path to the image, most likely /img
-                const relativePath = path.join(folder, file);
+                const relativePath = fileInfo.relativePath;
 
                 io.emit(`refreshimg<${relativePath}>`);
                 return;
@@ -131,22 +136,27 @@ export default function() {
     io.on("connection", (socket) => {
       socket.send("hihi");
     });
-
   });
 
   // Now for the http server
 
 
+
   httpServer.on("request", (req, res) => {
+    console.log(req.read(512));
     if (req.url == "/updates") {
       res.writeHead(200, {
         "Content-Type": "application/json"
       });
       res.end(JSON.stringify(watchingFiles));
+      return;
     }
+
+    res.writeHead(404);
+    res.end();
+  });
+  httpServer.listen(wsPort, () => {
+    logger.info(`Devsocket http listening at http://::1:${wsPort}`);
   });
 
-
-
-  httpServer.listen(wsPort);
 }

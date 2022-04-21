@@ -150,8 +150,12 @@ const start = async () => {
   }
   await init();
   await app.listen(port);
+<<<<<<< HEAD
   logger.info("Server listening on port " + port);
   
+=======
+  logger.info(`Webserver listening on port ${port}`);
+>>>>>>> c941fc351df4e4839f460a7c1521e21813749e9b
 }
 
 start();
