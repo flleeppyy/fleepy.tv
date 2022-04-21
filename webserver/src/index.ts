@@ -121,7 +121,7 @@ const init = async () => {
 
       app.get("/" + route, async (req, res) => {
         res.type("text/html");
-        await res.send(await eta.renderFile(`/views/${file}`, {}));
+        await res.send(await eta.renderFileAsync(`/views/${file}`, {}));
       });
     }
   });
@@ -138,9 +138,13 @@ const init = async () => {
   (await import("./api/links")).default(app);
   (await import("./api/subtitles")).default(app);
 
-  app.setNotFoundHandler((req, res) => {
+  app.setNotFoundHandler(async (req, res) => {
     res.type("text/html");
-    return res.status(404).send(fs.readFileSync(path.join(__dirname, "../src/errors/404.html")));
+    await res.status(404).send(
+      await eta.renderFileAsync("/errors/404.ejs", {
+        route: req.url,
+      })
+    );
   });
 }
 
@@ -149,7 +153,7 @@ const start = async () => {
     devWebSocket();
   }
   await init();
-  await app.listen(port);
+  await app.listen(port, "0.0.0.0");
   logger.info("Server listening on port " + port);
   
 }

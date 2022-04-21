@@ -26,16 +26,36 @@ async function checkDev() {
         if (!open && ev.data == "hihi") {
           open = true;
           logger.info("Socket connected");
+          socket.send("hewo! how are you?")
           return;
         }
+
+        if (ev.data.startsWith("I'm fine")) {
+          socket.send("How's your day going?")
+        }
+
+        if (ev.data.startsWith("It's going pretty okay")) {
+          socket.send("noice");
+        }
+
         try {
           const data = JSON.parse(ev.data);
-          if (data.action === "refreshPage") {
+          if (data.action === "refreshpage") {
             logger.info("Refreshing page");
             window.location.reload();
-          } else if (data.action === "refreshCss") {
+          } else if (data.action === "refreshcss") {
             logger.info("Refreshing css");
             stylesheet.href = window.URL.createObjectURL(await (await fetch("/css/styles.css")).blob());
+          } else if (data.action === "refreshimg") {
+            data.relativePath;
+            logger.info("Refreshing img");
+            // get img that starts with relativePath
+            const img = document.querySelector(`img[src^="${data.relativePath}"]`);
+            // append some random parameter to the src to force a reload
+            const url = new URL(img.src);
+            url.searchParams.set("rand", Math.floor(Math.random() * 1800));
+
+            
           }
         } catch (e) {
           logger.error(e);

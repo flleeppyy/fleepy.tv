@@ -113,20 +113,26 @@ export default function() {
             }
             watchingFiles.push(fileInfo);
             const filePath = path.join(folder, file);
-            fs.watchFile(filePath, {
+            console.log(filePath)
+            fs.watchFile(path.join(__dirname, filePath), {
               interval: 500
             }, () => {
+              console.log(item);
               if (item.action == "refreshimg") {
 
                 // The path to the image, most likely /img
                 const relativePath = fileInfo.relativePath;
 
-                io.emit(`refreshimg<${relativePath}>`);
+                // io.emit(`refreshimg<${relativePath}>`);
+                io.clients.forEach(s => s.send(JSON.stringify({
+                  action: "refreshimg",
+                  relativePath
+                })));
                 return;
               }
 
 
-              io.emit(item.action);
+              io.clients.forEach(s => s.send(JSON.stringify(item)));
             });
           });
         });
@@ -135,12 +141,20 @@ export default function() {
 
     io.on("connection", (socket) => {
       socket.send("hihi");
+      socket.on("message", (data) => {
+        const convertedData = data.toString();
+        if (convertedData.startsWith("hewo! how are you?")) {
+          socket.send("I'm fine, thanks!");
+        }
+
+        if (convertedData === "How's your day going?") {
+          socket.send("It's going pretty okay, just kinda vibing");
+        }
+      })
     });
+
+    
   });
-
-  // Now for the http server
-
-
 
   httpServer.on("request", (req, res) => {
     console.log(req.read(512));

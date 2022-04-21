@@ -8,7 +8,7 @@
   let idleTime = 0;
   let idleAnimation = null;
   let idleAnimationFrame = 0;
-  const nekoSpeed = 10;
+  let nekoSpeed = 10;
   const spriteSets = {
       idle: [[-3, -3]],
       alert: [[-7, -3]],
@@ -72,7 +72,18 @@
           mousePosY = event.clientY;
       };
 
-      window.onekoInterval = setInterval(frame, 100);
+      // THe higher the nekoSpeed is, the lower our speedValue (interval) is.
+      // Our default interval is 100, and the nekoSpeed is 10.
+
+      const speedValue = 1000 / nekoSpeed;
+
+      window.onekoInterval = setInterval(frame, speedValue);
+  }
+
+  window.setOnekoSpeed = (nekoSpeed) => {
+      window.nekoSpeed = nekoSpeed;
+      clearInterval(window.onekoInterval);
+      window.onekoInterval = setInterval(frame, 1000 / nekoSpeed);
   }
 
   function setSprite(name, frame) {
@@ -161,4 +172,80 @@
   }
 
   create();
+
+
+  const body = document.querySelector(".body");
+        
+  const hrefElement = document.createElement("a");
+  hrefElement.href = "javascript:void(0)";
+  hrefElement.innerText = "just let me play with the cat";
+  hrefElement.classList.add("link");
+  hrefElement.addEventListener("click",() => {
+    body.classList.toggle("hidden");
+  });
+      
+  const div = document.createElement("div");
+  div.appendChild(hrefElement);
+  div.classList.add("topmargin");
+  div.style.textAlign = "center";
+  body.appendChild(div);
+
+  // Create a new number tick box and append it to a div called "onekoSettings"
+  // The number tick box will be called "nekoSpeed" and will be set to the value of the global variable "nekoSpeed"
+
+  const onekoSettings = document.createElement("div");
+  onekoSettings.classList.add("onekoSettings");
+  onekoSettings.style.textAlign = "center";
+
+  const onekoHeader = document.createElement("h2");
+  onekoHeader.innerText = "Oneko Settings";
+  
+  const speedInput = document.createElement("input");
+  speedInput.type = "number";
+  speedInput.min = "1";
+  speedInput.max = "100";
+  speedInput.step = "1";
+  speedInput.id = "nekoSpeed";
+  speedInput.onchange = () => {
+    setOnekoSpeed(Number(speedInput.value));
+  };
+  speedInput.value = nekoSpeed.toString();
+  
+  // Prepend labels before the input
+  const speedLabel = document.createElement("label");
+  speedLabel.innerText = "Neko Speed";
+  speedLabel.htmlFor = "nekoSpeed";
+
+  const unhidePage = document.createElement("button");
+  unhidePage.innerText = "Unhide Page";
+  unhidePage.onclick = () => {
+    body.classList.remove("hidden");
+    onekoSettings.classList.add("hidden");
+  };
+
+  onekoSettings.appendChild(onekoHeader);
+  onekoSettings.appendChild(speedLabel);
+  onekoSettings.appendChild(speedInput);
+  onekoSettings.appendChild(unhidePage);
+
+  onekoSettings.classList.add("hidden");
+
+  // When the "hidden" class is added to the body, remove "hidden" from onekoSettings
+  // Use mutaitonobserver
+  const mut = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.target.classList.contains("hidden")) {
+        onekoSettings.classList.remove("hidden");
+      } else {
+        onekoSettings.classList.add("hidden");
+      }
+    });
+  });
+
+  mut.observe(body, {
+    attributes: true,
+    attributeFilter: ["class"]
+  });
+  
+  document.body.appendChild(onekoSettings);
 })();

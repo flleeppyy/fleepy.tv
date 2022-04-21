@@ -6,7 +6,7 @@
 body {
   margin: 2em;
   padding: 0;
-  background: #1e1429
+  background-color: #1e1429
 }
 
 .body {
@@ -91,3 +91,40 @@ tr>td:first-child {
   padding: 0 1em 0 0;
 }
 /* Set columns to be wider */
+
+.onekoSettings {
+  display: block;
+  position: fixed;
+  top: 2em;
+  left: 2em;
+  width: 12em;
+  /* do not */
+}
+
+.onekoSettings > input {
+  background-color: #4e2f69;
+  border: none;
+  width: 4em;
+}
+
+.onekoSettings > * {
+  margin: 8px auto;
+}
+
+.onekoSettings > button {
+  background-color: #4e2f69;
+  border: none;
+  width: 6em;
+}
+
+.onekoSettings > label {
+  margin-right: 1em;
+}
+
+.hidden {
+  display: none;
+}
+
+.topmargin {
+  margin-top: 1em;
+}
