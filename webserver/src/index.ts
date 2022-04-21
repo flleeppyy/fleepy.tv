@@ -33,8 +33,8 @@ const init = async () => {
   // eta.config.views = "./views";
 
   eta.configure({
-    root: __dirname,
-    views: "./views",
+    root: path.join(__dirname, "../src"),
+    views: "../src/views",
     globalConstants: {
       fakeHash: fakeHash,
       isDev: env === "development",
@@ -82,7 +82,7 @@ const init = async () => {
   });
 
   app.register(fastifyStatic, {
-    root: path.join(__dirname, "public"),
+    root: path.join(__dirname, "../src/public"),
     wildcard: true,
     prefix: "/",
   });
@@ -108,7 +108,7 @@ const init = async () => {
   // });
 
   // Go through views and create a route for each one
-  fs.readdirSync(path.join(__dirname, "/views")).filter(e => e.endsWith("ejs")).forEach(async (file) => {
+  fs.readdirSync(path.join(__dirname, "../src/views")).filter(e => e.endsWith("ejs")).forEach(async (file) => {
     const route = file.replace(".ejs", "");
     if (file.indexOf(".ejs") !== -1) {
       if (route === "index") {
@@ -140,7 +140,7 @@ const init = async () => {
 
   app.setNotFoundHandler((req, res) => {
     res.type("text/html");
-    return res.status(404).send(fs.readFileSync(path.join(__dirname, "errors/404.html")));
+    return res.status(404).send(fs.readFileSync(path.join(__dirname, "../src/errors/404.html")));
   });
 }
 
