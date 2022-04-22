@@ -31,11 +31,13 @@ async function checkDev() {
         }
 
         if (ev.data.startsWith("I'm fine")) {
-          socket.send("How's your day going?")
+          socket.send("How's your day going?");
+          return;
         }
 
         if (ev.data.startsWith("It's going pretty okay")) {
           socket.send("noice");
+          return;
         }
 
         try {
