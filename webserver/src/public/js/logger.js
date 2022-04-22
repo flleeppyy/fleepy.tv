@@ -60,7 +60,7 @@ class Logger {
     if (this.config.useDefaultColoring) {
       console[obj.level.toLowerCase()].apply(this, args);
     } else {
-      console.log.apply(args);
+      console.log.apply(this, args);
     }
   }
 
