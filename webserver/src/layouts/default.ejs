@@ -18,9 +18,9 @@
   </head>
   <body>
     <%~ it.body %>
-    <script src="/js/logger.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/oneko.js"></script>
+    <script src="/js/logger.js?<%= E.globalConstants.fakeHash%>"></script>
+    <script src="/js/main.js?<%= E.globalConstants.fakeHash%>"></script>
+    <script src="/js/oneko.js?<%= E.globalConstants.fakeHash%>"></script>
     <script>
       function rgbToHsl(rgb) {
         const r = rgb[0] / 255;
