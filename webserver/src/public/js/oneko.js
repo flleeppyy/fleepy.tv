@@ -16,6 +16,7 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
   let treats = []; // Array of divs representing treats
   let treatsEaten = 0;
   let treatBlobUrl;
+  let showingAffection = false;
   fetch("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAoUlEQVQ4T42TLQ6AMAyFN0eC5RRguBoeiedqGDgFlgQ3UtGlK6/d6rbuff1dDA22T0Nazjuip/BSPiQxnxHEBZB47t/MO54uaIgJ0GKmaAgEWGIE+QG0eL1S2MZ/HM6k8NQiy+YSgCwDvMgoiyIDLzKJyWQZspGR5yzH5e0WnEJr7e4e1CBIXDSRDq3LI0us7oEVmSHmJnofyM2And4XloAPYApt3qtwL7wAAAAASUVORK5CYII=").then(res => {
     res.blob().then(blob => {
       treatBlobUrl = window.URL.createObjectURL(blob);
@@ -78,6 +79,7 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
     nekoEl.style.imageRendering = "pixelated";
     nekoEl.style.left = "16px";
     nekoEl.style.top = "16px";
+    nekoEl.style.cursor = "grab";
 
     document.body.appendChild(nekoEl);
 
@@ -86,18 +88,33 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
       mousePosY = event.clientY;
     };
 
+    let resetMouseMovementsTimeout;
+    const resetMouseMovements = () => {
+      mousemovements.length = 0;
+      clearTimeout(resetMouseMovementsTimeout);
+    };
+
+    const mousemovements = [];
+    nekoEl.onmousemove = function(ev) {
+      const { x, y } = getOffset(ev);
+      if (showingAffection) { 
+        return;
+      }
+      mousemovements.push([x,y]);
+      clearTimeout(resetMouseMovementsTimeout);
+      resetMouseMovementsTimeout = setTimeout(resetMouseMovements, 1000);
+      if (mousemovements.length > 64) {
+        // Calculate if the x coordinates in the array are very vigerous
+        
+        showAffection();
+        mousemovements.length = 0;
+      }
+    };
+
     const speedValue = 1000 / nekoSpeed;
 
     window.onekoInterval = setInterval(frame, speedValue);
   }
-
-  window.setOnekoSpeed = speed => {
-    nekoSpeed = speed;
-    if (!idleTripped) {
-      clearInterval(window.onekoInterval);
-      window.onekoInterval = setInterval(frame, 1000 / speed);
-    }
-  };
 
   function setSprite(name, frame) {
     const sprite = spriteSets[name][frame % spriteSets[name].length];
@@ -139,6 +156,72 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
         return;
     }
     idleAnimationFrame += 1;
+  }
+
+  window.setOnekoSpeed = function(speed) {
+    nekoSpeed = speed;
+    if (!idleTripped) {
+      clearInterval(window.onekoInterval);
+      window.onekoInterval = setInterval(frame, 1000 / speed);
+    }
+  };
+
+  function getOffset(evt) {
+    var el = evt.target,
+        x = 0,
+        y = 0;
+  
+    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+      x += el.offsetLeft - el.scrollLeft;
+      y += el.offsetTop - el.scrollTop;
+      el = el.offsetParent;
+    }
+  
+    x = evt.clientX - x;
+    y = evt.clientY - y;
+  
+    return { x: x, y: y };
+  }
+
+  let affectionAnimationFrame = 0;
+  let affectionIdle = 0;
+  // Creates a new heart element to thje top right of the neko
+  function showAffection() {
+    if (showingAffection) {
+      return;
+    }
+    showingAffection = true;
+    // Create a new div element inside nekoEl
+    const nekoAffectionEl = document.createElement("div");
+    nekoAffectionEl.style.position = "absolute";
+    nekoAffectionEl.style.top = "-4px";
+    nekoAffectionEl.style.left = "24px";
+    nekoAffectionEl.style.width = "24px";
+    nekoAffectionEl.style.height = "24px";
+    // background is a spritesheet, all one row, 12 frames.
+    nekoAffectionEl.style.backgroundImage = " url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAAYCAMAAABtA9DGAAAAD1BMVEUAAAAAAAD/ExP/yMi7ExMAQYTfAAAAAXRSTlMAQObYZgAAARVJREFUWMPtWMsOwzAIw+T/Pzllh2VTWuGtVV574ENVWS0mhAKNSCAQGAh8gL6V6xl+OjRy5DMyyM8I7Hh7yy/IrEkBQrUwawgQsfNVAYKY4FhRUDHPlUGwe/IRCsYzO1x3bQ2CG14UTK8VVBdNaaCNHjmsAOVbqMA+iF4802V+jg/Q3SFHeVVbtot+dgyQKn1TmUGlMkosn7lndqgu95OuK+agWV0Mfq9F2kRE86HFJNnKhuRdm6/4XZv3eWaH6nI/xxdpM1VH17K6fg4vQUyX+DljDiJTB5I4+yhJtmM+dOSZ7gs/x/+LkX2xnJd0MqrbNHPPG+ggydv3bvwPHHf4qX49EFh9BDL/L+EaH+dBgUDgb3ADb7yGY51HfjMAAAAASUVORK5CYII=')"
+    nekoAffectionEl.style.imageRendering = "pixelated";
+
+    // Heart animation
+    const interval = setInterval(() => {
+      if (affectionIdle > 0) {
+        affectionIdle -= 1;
+        return;
+      }
+      nekoAffectionEl.style.backgroundPosition = `${affectionAnimationFrame * 24}px 0px`;
+      affectionAnimationFrame += 1;
+      if (affectionAnimationFrame > 11) {
+        affectionAnimationFrame = 0;
+        nekoAffectionEl.style.backgroundPosition = "0px 0px";
+        clearInterval(interval);
+        showingAffection = false;
+      }
+
+      if (affectionAnimationFrame == 8) {
+        affectionIdle = 5
+      }
+    }, 100);
+    nekoEl.appendChild(nekoAffectionEl);
   }
 
   function frame() {
