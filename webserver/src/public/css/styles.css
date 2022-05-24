@@ -24,8 +24,9 @@ body {
   margin-top: 1em;
 }
 
-.box > h1,h2,h3,h4,h5,h6 {
+.box > h1,h2,h3,h4,h5,h6,p {
   text-align: center;
+  margin: 0;
 }
 
 #linksAsBadges {
@@ -137,4 +138,19 @@ tr>td:first-child {
 
 .topmargin {
   margin-top: 1em;
+}
+
+button {
+  /* width: 280px; */
+      /* height: 100px; */
+      border: 1px solid black;
+      border-radius: 5px;
+      /* margin: 10px; */
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      background: #2C1744;
 }
