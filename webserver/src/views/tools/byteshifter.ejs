@@ -1,0 +1,105 @@
+<% layout("../../layouts/default.ejs", {
+  title: "Byte shifter",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %> 
+  <div class="box">
+    <input type="file" name="File" id="filetoshift">
+    <!-- Buttons -->
+    <p>Bytes to shift by. Add more bytes shifts to shift every other byte</p>
+    <label for="unshift">Unshift</label>
+    <input id="unshift" type="checkbox" name="Unshift">
+    <button id="byteshiftadd">Add byte shift</button>
+    <input type="text" id="byteshift_1">
+
+    <button id="shiftbytes">Shift bytes and Download</button>
+  </div>
+
+  <script>
+    /**
+     * @param {string} input
+     * @param {array} ...shiftBy Arguments that contain every byte to shift by x amount.
+     * @returns {ArrayBuffer}
+     */
+    function shiftBytes(input, ...shiftBy) {
+      const inputArray = new Uint8Array(input);
+      const outputArray = new Uint8Array(inputArray.length);
+
+      for (let i = 0; i < inputArray.length; i++) {
+        outputArray[i] = inputArray[i] + shiftBy[i % shiftBy.length];
+      }
+
+      return outputArray.buffer;
+    }
+
+    function unshiftBytes(input, ...unshiftBy) {
+      for (let i = 0; i < unshiftBy.length; i++) {
+        unshiftBy[i] = -unshiftBy[i];
+      }
+
+      return shiftBytes(input, ...unshiftBy);
+    }
+  </script>
+
+  <script>
+    document.querySelector("#byteshiftadd").addEventListener("click", function() {
+      const input = document.querySelector("#byteshift_1");
+      const newInput = document.createElement("input");
+      newInput.type = "text";
+      newInput.id = "byteshift_" + (input.id.split("_")[1] * 1 + 1);
+      input.parentNode.insertBefore(newInput, input.nextSibling);
+    });
+
+    document.querySelector("#shiftbytes").addEventListener("click", function() {
+      if (document.querySelector("#filetoshift").files.length === 0) {
+        alert("No file selected");
+        return;
+      }
+      const inputs = document.querySelectorAll("input[id^='byteshift_']");
+      const shiftBy = [];
+      for (let i = 0; i < inputs.length; i++) {
+        shiftBy.push(inputs[i].value * 1);
+      }
+
+      const input = document.querySelector("#filetoshift");
+      const file = input.files[0];
+      
+      const reader = new FileReader();
+      reader.onload = function() {
+        const output = shiftBytes(reader.result, ...shiftBy);
+        const blob = new Blob([output], {type: file.type});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = file.name;
+        a.click();
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  </script>
+  <style>
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+     
+    button {
+  /* width: 280px; */
+      /* height: 100px; */
+      border: 1px solid black;
+      border-radius: 5px;
+      /* margin: 10px; */
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      background: #2C1744;
+}
+  </style>
+
+</div>
