@@ -113,11 +113,9 @@ export default function() {
             }
             watchingFiles.push(fileInfo);
             const filePath = path.join(folder, file);
-            console.log(filePath)
             fs.watchFile(path.join(__dirname, filePath), {
               interval: 500
             }, () => {
-              console.log(item);
               if (item.action == "refreshimg") {
 
                 // The path to the image, most likely /img
@@ -157,7 +155,6 @@ export default function() {
   });
 
   httpServer.on("request", (req, res) => {
-    console.log(req.read(512));
     if (req.url == "/updates") {
       res.writeHead(200, {
         "Content-Type": "application/json"
