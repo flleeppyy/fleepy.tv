@@ -18,7 +18,6 @@ const app = fastify({
   // logger: logger,
   disableRequestLogging: env === "development" ? false : true,
 });
-console.log(__dirname);
 
 const fakeHash = crypto.randomBytes(8).toString("hex");
 
@@ -107,25 +106,50 @@ const init = async () => {
   //   }));
   // });
 
-  // Go through views and create a route for each one
-  fs.readdirSync(path.join(__dirname, "../src/views")).filter(e => e.endsWith("ejs")).forEach(async (file) => {
-    const route = file.replace(".ejs", "");
-    if (file.indexOf(".ejs") !== -1) {
+  function addRouteDir(dir: string, basedir: string){
+    fs.readdirSync(dir).forEach(file => {
+      if (fs.statSync(path.join(dir, file)).isDirectory()) {
+        addRouteDir(path.join(dir, file), basedir);
+        return;
+      }
+      const route = path.join(path.relative(basedir,dir), file).replace(".ejs", "");
+
+      const routeTemplate = `/views/${route}.ejs`
       if (route === "index") {
         app.get("/", async (req, res) => {
           res.type("text/html");
-          await res.send(await eta.renderFile(`/views/${route}.ejs`, {}));
+          await res.send(await eta.renderFileAsync(routeTemplate, {}));
         });
         return
       } 
 
       app.get("/" + route, async (req, res) => {
         res.type("text/html");
-        await res.send(await eta.renderFileAsync(`/views/${file}`, {}));
+        await res.send(await eta.renderFileAsync(routeTemplate, {}));
       });
-    }
-  });
+    });
+  }
 
+  addRouteDir(path.join(__dirname, "../src/views"), path.join(__dirname, "../src/views"));
+  // fs.readdirSync(path.join(__dirname, "../src/views")).filter(e => e.endsWith("ejs")).forEach(async (file) => {
+  //   console.log(file);
+  //   const route = file.replace(".ejs", "");
+  //   if (file.indexOf(".ejs") !== -1) {
+  //     if (route === "index") {
+  //       app.get("/", async (req, res) => {
+  //         res.type("text/html");
+  //         await res.send(await eta.renderFile(`/views/${route}.ejs`, {}));
+  //       });
+  //       return
+  //     } 
+
+  //     app.get("/" + route, async (req, res) => {
+  //       res.type("text/html");
+  //       await res.send(await eta.renderFileAsync(`/views/${file}`, {}));
+  //     });
+  //   }
+  // });
+  // Recursively add views as routes
 
   // for .well-known paths, set mime type to text/plain
   app.addHook("onRequest", (req, res, next) => {
