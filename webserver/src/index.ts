@@ -153,6 +153,9 @@ const init = async () => {
 
   // for .well-known paths, set mime type to text/plain
   app.addHook("onRequest", (req, res, next) => {
+    if (req.url.startsWith("/pain")) {
+      throw new Error("hee hoo");
+    }
     if (req.url.startsWith("/.well-known")) {
       res.type("text/plain");
     }
@@ -165,8 +168,20 @@ const init = async () => {
   app.setNotFoundHandler(async (req, res) => {
     res.type("text/html");
     await res.status(404).send(
-      await eta.renderFileAsync("/errors/404.ejs", {
-        route: req.url,
+      await eta.renderFileAsync("/errors/error.ejs", {
+        code: 404,
+        error: "Not found"
+      })
+    );
+  });
+
+  app.setErrorHandler(async (err, req, res) => {
+    res.type("text/html");
+    res.status(err.statusCode || 500);
+    await res.send(
+      await eta.renderFileAsync("/errors/error.ejs", {
+        code: err.statusCode || 500,
+        error: `code: ${err.code} - message: ${err.message}`
       })
     );
   });
