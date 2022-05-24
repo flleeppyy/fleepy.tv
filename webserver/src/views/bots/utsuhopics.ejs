@@ -1,0 +1,29 @@
+<% layout("../../layouts/default.ejs", {
+  title: "UtsuhoPics",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %>
+  <%~ 
+    includeFile("../../partials/bot.ejs", {
+      name: "UtsuhoPics",
+      image: "/img/bots/utsuhopics.jpg",
+      profilePictureSource: "https://gelbooru.com/index.php?page=post&s=view&id=2502400",
+      // profileBannerSource: "https://gelbooru.com/index.php?page=post&s=view&id=4917153",
+      links: [
+        {
+          title: "Twitter",
+          href: "https://twitter.com/utsuhopicsbot",
+        },
+        {
+          title: "Telegram",
+          href: "https://t.me/utsuhopics"
+        }
+      ],
+      notes: "Couldn't find profile banner source, please DM me with source"
+    })  
+  %>
+</div>
+
+

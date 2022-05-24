@@ -1,0 +1,86 @@
+<% layout("../layouts/default.ejs", {
+  title: "Bots",
+  description: "All of my image bots that I run on various platforms",
+}) %>
+
+
+<div class="body">
+  <%~ includeFile("../partials/nameheader.ejs"); %>
+  <%~ includeFile("../partials/navbar.ejs"); %> 
+
+  <div class="box">
+    <h1>Bots</h1>
+    <p>These are all of my picture bots that I run on various platforms c:</p>
+    <div id="bots">
+      <a class="bot" href="/bots/chenpics">
+        <h2>ChenPics</h2>
+        <img src="/img/bots/chenpics.jpg"/>
+      </a>
+      <!-- TewiPics -->
+      <a class="bot" href="/bots/tewipics">
+        <h2>TewiPics</h2>
+        <img src="/img/bots/tewipics.jpg"/>
+      </a>
+      <!-- CirnoPics -->
+      <a class="bot" href="/bots/cirnopics">
+        <h2>CirnoPics</h2>
+        <img src="/img/bots/cirnopics.jpg"/>
+      </a>
+      <!-- ReimuPics -->
+      <a class="bot" href="/bots/reimupics">
+        <h2>ReimuPics</h2>
+        <img src="/img/bots/reimupics.jpg"/>
+      </a>
+      <!-- UtsuhoPics -->
+      <a class="bot" href="/bots/utsuhopics">
+        <h2>UtsuhoPics</h2>
+        <img src="/img/bots/utsuhopics.jpg"/>
+      </a>
+      <a class="bot" href="/bots/kirisamepics">
+        <h2>KirisamePics</h2>
+        <img src="/img/bots/kirisamepics.jpg"/>
+      </a>
+    </div>
+  </div>
+
+  <style>
+    .box {
+      max-width: 75vw;
+    }
+    #bots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+    }
+
+    .bot {
+      width: 180px;
+      /* height: 100px; */
+      border: 1px solid black;
+      border-radius: 5px;
+      margin: 10px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      background: #432564;
+    }
+
+    .bot > img {
+      max-width: 168px;
+      border-radius: 100%;
+      border: 6px solid rgb(216, 87, 199);
+      margin-top: 8px;
+    }
+
+    .bot > h2, .bot > p { 
+      padding:0;
+      margin:0;
+    }
+  </style>
+
+</div>

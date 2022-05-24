@@ -1,0 +1,28 @@
+<% layout("../../layouts/default.ejs", {
+  title: "TewiPics",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %>
+  <%~ 
+    includeFile("../../partials/bot.ejs", {
+      name: "TewiPics",
+      image: "/img/bots/tewipics.jpg",
+      profilePictureSource: "https://gelbooru.com/index.php?page=post&s=view&id=3262917",
+      profileBannerSource: "https://gelbooru.com/index.php?page=post&s=view&id=5134663",
+      links: [
+        {
+          title: "Twitter",
+          href: "https://twitter.com/tewipics",
+        },
+        {
+          title: "Telegram",
+          href: "https://t.me/tewipics"
+        }
+      ]
+    })  
+  %>
+</div>
+
+

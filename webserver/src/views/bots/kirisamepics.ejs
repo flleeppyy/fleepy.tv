@@ -1,0 +1,28 @@
+<% layout("../../layouts/default.ejs", {
+  title: "KirisamePics",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %>
+  <%~ 
+    includeFile("../../partials/bot.ejs", {
+      name: "KirisamePics",
+      image: "/img/bots/kirisamepics.jpg",
+      profilePictureSource: "https://gelbooru.com/index.php?page=post&s=view&id=7266676",
+      profileBannerSource: "https://gelbooru.com/index.php?page=post&s=view&id=1614356",
+      links: [
+        {
+          title: "Twitter",
+          href: "https://twitter.com/kirisamepics",
+        },
+        {
+          title: "Telegram",
+          href: "https://t.me/kirisamepics"
+        }
+      ]
+    })  
+  %>
+</div>
+
+

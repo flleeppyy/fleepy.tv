@@ -1,0 +1,58 @@
+<div>
+  <div class="box" id="botBox">
+    <h1><%~ it.name %> </h1>
+    <img src="<%~ it.image %>">
+    <div id="bot-source-links">
+      <% if (it.profilePictureSource) { %> 
+        <a href="<%~ it.profilePictureSource %>">Profile Picture</a>
+      <% } %>
+
+      <% // good enough %>
+      <%~ it.profileBannerSource && it.profilePictureSource ? "|" : "" %>
+
+      <% if (it.profileBannerSource) { %>
+        <a href="<%~ it.profileBannerSource %>">Banner Picture</a>
+      <% } %>
+    </div>
+    <% if (it.notes) {%> 
+      <p><%~ it.notes %></p>
+    <% } %>
+  </div>
+  
+  <div class="box">
+    <table>
+      <tbody>
+        <tr style="text-decoration: underline">
+          <!-- <span>Links:</span> -->
+        </tr>
+        <% it.links.forEach(element => { %>
+        <tr>
+          <td><%= element.title %></td>
+          <td>
+            <a class="link" href="<%~ element.href %>"><%= element.href %></a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <style>
+    #botBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box > *:not(:last-child) {
+      margin: 0 0 16px;
+    }
+
+    img {
+      --heehoo: 168px;
+      width: var(--heehoo);
+      border-radius: 100%;
+      border: 6px solid rgb(216, 87, 199);
+    }
+  </style>
+</div>
