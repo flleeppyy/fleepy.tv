@@ -181,9 +181,11 @@ const init = async () => {
     await res.send(
       await eta.renderFileAsync("/errors/error.ejs", {
         code: err.statusCode || 500,
-        error: `code: ${err.code} - message: ${err.message}`
+        message: `${err.message}`,
+        stack: err.stack
       })
     );
+    logger.error(err)
   });
 }
 

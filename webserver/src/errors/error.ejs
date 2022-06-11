@@ -8,7 +8,14 @@
     <%~ it.code %>
   </p>
   <div class="box" style="padding: 2em;">
-    <%~ it.error %>
+    <span><%~ it.message %> </span>
+    <code><%~ it.error %></code>
   </div>
   <img src="/img/awoofast.gif" style="margin: 1em;" alt="gif of a very fast dancing awoo">
+  <style>
+    .box, code {
+      /* white-space: pre-wrap; */
+      text-align: left;
+    }
+  </style>
 </div>
