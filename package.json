@@ -6,7 +6,7 @@
   "scripts": {
     "upgradeall": "pnpm upgrade && cd frontend_fancy && pnpm upgrade && cd ../webserver && pnpm upgrade",
     "installall": "pnpm install && cd frontend_fancy && pnpm install && cd ../webserver && pnpm install",
-    "buildall": "shx rm -rf frontend_fancy/src/js && pnpm run frontend_fancy:sass:build && pnpm run frontend_fancy:build:prod",
+    "buildall": "shx rm -rf frontend_fancy/src/js && pnpm run frontend_fancy:sass:build && pnpm run frontend_fancy:build:prod && pnpm run webserver:build",
     "build": "pnpm run buildall",
     "all": "pnpm run installall && pnpm run buildall",
     "webserver:build": "cd webserver && pnpm run build",
