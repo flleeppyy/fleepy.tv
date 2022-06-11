@@ -7,8 +7,8 @@
     "sass:watch": "sass --watch --embed-source-map --update --style=compressed .",
     "sass:build": "sass --embed-source-map --style=compressed .",
     "build": "browserify './src/ts/entry.ts' -p tsify -d",
-    "build:dev": "pnpm run build -- --outfile src/js/bundle.js",
-    "build:prod": "pnpm run build -- --outfile src/js/bundle_unfresh.js && uglifyjs --compress --output src/js/bundle.js src/js/bundle_unfresh.js --source-map \"filename='bundle.js.map'\"",
+    "build:dev": "pnpm run build --outfile src/js/bundle.js",
+    "build:prod": "pnpm run build --outfile src/js/bundle_unfresh.js && uglifyjs --compress --output src/js/bundle.js src/js/bundle_unfresh.js --source-map \"filename='bundle.js.map'\"",
     "build:devwatch": "nodemon --ext 'ts' --watch 'src/ts' --exec 'pnpm run build:dev'"
   },
   "dependencies": {
