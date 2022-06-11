@@ -16,7 +16,8 @@
     "frontend_fancy:sass:build": "cd frontend_fancy && pnpm run sass:build",
     "frontend_fancy:build:dev": "cd frontend_fancy && pnpm run build:dev",
     "frontend_fancy:build:prod": "cd frontend_fancy && pnpm run build:prod",
-    "frontend_fancy:build:devwatch": "cd frontend_fancy && pnpm run build:devwatch"
+    "frontend_fancy:build:devwatch": "cd frontend_fancy && pnpm run build:devwatch",
+    "lint": "prettier --write '**/*.{js,jsx,ts,tsx,ejs,eta}'"
   },
   "repository": {
     "type": "git",
@@ -24,17 +25,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@types/node": "^14.14.37",
-    "@typescript-eslint/eslint-plugin": "^4.20.0",
-    "@typescript-eslint/parser": "^4.20.0",
+    "@types/node": "^14.18.21",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
     "cross-env": "^7.0.3",
-    "eslint": "^7.23.0",
-    "nodemon": "^2.0.15",
-    "shx": "^0.3.3",
-    "ts-node": "^9.0.0",
-    "ts-node-dev": "^1.1.1",
-    "tsconfig-paths": "^3.12.0",
-    "typescript": "^4.0.3",
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.16",
+    "shx": "^0.3.4",
+    "ts-node": "^10.8.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^3.14.1",
+    "typescript": "^4.7.3",
     "uniq": "^1.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.2"
   }
 }
