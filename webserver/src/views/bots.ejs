@@ -6,56 +6,76 @@
 
 <div class="body">
   <%~ includeFile("../partials/nameheader.ejs"); %>
-  <%~ includeFile("../partials/navbar.ejs"); %> 
+  <%~ includeFile("../partials/navbar.ejs"); %>
 
   <div class="box">
     <h1>Bots</h1>
     <p>These are all of my picture bots that I run on various platforms c:</p>
+    <div id="ratings-box">
+      <div>
+        <div class="circle safe"></div>
+        Safe
+      </div>
+      <div>
+        <div class="circle nsfw"></div>
+        NSFW
+      </div>
+    </div>
+    <div class="horizontal-divider"></div>
     <div id="bots">
-      <a class="bot" href="/bots/chenpics">
+      <a class="button" href="/bots/chenpics">
         <h2>ChenPics</h2>
         <img src="/img/bots/chenpics.jpg"/>
       </a>
       <!-- TewiPics -->
-      <a class="bot" href="/bots/tewipics">
+      <a class="button" href="/bots/tewipics">
         <h2>TewiPics</h2>
         <img src="/img/bots/tewipics.jpg"/>
       </a>
       <!-- CirnoPics -->
-      <a class="bot" href="/bots/cirnopics">
+      <a class="button" href="/bots/cirnopics">
         <h2>CirnoPics</h2>
         <img src="/img/bots/cirnopics.jpg"/>
       </a>
       <!-- ReimuPics -->
-      <a class="bot" href="/bots/reimupics">
+      <a class="button" href="/bots/reimupics">
         <h2>ReimuPics</h2>
-        <img src="/img/bots/reimupics.jpg"/>
+        <img class="nsfw" src="/img/bots/reimupics.jpg"/>
       </a>
       <!-- UtsuhoPics -->
-      <a class="bot" href="/bots/utsuhopics">
+      <a class="button" href="/bots/utsuhopics">
         <h2>UtsuhoPics</h2>
         <img src="/img/bots/utsuhopics.jpg"/>
       </a>
-      <a class="bot" href="/bots/kirisamepics">
+      <!-- KirisamePics -->
+      <a class="button" href="/bots/kirisamepics">
         <h2>KirisamePics</h2>
         <img src="/img/bots/kirisamepics.jpg"/>
       </a>
     </div>
+    <a class="button" href="/bots/faq" style="margin:0 auto; width: 256px">
+      <h2>F.A.Q</h2>
+      <p>Questions that some people
+        <i>may</i>
+        have about my picture bots</p>
+    </a>
   </div>
 
   <style>
     .box {
       max-width: 75vw;
     }
+
     #bots {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
+      max-width: 41em;
 
     }
 
-    .bot {
+    .button {
       width: 180px;
       /* height: 100px; */
       border: 1px solid black;
@@ -70,16 +90,58 @@
       background: #432564;
     }
 
-    .bot > img {
+    .button > img {
       max-width: 168px;
       border-radius: 100%;
-      border: 6px solid rgb(216, 87, 199);
+      border: 6px solid rgb(216, 87, 200);
       margin-top: 8px;
     }
 
-    .bot > h2, .bot > p { 
-      padding:0;
-      margin:0;
+    .button > h2,
+    .button > p {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+
+  <style>
+    .circle {
+      width: 8px;
+      height: 8px;
+      border-radius: 100%;
+      background-color: #fff;
+      display: inline-block;
+    }
+
+    :root {
+      --safe-color: rgb(216, 87, 200);
+      --nsfw-color: rgb(216, 87, 87);
+    }
+
+    .circle.nsfw {
+      background-color: var(--nsfw-color);
+    }
+
+    .circle.safe {
+      background-color: var(--safe-color);
+    }
+
+    img.nsfw {
+      border-color: var(--nsfw-color);
+    }
+
+    img.safe {
+      border-color: var(--safe-color);
+    }
+
+    #ratings-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    #ratings-box > div {
+      margin: 0 10px;
     }
   </style>
 

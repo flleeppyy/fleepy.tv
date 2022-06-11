@@ -14,6 +14,11 @@
         <a href="<%~ it.profileBannerSource %>">Banner Picture</a>
       <% } %>
     </div>
+    <% if (it.nsfw) {%> 
+      <div class="nsfw">
+        NSFW
+      </div>
+    <% } %>
     <% if (it.notes) {%> 
       <p><%~ it.notes %></p>
     <% } %>
@@ -53,6 +58,16 @@
       width: var(--heehoo);
       border-radius: 100%;
       border: 6px solid rgb(216, 87, 199);
+    }
+
+    .nsfw {
+      --nsfw: rgb(233, 73, 73);
+      border: 1px var(--nsfw) solid;
+      padding: 2px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--nsfw);
+      margin: 0;
     }
   </style>
 </div>

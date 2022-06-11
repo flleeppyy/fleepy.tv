@@ -1,0 +1,48 @@
+<% layout("../../layouts/default.ejs", {
+  title: "FAQ",
+  description: "Questions that some people may have about my picture bots.",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %> 
+
+  <div class="box">
+    <h1>Bots FAQ</h1>
+    <div class="horizontal-divider"></div>
+    <section>
+      <h2>What?</h2>
+    <p>
+      I run a handful of picture bots that post to several platforms, and usually
+      have images sourced from <a href="https://gelbooru.com">Gelbooru</a>, with a long list of omitted tags. They post
+      hourly, and are powered by a private project called SidestBot.
+    </p> 
+    </section>
+    <section>
+      <h2>One of your bots posted something extremely disgusting</h2>
+    <p>
+      Please contact me on one of the various platforms listed on the homepage.
+      Telegram is usually the quickest
+    </p>
+    </section>
+    <section>
+      <h2>
+        Why do you have NSFW bots?
+      </h2>
+      <p>Not everything has to be sunshine and rainbows, also why do you care?</p>
+      <h2>
+    </section>
+
+    </h2>
+
+  </div>
+  <style>
+    .box {
+      max-width: 512px;
+    }
+
+    section {
+      margin-top: 1em;
+    }
+  </style>
+</div>
