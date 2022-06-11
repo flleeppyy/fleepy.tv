@@ -9,10 +9,11 @@ specifiers:
   ejs: ^3.1.8
   eta: ^1.12.3
   fastify: ^3.29.0
-  fastify-cors: ^6.1.0
-  fastify-static: ^4.7.0
+  fastify-cors: 6.0.3
+  fastify-static: 4.6.1
   pino: ^7.11.0
   pino-pretty: ^8.0.0
+  typescript: ^4.7.3
   ws: ^8.8.0
 
 dependencies:
@@ -24,10 +25,11 @@ dependencies:
   ejs: 3.1.8
   eta: 1.12.3
   fastify: 3.29.0
-  fastify-cors: 6.1.0
-  fastify-static: 4.7.0
+  fastify-cors: 6.0.3
+  fastify-static: 4.6.1
   pino: 7.11.0
   pino-pretty: 8.0.0
+  typescript: 4.7.3
   ws: 8.8.0
 
 packages:
@@ -374,13 +376,6 @@ packages:
       vary: 1.1.2
     dev: false
 
-  /fastify-cors/6.1.0:
-    resolution: {integrity: sha512-QBKz32IoY/iuT74CunRY1XOSpjSTIOh9E3FxulXIBhd0D2vdgG0kDvy0eG6HA/88sRfWHeba43LkGEXPz0Rh8g==}
-    dependencies:
-      fastify-cors-deprecated: /fastify-cors/6.0.3
-      process-warning: 1.0.0
-    dev: false
-
   /fastify-plugin/3.0.1:
     resolution: {integrity: sha512-qKcDXmuZadJqdTm6vlCqioEbyewF60b/0LOFCcYN1B6BIZGlYJumWWOYs70SFYLDAH4YqdE1cxH/RKMG7rFxgA==}
     dev: false
@@ -395,15 +390,6 @@ packages:
       p-limit: 3.1.0
       readable-stream: 3.6.0
       send: 0.17.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /fastify-static/4.7.0:
-    resolution: {integrity: sha512-zZhCfJv/hkmud2qhWqpU3K9XVAuy3+IV8Tp9BC5J5U+GyA2XwoB6h8lh9GqpEIqdXOw01WyWQllV7dOWVyAlXg==}
-    dependencies:
-      fastify-static-deprecated: /fastify-static/4.6.1
-      process-warning: 1.0.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -923,6 +909,12 @@ packages:
   /toidentifier/1.0.1:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
+    dev: false
+
+  /typescript/4.7.3:
+    resolution: {integrity: sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
     dev: false
 
   /uri-js/4.4.1:
