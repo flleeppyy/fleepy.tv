@@ -28,7 +28,7 @@ export const subtitles = [
   "cute and stupid.",
   "i may be stupid",
   "i may have the stupid",
-  "h"
+  "h",
 ];
 
 export const randomSubtitle = () => subtitles[Math.floor(Math.random() * subtitles.length)];
@@ -36,7 +36,7 @@ export const randomSubtitle = () => subtitles[Math.floor(Math.random() * subtitl
 export default (app: FastifyInstance) => {
   app.get("/api/subtitles", (req, res) => {
     res.send({
-      subtitles
+      subtitles,
     });
-  })
-}
+  });
+};

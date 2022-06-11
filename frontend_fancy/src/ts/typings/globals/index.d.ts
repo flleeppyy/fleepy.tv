@@ -8,6 +8,6 @@ interface Window {
 declare let $: Window["$"];
 
 interface Number {
-  toPrecisionFloat(number?: number): number
-  toInt(): number
+  toPrecisionFloat(number?: number): number;
+  toInt(): number;
 }

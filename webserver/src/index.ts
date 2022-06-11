@@ -6,7 +6,7 @@ import path from "path";
 import * as eta from "eta";
 import crypto from "crypto";
 import { randomSubtitle } from "./api/subtitles";
-import {links} from "./api/links";
+import { links } from "./api/links";
 import { logger } from "./utils/logger";
 import devWebSocket from "./utils/devSocket";
 
@@ -24,7 +24,7 @@ const fakeHash = crypto.randomBytes(8).toString("hex");
 const init = async () => {
   app.register(fastifyCors, {
     origin: "*",
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
   });
 
   // logger.info(Object.keys(eta));
@@ -46,34 +46,40 @@ const init = async () => {
   app.setErrorHandler((error, request, reply) => {
     reply.type("application/json");
     if (error.statusCode === 404) {
-      reply.send(JSON.stringify({
-        error: "Not found"
-      }));
+      reply.send(
+        JSON.stringify({
+          error: "Not found",
+        }),
+      );
       return;
     }
     if (error.code === "FST_ERR_CTP_INVALID_MEDIA_TYPE") {
-      reply.send(JSON.stringify({
-        error: "Invalid media type"
-      }));
+      reply.send(
+        JSON.stringify({
+          error: "Invalid media type",
+        }),
+      );
       return;
     }
 
-    reply.send(JSON.stringify({
-      error: "Internal server error"
-    }));
+    reply.send(
+      JSON.stringify({
+        error: "Internal server error",
+      }),
+    );
     logger.error(error);
   });
 
-  app.get("/dev", (req, res) =>
-    {env === "development" ? res.send(1) : res.send(0)}
-  );
+  app.get("/dev", (req, res) => {
+    env === "development" ? res.send(1) : res.send(0);
+  });
 
   app.addHook("onRequest", (req, res, next) => {
     if (env === "development") {
       res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
       res.header("Expires", "-1");
       res.header("Pragma", "no-cache");
-      res.header("x-dev", "true")
+      res.header("x-dev", "true");
     }
     logger.info(`${req.method} ${req.headers["cf-connecting-ip"] || req.ip} - ${req.url}`);
     // Inject html into the response of every request with text/html
@@ -90,13 +96,13 @@ const init = async () => {
     root: path.join(__dirname, "../../frontend_fancy/src"),
     wildcard: true,
     prefix: "/fancy",
-    decorateReply: false // the reply decorator has been added by the first plugin registration
+    decorateReply: false, // the reply decorator has been added by the first plugin registration
   });
 
   // Fancy frontend @ ../frontend/index.html
   app.get("/fancy", (req, res) => {
     res.redirect("/fancy/");
-  })
+  });
 
   // app.get("/", async (req, res) => {
   //   res.type("text/html");
@@ -106,22 +112,22 @@ const init = async () => {
   //   }));
   // });
 
-  function addRouteDir(dir: string, basedir: string){
+  function addRouteDir(dir: string, basedir: string) {
     fs.readdirSync(dir).forEach(file => {
       if (fs.statSync(path.join(dir, file)).isDirectory()) {
         addRouteDir(path.join(dir, file), basedir);
         return;
       }
-      const route = path.join(path.relative(basedir,dir), file).replace(".ejs", "");
+      const route = path.join(path.relative(basedir, dir), file).replace(".ejs", "");
 
-      const routeTemplate = `/views/${route}.ejs`
+      const routeTemplate = `/views/${route}.ejs`;
       if (route === "index") {
         app.get("/", async (req, res) => {
           res.type("text/html");
           await res.send(await eta.renderFileAsync(routeTemplate, {}));
         });
-        return
-      } 
+        return;
+      }
 
       app.get("/" + route, async (req, res) => {
         res.type("text/html");
@@ -141,7 +147,7 @@ const init = async () => {
   //         await res.send(await eta.renderFile(`/views/${route}.ejs`, {}));
   //       });
   //       return
-  //     } 
+  //     }
 
   //     app.get("/" + route, async (req, res) => {
   //       res.type("text/html");
@@ -170,8 +176,8 @@ const init = async () => {
     await res.status(404).send(
       await eta.renderFileAsync("/errors/error.ejs", {
         code: 404,
-        error: "Not found"
-      })
+        error: "Not found",
+      }),
     );
   });
 
@@ -182,12 +188,12 @@ const init = async () => {
       await eta.renderFileAsync("/errors/error.ejs", {
         code: err.statusCode || 500,
         message: `${err.message}`,
-        stack: err.stack
-      })
+        stack: err.stack,
+      }),
     );
-    logger.error(err)
+    logger.error(err);
   });
-}
+};
 
 const start = async () => {
   if (env === "development") {
@@ -196,15 +202,14 @@ const start = async () => {
   await init();
   await app.listen(port, "0.0.0.0");
   logger.info("Server listening on port " + port);
-  
-}
+};
 
 start();
 
-process.on("uncaughtException", (err) => {
+process.on("uncaughtException", err => {
   logger.error(err);
-})
+});
 
-process.on("unhandledRejection", (err) => {
+process.on("unhandledRejection", err => {
   logger.error(err);
-})
+});

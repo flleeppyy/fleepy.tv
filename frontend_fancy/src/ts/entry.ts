@@ -2,10 +2,10 @@ import $ from "jquery";
 window.$ = $;
 
 // Randomize children of a DOM element, and make sure their places are not the same
-window.randomizeChildren = function(element: HTMLElement) {
+window.randomizeChildren = function (element: HTMLElement) {
   const children = Array.from(element.children);
-  if (children.length === 0) {  
-    return; 
+  if (children.length === 0) {
+    return;
   }
 
   const randomChildren = children.sort(() => Math.random() - 0.5);
@@ -19,7 +19,7 @@ window.randomizeChildren = function(element: HTMLElement) {
 
 (async () => {
   $(() => {
-    $("html").css("background","none");
+    $("html").css("background", "none");
     $("main").fadeIn(400);
   });
   (await import("./modules/typingAnim")).default();

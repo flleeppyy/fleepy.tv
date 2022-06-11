@@ -1,7 +1,7 @@
-"use strict"
+"use strict";
 
 const logger = new Logger({
-  useDefaultColoring: false
+  useDefaultColoring: false,
 });
 
 async function checkDev() {
@@ -17,16 +17,16 @@ async function checkDev() {
     function initSocket() {
       socket = new WebSocket("ws://127.0.0.1:8081");
       let open = false;
-      
-      socket.onerror = function(ev) {
-        logger.error(ev)
-      }
-      
-      socket.onmessage = async function(ev) {
+
+      socket.onerror = function (ev) {
+        logger.error(ev);
+      };
+
+      socket.onmessage = async function (ev) {
         if (!open && ev.data == "hihi") {
           open = true;
           logger.info("Socket connected");
-          socket.send("hewo! how are you?")
+          socket.send("hewo! how are you?");
           return;
         }
 
@@ -56,14 +56,12 @@ async function checkDev() {
             // append some random parameter to the src to force a reload
             const url = new URL(img.src);
             url.searchParams.set("rand", Math.floor(Math.random() * 1800));
-
-            
           }
         } catch (e) {
           logger.error(e);
         }
-      }
-      socket.onclose = function(ev) {
+      };
+      socket.onclose = function (ev) {
         // if the page is reloading
         if (ev.code == 1001) {
           return;
@@ -74,7 +72,7 @@ async function checkDev() {
         }
         logger.warn("Socket closed. Reconnecting...");
         setTimeout(initSocket, 2000);
-      }
+      };
     }
     initSocket();
   }

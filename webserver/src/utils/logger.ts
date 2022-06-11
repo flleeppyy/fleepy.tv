@@ -7,8 +7,8 @@
 import { pino } from "pino";
 
 /**
-* Creates a new pino logger
-*/
+ * Creates a new pino logger
+ */
 
 const pinoOptions: pino.LoggerOptions = {
   transport: {

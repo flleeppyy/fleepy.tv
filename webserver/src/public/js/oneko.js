@@ -17,7 +17,9 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
   let treatsEaten = 0;
   let treatBlobUrl;
   let showingAffection = false;
-  fetch("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAoUlEQVQ4T42TLQ6AMAyFN0eC5RRguBoeiedqGDgFlgQ3UtGlK6/d6rbuff1dDA22T0Nazjuip/BSPiQxnxHEBZB47t/MO54uaIgJ0GKmaAgEWGIE+QG0eL1S2MZ/HM6k8NQiy+YSgCwDvMgoiyIDLzKJyWQZspGR5yzH5e0WnEJr7e4e1CBIXDSRDq3LI0us7oEVmSHmJnofyM2And4XloAPYApt3qtwL7wAAAAASUVORK5CYII=").then(res => {
+  fetch(
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAoUlEQVQ4T42TLQ6AMAyFN0eC5RRguBoeiedqGDgFlgQ3UtGlK6/d6rbuff1dDA22T0Nazjuip/BSPiQxnxHEBZB47t/MO54uaIgJ0GKmaAgEWGIE+QG0eL1S2MZ/HM6k8NQiy+YSgCwDvMgoiyIDLzKJyWQZspGR5yzH5e0WnEJr7e4e1CBIXDSRDq3LI0us7oEVmSHmJnofyM2And4XloAPYApt3qtwL7wAAAAASUVORK5CYII=",
+  ).then(res => {
     res.blob().then(blob => {
       treatBlobUrl = window.URL.createObjectURL(blob);
     });
@@ -95,17 +97,17 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
     };
 
     const mousemovements = [];
-    nekoEl.onmousemove = function(ev) {
+    nekoEl.onmousemove = function (ev) {
       const { x, y } = getOffset(ev);
-      if (showingAffection) { 
+      if (showingAffection) {
         return;
       }
-      mousemovements.push([x,y]);
+      mousemovements.push([x, y]);
       clearTimeout(resetMouseMovementsTimeout);
       resetMouseMovementsTimeout = setTimeout(resetMouseMovements, 1000);
       if (mousemovements.length > 64) {
         // Calculate if the x coordinates in the array are very vigerous
-        
+
         showAffection();
         mousemovements.length = 0;
       }
@@ -158,7 +160,7 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
     idleAnimationFrame += 1;
   }
 
-  window.setOnekoSpeed = function(speed) {
+  window.setOnekoSpeed = function (speed) {
     nekoSpeed = speed;
     if (!idleTripped) {
       clearInterval(window.onekoInterval);
@@ -168,18 +170,18 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
 
   function getOffset(evt) {
     var el = evt.target,
-        x = 0,
-        y = 0;
-  
+      x = 0,
+      y = 0;
+
     while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
       x += el.offsetLeft - el.scrollLeft;
       y += el.offsetTop - el.scrollTop;
       el = el.offsetParent;
     }
-  
+
     x = evt.clientX - x;
     y = evt.clientY - y;
-  
+
     return { x: x, y: y };
   }
 
@@ -199,7 +201,8 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
     nekoAffectionEl.style.width = "24px";
     nekoAffectionEl.style.height = "24px";
     // background is a spritesheet, all one row, 12 frames.
-    nekoAffectionEl.style.backgroundImage = " url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAAYCAMAAABtA9DGAAAAD1BMVEUAAAAAAAD/ExP/yMi7ExMAQYTfAAAAAXRSTlMAQObYZgAAARVJREFUWMPtWMsOwzAIw+T/Pzllh2VTWuGtVV574ENVWS0mhAKNSCAQGAh8gL6V6xl+OjRy5DMyyM8I7Hh7yy/IrEkBQrUwawgQsfNVAYKY4FhRUDHPlUGwe/IRCsYzO1x3bQ2CG14UTK8VVBdNaaCNHjmsAOVbqMA+iF4802V+jg/Q3SFHeVVbtot+dgyQKn1TmUGlMkosn7lndqgu95OuK+agWV0Mfq9F2kRE86HFJNnKhuRdm6/4XZv3eWaH6nI/xxdpM1VH17K6fg4vQUyX+DljDiJTB5I4+yhJtmM+dOSZ7gs/x/+LkX2xnJd0MqrbNHPPG+ggydv3bvwPHHf4qX49EFh9BDL/L+EaH+dBgUDgb3ADb7yGY51HfjMAAAAASUVORK5CYII=')"
+    nekoAffectionEl.style.backgroundImage =
+      " url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAAYCAMAAABtA9DGAAAAD1BMVEUAAAAAAAD/ExP/yMi7ExMAQYTfAAAAAXRSTlMAQObYZgAAARVJREFUWMPtWMsOwzAIw+T/Pzllh2VTWuGtVV574ENVWS0mhAKNSCAQGAh8gL6V6xl+OjRy5DMyyM8I7Hh7yy/IrEkBQrUwawgQsfNVAYKY4FhRUDHPlUGwe/IRCsYzO1x3bQ2CG14UTK8VVBdNaaCNHjmsAOVbqMA+iF4802V+jg/Q3SFHeVVbtot+dgyQKn1TmUGlMkosn7lndqgu95OuK+agWV0Mfq9F2kRE86HFJNnKhuRdm6/4XZv3eWaH6nI/xxdpM1VH17K6fg4vQUyX+DljDiJTB5I4+yhJtmM+dOSZ7gs/x/+LkX2xnJd0MqrbNHPPG+ggydv3bvwPHHf4qX49EFh9BDL/L+EaH+dBgUDgb3ADb7yGY51HfjMAAAAASUVORK5CYII=')";
     nekoAffectionEl.style.imageRendering = "pixelated";
 
     // Heart animation
@@ -218,7 +221,7 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
       }
 
       if (affectionAnimationFrame == 8) {
-        affectionIdle = 5
+        affectionIdle = 5;
       }
     }, 100);
     nekoEl.appendChild(nekoAffectionEl);
@@ -421,27 +424,26 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
   placeTreatButton.mode = false;
   const placeTreatButtonMouseUp = () => {
     // if the element that the mouse is hovering over is a button
-    
 
     if (placeTreatButton.mode && placeTreatButton.tripped == false) {
       placeTreat(mousePosX, mousePosY);
     }
   };
 
-  placeTreatButton.onmousedown = (e) => {
+  placeTreatButton.onmousedown = e => {
     e.preventDefault();
     placeTreatButton.tripped = true;
 
     if (placeTreatButton.mode) {
       placeTreatButton.innerText = "Place Treats";
       placeTreatButton.mode = false;
-      document.removeEventListener("mouseup", placeTreatButtonMouseUp)
+      document.removeEventListener("mouseup", placeTreatButtonMouseUp);
     } else {
       placeTreatButton.innerText = "Stop Placing treats";
       document.addEventListener("mouseup", placeTreatButtonMouseUp);
       placeTreatButton.mode = true;
     }
-    setTimeout(() => placeTreatButton.tripped = false, 200)
+    setTimeout(() => (placeTreatButton.tripped = false), 200);
   };
 
   const br = () => document.createElement("br");

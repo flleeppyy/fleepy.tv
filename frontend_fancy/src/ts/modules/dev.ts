@@ -1,6 +1,6 @@
 export default async (): Promise<void> => {
-  const checkDev = await (await fetch("/dev")).text()
-  
+  const checkDev = await (await fetch("/dev")).text();
+
   if (checkDev === "1") {
     let cssBlob = await (await fetch("/css/styles.css")).blob();
     const stylesheet: HTMLLinkElement = document.querySelector("link[id='stl']");
@@ -12,12 +12,12 @@ export default async (): Promise<void> => {
     function initSocket() {
       socket = new WebSocket("ws://127.0.0.1:8081");
       let open = false;
-      
-      socket.onerror = function(ev) {
-        console.error(ev)
-      }
-      
-      socket.onmessage = async function(ev) {
+
+      socket.onerror = function (ev) {
+        console.error(ev);
+      };
+
+      socket.onmessage = async function (ev) {
         if (!open && ev.data == "hihi") {
           open = true;
           console.info("Socket connected");
@@ -35,8 +35,8 @@ export default async (): Promise<void> => {
         } catch (e) {
           console.error(e);
         }
-      }
-      socket.onclose = function(ev) {
+      };
+      socket.onclose = function (ev) {
         // if the page is reloading
         if (ev.code == 1001) {
           return;
@@ -47,7 +47,7 @@ export default async (): Promise<void> => {
         }
         console.warn("Socket closed. Reconnecting...");
         setTimeout(initSocket, 2000);
-      }
+      };
     }
     initSocket();
   }
