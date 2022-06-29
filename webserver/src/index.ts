@@ -137,7 +137,6 @@ const init = async () => {
         return;
       }
 
-      console.log(route);
       app.get("/" + route, async (req, res) => {
         res.type("text/html");
         await res.send(await eta.renderFileAsync(routeTemplate, {}));
