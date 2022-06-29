@@ -42,6 +42,14 @@ const init = async () => {
     },
   });
 
+  // All urls should not end with a slash except for the root
+  app.addHook("preHandler", (req, res, next) => {
+    if (req.raw.url.endsWith("/") && req.raw.url !== "/") {
+      res.redirect(301, req.raw.url.slice(0, -1));
+    }
+    next();
+  });
+
   // Catch fastify errors
   app.setErrorHandler((error, request, reply) => {
     reply.type("application/json");
@@ -118,7 +126,7 @@ const init = async () => {
         addRouteDir(path.join(dir, file), basedir);
         return;
       }
-      const route = path.join(path.relative(basedir, dir), file).replace(".ejs", "");
+      const route = path.join(path.relative(basedir, dir), file).replace(".ejs", "").replace(/\\/g, "/");
 
       const routeTemplate = `/views/${route}.ejs`;
       if (route === "index") {
@@ -129,6 +137,7 @@ const init = async () => {
         return;
       }
 
+      console.log(route);
       app.get("/" + route, async (req, res) => {
         res.type("text/html");
         await res.send(await eta.renderFileAsync(routeTemplate, {}));
@@ -168,8 +177,10 @@ const init = async () => {
     next();
   });
 
+  (await import("./api/index")).default(app);
   (await import("./api/links")).default(app);
   (await import("./api/subtitles")).default(app);
+  (await import("./api/modpacks")).default(app);
 
   app.setNotFoundHandler(async (req, res) => {
     res.type("text/html");
