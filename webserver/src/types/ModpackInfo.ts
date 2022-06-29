@@ -22,5 +22,6 @@ export type ModpackInfo = {
   // Information for the server installer
   server?: {
     ignoredMods?: string[];
-  };
+  },
+  versions: string[];
 };

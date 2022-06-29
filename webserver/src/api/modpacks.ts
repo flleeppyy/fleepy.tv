@@ -3,17 +3,21 @@ import fs from "fs";
 import path from "path";
 import semver, { SemVer } from "semver";
 import type { ModpackInfo } from "types/ModpackInfo";
-import type { ModpackInfoVersions } from "types/ModpackInfoVersions";
 import type { ModpackVersionSpec } from "types/ModpackVersionSpec";
+import { asyncFilter } from "utils/array";
 
 const modpackFolder = path.join(__dirname, "../../src/public/other_stuff/modpacks");
-const packFormatRegex = /(.*)-(?:(v\d{1,3}\.\d{1,2}\.\d{1,2}(?:-(?:[a-z]{1,12}\d{0,6})?)?)).(zip)/gm;
+const packFormatRegex = /(.*)-(?:(v\d{1,3}\.\d{1,2}\.\d{1,2}(?:-(?:[a-z]{1,12}\d{0,6})?)?)).(zip)/;
 // Usual pack formatting: "modpack-v1.2.3-beta1.zip", "modpack-v1.2.3-rc1.zip", "modpack-v1.2.3.zip", "modpack-v1.2.3-alpha1.zip"
 // All packs should contain an info.js file
 
 export default (app: FastifyInstance) => {
   app.get("/api/modpacks", async (req, res) => {
-    const packs = await fs.promises.readdir(modpackFolder);
+    const packs = await asyncFilter((await fs.promises.readdir(modpackFolder)), async (item) => {
+      const file = await fs.promises.stat(path.join(modpackFolder, item));
+      return file.isDirectory()
+    });
+
     return res.send(packs);
   });
 
@@ -33,8 +37,8 @@ export default (app: FastifyInstance) => {
 
       return res.send({
         ...(packInfo as ModpackInfo),
-        versions: processedPacks.filter(pack => pack !== null),
-      } as ModpackInfoVersions);
+        versions: processedPacks.filter(pack => pack !== null).map(e=>e.version),
+      } as ModpackInfo);
     } catch (error) {
       //@ts-ignore
       if (error.code === "ENOENT") {
@@ -68,7 +72,6 @@ export default (app: FastifyInstance) => {
     }
 
     try {
-      const packs = await fs.promises.readdir(path.join(modpackFolder, requestedPack));
       const processedPacks = await getPacks(requestedPack, true);
 
       const selectedPackVersion = semver
