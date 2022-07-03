@@ -2,9 +2,9 @@ import type { FastifyInstance } from "fastify";
 import fs from "fs";
 import path from "path";
 import semver, { SemVer } from "semver";
-import type { ModpackInfo } from "types/ModpackInfo";
-import type { ModpackVersionSpec } from "types/ModpackVersionSpec";
-import { asyncFilter } from "utils/array";
+import type { ModpackInfo } from "../types/ModpackInfo";
+import type { ModpackVersionSpec } from "../types/ModpackVersionSpec";
+import { asyncFilter } from "../utils/array";
 
 const modpackFolder = path.join(__dirname, "../../src/public/other_stuff/modpacks");
 const packFormatRegex = /(.*)-(?:(v\d{1,3}\.\d{1,2}\.\d{1,2}(?:-(?:[a-z]{1,12}\d{0,6})?)?)).(zip)/;
