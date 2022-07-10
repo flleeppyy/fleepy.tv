@@ -1,27 +1,27 @@
 export type ModpackInfo = {
+  // Unique Identifier for the pack
+  id: string,
   // Name of the modpack
-  name: string;
+  name: string,
   // Description of the modpack
-  description: string;
+  description: string,
   // Authors
-  authors?: string[];
+  authors?: string[],
   // Modpack's Minecraft version
-  minecraftVersion: string;
+  minecraftVersion: string,
   // Modpack's Forge version
-  forgeVersion: string;
+  forgeVersion: string,
   // Base directory inside the zip folder where the minecraft folder is located.
-  baseMinecraftFolder: string | ".";
+  baseMinecraftFolder: string | ".",
   // A note or list of notes
-  notes?: string | string[];
+  notes?: string | string[],
   // The launcher preferred for the modpack. Preferred launcher usually provides better integration with instance options
-  preferredLauncher: "polymc";
+  preferredLauncher: "polymc",
   // Type of modpack, usually "polymc", "multimc", "curseforge", "ftb"
-  type?: string;
+  type?: string,
   // A link to the icon of the pack
-  icon?: string;
+  icon?: string,
   // Information for the server installer
-  server?: {
-    ignoredMods?: string[];
-  },
-  versions: string[];
-};
+  server?: ServerOptions,
+  versions: string[],
+}
