@@ -7,12 +7,12 @@ import type { ModpackVersionSpec } from "../types/ModpackVersionSpec";
 import { asyncFilter } from "../utils/array";
 
 const modpackFolder = path.join(__dirname, "../../src/public/other_stuff/modpacks");
-const packFormatRegex = /(.*)-(?:(v\d{1,3}\.\d{1,2}\.\d{1,2}(?:-(?:[a-z]{1,12}\d{0,6})?)?)).(zip)/;
+export const packFormatRegex = /(.*)-(?:(v\d{1,3}\.\d{1,2}\.\d{1,2}(?:-(?:[a-z]{1,12}\d{0,6})?)?)).(zip|tar\.gz)/;
 // Usual pack formatting: "modpack-v1.2.3-beta1.zip", "modpack-v1.2.3-rc1.zip", "modpack-v1.2.3.zip", "modpack-v1.2.3-alpha1.zip"
 // All packs should contain an info.js file
 
 export default (app: FastifyInstance) => {
-  app.get("/api/modpacks", async (req, res) => {
+  app.get("/api/v1/modpacks", async (req, res) => {
     const packs = await asyncFilter((await fs.promises.readdir(modpackFolder)), async (item) => {
       const file = await fs.promises.stat(path.join(modpackFolder, item));
       return file.isDirectory()
@@ -21,17 +21,17 @@ export default (app: FastifyInstance) => {
     return res.send(packs);
   });
 
-  app.get("/api/modpacks/:pack", async (req, res) => {
+  app.get("/api/v1/modpacks/:pack", async (req, res) => {
     const requestedPack = req.params["pack"];
     try {
       const files = await fs.promises.readdir(path.join(modpackFolder, requestedPack));
       const processedPacks = await getPacks(requestedPack, false);
 
       const packInfo = {};
-      if (files.includes("info.json")) {
+      if (files.includes("pack.json")) {
         Object.assign(
           packInfo,
-          JSON.parse(fs.readFileSync(path.join(modpackFolder, requestedPack, "info.json"), "utf8")),
+          JSON.parse(fs.readFileSync(path.join(modpackFolder, requestedPack, "pack.json"), "utf8")),
         );
       }
 
@@ -60,7 +60,7 @@ export default (app: FastifyInstance) => {
    * @param pack The pack
    * @queryparam prerelease The prerelease type to return the latest version of. Defaults to stable, meaning no prerelease
    */
-  app.get("/api/modpacks/:pack/latest", async (req, res) => {
+  app.get("/api/v1/modpacks/:pack/latest", async (req, res) => {
     const requestedPack = req.params["pack"];
     const releaseType: "alpha" | "beta" | "rc" | "any" | "stable" = req.query["prerelease"] || "stable";
 
@@ -116,7 +116,7 @@ export default (app: FastifyInstance) => {
    * @param pack The pack requested
    * @param version This can be a valid semver spec, or a keyword that represents a prerelease.
    */
-  app.get("/api/modpacks/:pack/:version", async (req, res) => {
+  app.get("/api/v1/modpacks/:pack/:version", async (req, res) => {
     const requestedPack = req.params["pack"];
     const requestedVersion = req.params["version"];
     const processedPacks = await getPacks(requestedPack, true);
@@ -144,11 +144,11 @@ export default (app: FastifyInstance) => {
  * Basically converting to valid semver
  * @param brokenversion invalid semver version but good enough to fix with this function
  */
-function processVersion(brokenversion: string, returnSemver?: true): semver.SemVer | null;
-function processVersion(brokenversion: string, returnSemver?: false): string | null;
-function processVersion(brokenversion: string): string | null;
-function processVersion(brokenversion: string, returnSemver: boolean): string | semver.SemVer | null;
-function processVersion(brokenversion: string, returnSemver: boolean = false): string | semver.SemVer | null {
+export function processVersion(brokenversion: string, returnSemver?: false): string | null;
+export function processVersion(brokenversion: string, returnSemver?: true): semver.SemVer | null;
+export function processVersion(brokenversion: string): string | null;
+export function processVersion(brokenversion: string, returnSemver: boolean): string | semver.SemVer | null;
+export function processVersion(brokenversion: string, returnSemver: boolean = false): string | semver.SemVer | null {
   const regex = /v(\d{1,3}\.\d{1,2}\.\d{1,2}-?(?:[a-z]{1,12}\d{0,6})?)/;
   const match = regex.exec(brokenversion);
   if (!match) {

@@ -23,5 +23,6 @@ export type ModpackInfo = {
   icon?: string,
   // Information for the server installer
   server?: ServerOptions,
+  // Should not be added to pack.json, only used for api purposes
   versions: string[],
 }

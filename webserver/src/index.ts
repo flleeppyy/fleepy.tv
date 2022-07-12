@@ -180,6 +180,8 @@ const init = async () => {
   (await import("./api/links")).default(app);
   (await import("./api/subtitles")).default(app);
   (await import("./api/modpacks")).default(app);
+  (await import("./api/modpacksv2")).default(app);
+
 
   app.setNotFoundHandler(async (req, res) => {
     res.type("text/html");
