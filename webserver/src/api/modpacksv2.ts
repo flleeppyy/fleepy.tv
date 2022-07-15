@@ -169,16 +169,26 @@ class ModpackHandler {
     return latest;
   }
 
-  public GetPackVersion(id: string, version: string) {
+  public GetPackVersion(id: string, version: string, smver: boolean = false): ModpackVersionSpec<SemVer | string> {
     const pack = this.modpacks.find(e => e.pack.id == id);
     if (!pack) {
       return;
     }
     const packVersion = pack.versions.find(e => semver.compare(e.version, version) == 0);
+
     if (!packVersion) {
       return;
     }
-    return packVersion;
+
+    const clonedPackVersion = {...packVersion};
+
+    if (!smver) {
+      // Because they told me using @ts-ignore above packVersion.version = packVersion.version.version was not a good idea
+      Object.assign(clonedPackVersion, {
+        version: clonedPackVersion.version.version,
+      });
+    }
+    return clonedPackVersion;
   }
 
 }
@@ -236,7 +246,7 @@ export default (app: FastifyInstance) => {
         } else if (releaseType === "any") {
           return true;
         } else {
-          return v.prerelease[0] === releaseType;
+          return v.prerelease?.[0] === releaseType;
         }
       })
       .map(e => e.version)[0];
