@@ -119,7 +119,6 @@ class ModpackHandler {
         continue;
       }
     }
-    console.log(packs);
     this.modpacks = packs;
   }
 
