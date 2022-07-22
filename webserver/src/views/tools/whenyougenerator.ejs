@@ -1,0 +1,74 @@
+<% layout("../../layouts/default.ejs", {
+  title: "When You Generator",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %>
+  <div class="box">
+    <label for="amount">How many?</label>
+    <input type="number" id="amount" min="2">
+    <button id="generate">Generate</button>
+
+    <span id="result">
+
+    </span>
+  </div>
+
+  <script>
+    document.querySelector("#generate").addEventListener("click", function() {
+      const amount = document.querySelector("#amount").value;
+      const result = document.querySelector("#result");
+      result.innerHTML = generateWhenYou(amount);
+      result.classList.add("balls")
+    });
+
+    const whenyou = ["when", "you"];
+    function generateWhenYou(length) {
+      let final = [];
+      for (let i = 0; i < length - 2; i++) {
+        const random = Math.floor(Math.random() * whenyou.length);
+        final.push(whenyou[random]);
+      }
+      return (whenyou.join(" ") + " " + final.join(" ")).trim();
+    }
+  </script>
+
+  <style>
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box > *:not(:last-child) {
+      margin: 4px 0;
+    }
+
+    button {
+      /* width: 280px; */
+      /* height: 100px; */
+      border: 1px solid black;
+      border-radius: 5px;
+      /* margin: 10px; */
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      background: #2C1744;
+    }
+
+    input {
+      width: 80px;
+      color: black;
+    }
+
+    .balls {
+      max-width: 800px;
+      background: #59387e;
+      padding: 4px;
+    }
+  </style>
+</div>
