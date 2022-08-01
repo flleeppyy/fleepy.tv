@@ -44,7 +44,7 @@ const init = async () => {
 
   // All urls should not end with a slash except for the root
   app.addHook("preHandler", (req, res, next) => {
-    if (req.raw.url.endsWith("/") && req.raw.url !== "/") {
+    if (req.raw.url.endsWith("/") && req.raw.url !== "/" && !req.raw.includes("fleepy.tv/fancy")) {
       res.redirect(301, req.raw.url.slice(0, -1));
     }
     next();
