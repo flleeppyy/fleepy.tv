@@ -2,7 +2,7 @@ export default async (): Promise<void> => {
   const checkDev = await (await fetch("/dev")).text();
 
   if (checkDev === "1") {
-    let cssBlob = await (await fetch("/css/styles.css")).blob();
+    let cssBlob = await (await fetch("css/main.css")).blob();
     const stylesheet: HTMLLinkElement = document.querySelector("link[id='stl']");
     stylesheet.href = URL.createObjectURL(cssBlob);
     let socket;
