@@ -73,12 +73,12 @@ class ModpackHandler {
           ) as ModpackInfo;
         } catch (error) {
           if (error instanceof SyntaxError) {
-            console.error(`Could not parse pack.json for ${folder}.`, error);
+            console.debug(`Could not parse pack.json for ${folder}.`, error);
             // @ts-ignore
           } else if (error.code == "ENOENT") {
-            console.error(`Pack.json does not exist for ${folder}.`, error);
+            console.debug(`pack.json does not exist for ${folder}.`);
           } else {
-            console.error(`Error reading pack.json for ${folder}.`, error);
+            console.error(`Error reading pack.json for ${folder}.`);
           }
           continue;
         }
