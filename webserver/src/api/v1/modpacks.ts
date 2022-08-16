@@ -6,7 +6,7 @@ import type { ModpackInfo } from "../../types/ModpackInfo";
 import type { ModpackVersionSpec } from "../../types/ModpackVersionSpec";
 import { asyncFilter } from "../../utils/array";
 
-const modpackFolder = path.join(__dirname, "../../src/public/other_stuff/modpacks");
+const modpackFolder = path.join(__dirname, "../../../src/public/other_stuff/modpacks");
 export const packFormatRegex = /(.*)-(?:(v\d{1,3}\.\d{1,2}\.\d{1,2}(?:-(?:[a-z]{1,12}\d{0,6})?)?)).(zip|tar\.gz)/;
 // Usual pack formatting: "modpack-v1.2.3-beta1.zip", "modpack-v1.2.3-rc1.zip", "modpack-v1.2.3.zip", "modpack-v1.2.3-alpha1.zip"
 // All packs should contain an info.js file

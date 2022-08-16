@@ -197,7 +197,7 @@ const uuidRegex = /\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f
 
 export default (app: FastifyInstance) => {
   const modpackHandler: ModpackHandler = new ModpackHandler(
-    path.join(__dirname, "../../src/public/other_stuff/modpacks"),
+    path.join(__dirname, "../../../src/public/other_stuff/modpacks"),
   );
 
   app.get("/api/v2/modpacks", async (req, res) => {
