@@ -8,4 +8,4 @@ export default (app: FastifyInstance) => {
   app.post("/api/v1/ping", async (req, res) => {
     return res.send("pong");
   });
-}
+};

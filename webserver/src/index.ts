@@ -5,8 +5,8 @@ import fs from "fs";
 import path from "path";
 import * as eta from "eta";
 import crypto from "crypto";
-import { randomSubtitle } from "./api/subtitles";
-import { links } from "./api/links";
+import { randomSubtitle } from "./api/v1/subtitles";
+import { links } from "./api/v1/links";
 import { logger } from "./utils/logger";
 import devWebSocket from "./utils/devSocket";
 
@@ -176,12 +176,11 @@ const init = async () => {
     next();
   });
 
-  (await import("./api/index")).default(app);
-  (await import("./api/links")).default(app);
-  (await import("./api/subtitles")).default(app);
-  (await import("./api/modpacks")).default(app);
-  (await import("./api/modpacksv2")).default(app);
-
+  await (await import("./api/index")).default(app);
+  // (await import("./api/v1/links")).default(app);
+  // (await import("./api/v1/subtitles")).default(app);
+  // (await import("./api/v1/modpacks")).default(app);
+  // (await import("./api/v2/modpacks")).default(app);
 
   app.setNotFoundHandler(async (req, res) => {
     res.type("text/html");

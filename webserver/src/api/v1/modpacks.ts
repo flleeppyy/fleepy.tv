@@ -2,9 +2,9 @@ import type { FastifyInstance } from "fastify";
 import fs from "fs";
 import path from "path";
 import semver, { SemVer } from "semver";
-import type { ModpackInfo } from "../types/ModpackInfo";
-import type { ModpackVersionSpec } from "../types/ModpackVersionSpec";
-import { asyncFilter } from "../utils/array";
+import type { ModpackInfo } from "../../types/ModpackInfo";
+import type { ModpackVersionSpec } from "../../types/ModpackVersionSpec";
+import { asyncFilter } from "../../utils/array";
 
 const modpackFolder = path.join(__dirname, "../../src/public/other_stuff/modpacks");
 export const packFormatRegex = /(.*)-(?:(v\d{1,3}\.\d{1,2}\.\d{1,2}(?:-(?:[a-z]{1,12}\d{0,6})?)?)).(zip|tar\.gz)/;
@@ -13,9 +13,9 @@ export const packFormatRegex = /(.*)-(?:(v\d{1,3}\.\d{1,2}\.\d{1,2}(?:-(?:[a-z]{
 
 export default (app: FastifyInstance) => {
   app.get("/api/v1/modpacks", async (req, res) => {
-    const packs = await asyncFilter((await fs.promises.readdir(modpackFolder)), async (item) => {
+    const packs = await asyncFilter(await fs.promises.readdir(modpackFolder), async item => {
       const file = await fs.promises.stat(path.join(modpackFolder, item));
-      return file.isDirectory()
+      return file.isDirectory();
     });
 
     return res.send(packs);
@@ -37,7 +37,7 @@ export default (app: FastifyInstance) => {
 
       return res.send({
         ...(packInfo as ModpackInfo),
-        versions: processedPacks.filter(pack => pack !== null).map(e=>e.version),
+        versions: processedPacks.filter(pack => pack !== null).map(e => e.version),
       } as ModpackInfo);
     } catch (error) {
       //@ts-ignore
