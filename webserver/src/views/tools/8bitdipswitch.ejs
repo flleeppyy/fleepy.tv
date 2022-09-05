@@ -10,6 +10,7 @@
     <h2>Value:
       <span id="results">0</span>
     </h2>
+    <h3>Binary Value: <span id="resultsbutbinary">000000</span></h2>
 
     <div id="switches"></div>
   </div>
@@ -58,14 +59,17 @@
 
     function calc() {
       let val = 0;
+      const h = [];
       [...document.querySelector("#switches").children].forEach(function (child) {
-        console.log(child);
         if (child.classList.contains("on")) {
           val += Number(child.getAttribute("value"));
-        }
+          h.push(1);
+        } else 
+          h.push(0);
       });
 
       document.querySelector("#results").innerHTML = val;
+      document.querySelector("#resultsbutbinary").innerHTML = h.join("");
     }
   </script>
   <style>
@@ -73,6 +77,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 8px;
     }
 
     #switches > .switch {
@@ -85,6 +90,7 @@
 
     .switch > img {
       width: 36px;
+      cursor: pointer;
     }
   </style>
 
