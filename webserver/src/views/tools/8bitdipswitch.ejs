@@ -1,0 +1,97 @@
+<% layout("../../layouts/default.ejs", {
+  title: "8 bit dip switch binary calculator because it doesnt exist already",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %>
+  <div class="box">
+    <p>8 bit dip switch binary calculator because it doesnt exist already</p>
+    <h2>Value:
+      <span id="results">0</span>
+    </h2>
+    <h3>Binary Value: <span id="resultsbutbinary">000000</span></h2>
+
+    <div id="switches"></div>
+  </div>
+
+  <script>
+    const bits = [
+      128,
+      64,
+      32,
+      16,
+      8,
+      4,
+      2,
+      1
+    ];
+
+    for (let i = 0; i < bits.length; i++) {
+      // <div class="switch">
+      // <img src="/img/switch1.png">
+      // <p>1</p>
+      // </div>
+      const switchEl = document.createElement("div");
+      switchEl.classList.add("switch");
+
+      const switchImage = document.createElement("img");
+      switchImage.src = "/img/switch1.png";
+
+      switchEl.setAttribute("value", bits[i]);
+
+      const switchLabel = document.createElement("p");
+      switchLabel.innerHTML = bits[i];
+
+      switchEl.appendChild(switchImage);
+      switchEl.appendChild(switchLabel);
+
+      document.querySelector("#switches").append(switchEl);
+
+      switchImage.onclick = function () {
+        if (switchEl.classList.contains("on")) {
+          switchEl.classList.remove("on");
+        } else {
+          switchEl.classList.add("on");
+        } calc();
+      }
+    }
+
+    function calc() {
+      let val = 0;
+      const h = [];
+      [...document.querySelector("#switches").children].forEach(function (child) {
+        if (child.classList.contains("on")) {
+          val += Number(child.getAttribute("value"));
+          h.push(1);
+        } else 
+          h.push(0);
+      });
+
+      document.querySelector("#results").innerHTML = val;
+      document.querySelector("#resultsbutbinary").innerHTML = h.join("");
+    }
+  </script>
+  <style>
+    #switches {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    #switches > .switch {
+      padding: 0 4px;
+    }
+
+    .switch.on > img {
+      transform: rotate(180deg);
+    }
+
+    .switch > img {
+      width: 36px;
+      cursor: pointer;
+    }
+  </style>
+
+</div>

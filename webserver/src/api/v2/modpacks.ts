@@ -2,10 +2,10 @@ import type { FastifyInstance } from "fastify";
 import fs from "fs";
 import path from "path";
 import semver, { SemVer } from "semver";
-import type { ModpackInfo } from "../types/ModpackInfo";
-import type { ModpackVersionSpec } from "../types/ModpackVersionSpec";
-import { asyncFilter } from "../utils/array";
-import { packFormatRegex, processVersion } from "./modpacks";
+import type { ModpackInfo } from "../../types/ModpackInfo";
+import type { ModpackVersionSpec } from "../../types/ModpackVersionSpec";
+import { asyncFilter } from "../../utils/array";
+import { packFormatRegex, processVersion } from "../v1/modpacks";
 
 /**
  * Modpack folder Specification
@@ -39,7 +39,7 @@ type InternalModpack = {
   pack: ModpackInfo;
   // Versions contained in the pack
   versions: ModpackVersionSpec<SemVer>[];
-}
+};
 
 class ModpackHandler {
   modpacks: InternalModpack[];
@@ -60,7 +60,7 @@ class ModpackHandler {
    * This function rebuilds the Modpack list, and should not be called often
    */
   private async ProcessPacks() {
-    const packs: InternalModpack[] = []
+    const packs: InternalModpack[] = [];
     const folders = await fs.promises.readdir(this.modpackFolder);
     for (const folder of folders) {
       try {
@@ -69,16 +69,16 @@ class ModpackHandler {
         let packInfo;
         try {
           packInfo = JSON.parse(
-            await fs.promises.readFile(path.join(packLocation, "pack.json"), "utf-8")
+            await fs.promises.readFile(path.join(packLocation, "pack.json"), "utf-8"),
           ) as ModpackInfo;
         } catch (error) {
           if (error instanceof SyntaxError) {
-            console.error(`Could not parse pack.json for ${folder}.`, error);
+            console.debug(`Could not parse pack.json for ${folder}.`, error);
             // @ts-ignore
           } else if (error.code == "ENOENT") {
-            console.error(`Pack.json does not exist for ${folder}.`, error);
+            console.debug(`pack.json does not exist for ${folder}.`);
           } else {
-            console.error(`Error reading pack.json for ${folder}.`, error);
+            console.error(`Error reading pack.json for ${folder}.`);
           }
           continue;
         }
@@ -149,7 +149,7 @@ class ModpackHandler {
         id: e.pack.id,
         name: e.pack.name,
         folderName: e.locationName,
-      }
+      };
     });
     return _;
   }
@@ -159,9 +159,11 @@ class ModpackHandler {
     if (!pack) {
       return;
     }
-    const latest = pack.versions.sort((a, b) => {
-      return semver.compare(b.version, a.version);
-    }).shift();
+    const latest = pack.versions
+      .sort((a, b) => {
+        return semver.compare(b.version, a.version);
+      })
+      .shift();
     if (!latest) {
       return;
     }
@@ -179,7 +181,7 @@ class ModpackHandler {
       return;
     }
 
-    const clonedPackVersion = {...packVersion};
+    const clonedPackVersion = { ...packVersion };
 
     if (!smver) {
       // Because they told me using @ts-ignore above packVersion.version = packVersion.version.version was not a good idea
@@ -189,13 +191,14 @@ class ModpackHandler {
     }
     return clonedPackVersion;
   }
-
 }
 
 const uuidRegex = /\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/;
 
 export default (app: FastifyInstance) => {
-  const modpackHandler: ModpackHandler = new ModpackHandler(path.join(__dirname, "../../src/public/other_stuff/modpacks"));
+  const modpackHandler: ModpackHandler = new ModpackHandler(
+    path.join(__dirname, "../../../src/public/other_stuff/modpacks"),
+  );
 
   app.get("/api/v2/modpacks", async (req, res) => {
     const packs = modpackHandler.GetModpacksBasic();
@@ -203,19 +206,19 @@ export default (app: FastifyInstance) => {
   });
 
   app.get("/api/v2/modpacks/:id", async (req, res) => {
-      // return res.send({
-      //   error: "Invalid ID",
-      //   note: "If you're using a regular name string such as 'minecraft-modpack-name', please use the ID instead",
-      // });
+    // return res.send({
+    //   error: "Invalid ID",
+    //   note: "If you're using a regular name string such as 'minecraft-modpack-name', please use the ID instead",
+    // });
 
-      const id = req.params["id"];
-      const {pack} = modpackHandler.GetPackByID(id) || modpackHandler.GetPackByFolderName(req.params["id"]);
-      if (!pack) {
-        return res.status(404).send({
-          error: "Pack not found",
-        });
-      }
-      return res.send(pack);
+    const id = req.params["id"];
+    const { pack } = modpackHandler.GetPackByID(id) || modpackHandler.GetPackByFolderName(req.params["id"]);
+    if (!pack) {
+      return res.status(404).send({
+        error: "Pack not found",
+      });
+    }
+    return res.send(pack);
   });
 
   app.get("/api/v2/modpacks/:id/latest", async (req, res) => {
@@ -279,5 +282,4 @@ export default (app: FastifyInstance) => {
 
     return res.send(pack);
   });
-
 };

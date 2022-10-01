@@ -1,5 +1,5 @@
 export default async () => {
-  const apiUrl = await fetch("/api/subtitles");
+  const apiUrl = await fetch("/api/v1/subtitles");
   const subtitles = await apiUrl.json();
 
   const ST = $("#subtitle");

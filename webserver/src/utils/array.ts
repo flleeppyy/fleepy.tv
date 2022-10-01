@@ -4,4 +4,4 @@ export const asyncFilter = async (arr: any[], predicate: (value: any, index: num
   const results = await Promise.all(arr.map(predicate));
 
   return arr.filter((_v: any, index: string | number) => results[index]);
-}
+};

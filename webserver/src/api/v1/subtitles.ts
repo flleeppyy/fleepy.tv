@@ -38,7 +38,7 @@ export const subtitles = [
 export const randomSubtitle = () => subtitles[Math.floor(Math.random() * subtitles.length)];
 
 export default (app: FastifyInstance) => {
-  app.get("/api/subtitles", (req, res) => {
+  app.get("/api/v1/subtitles", (req, res) => {
     res.send({
       subtitles,
     });
