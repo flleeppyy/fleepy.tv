@@ -5,7 +5,7 @@
 
 <div class="body">
   <%~ includeFile("../partials/nameheader.ejs"); %>
-  <%~ includeFile("../partials/navbar.ejs"); %> 
+  <%~ includeFile("../partials/navbar.ejs"); %>
   <div class="box" id="linksTable">
     <table>
       <tbody>
@@ -32,22 +32,22 @@
     </a>
   </div>
   <% // Ignore all the errors below. its just the html parser shitting a brick. its all valid tho %>
-  
+
   <div class="box" id="linksAsBadges" style="display: none;">
     <p>links as badges so it looks cooler</p>
     <% E.globalConstants.links.forEach((element, index) => { %>
-      <% if (index % 4 == 3 ) { %> 
+      <% if (index % 4 == 3 ) { %>
         <br>
       <% } %>
       <a href="<%= element.href %>" alt="<%= element.title %>">
         <img src="<%= element.badgeUrl %>">
       </a>
-    <% }) %> 
+    <% }) %>
   </div>
   <script>
     document.getElementById("linksAsBadges").style.display = "inherit";
   </script>
-    
+
   <p style="text-align: center; margin: 12px 0">
     Inspired by
     <a class="link" href="https://foxwells.garden">foxwells.garden</a> and
@@ -70,6 +70,11 @@
     <a href="https://espi.me">
       <img src="/img/espi.png" alt="sys.ini">
     </a>
+    <p>random buttons and services to make it seem like i have more friends</p>
+    <a href="https://distrowatch.com">
+      <img src="/img/linux.gif" alt="Linux Directory! Click here! Featuring a penguin that winks at you">
+    </a>
+
   </footer>
 </div>
 <script src="/js/oneko.js?<%= E.globalConstants.fakeHash%>"></script>

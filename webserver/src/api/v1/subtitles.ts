@@ -21,18 +21,21 @@ export const subtitles = [
   "owo",
   "òwó",
   "I spend my time not watching anime, but writing bad code",
-  "my music is the definition of hot garbage",
   "my music is the hottest garbage",
   "hot garbage",
   "did you know, if you stop thinking, you wont be able to think?",
-  "i love yuri",
   "cute and stupid.",
   "i may be stupid",
   "i may have the stupid",
   "h",
-  "dance the pain away",
   "when you when when you you when you when",
-  "chen, you're broke, stop asking for free things"
+  "chen, you're broke, stop asking for free things",
+  "i want more hardware",
+  "estrogen",
+  "splish splash your opinion is trash",
+  "trans rights!",
+  "hjkhgjkfdjkdhfgkhjgdfjkhgdfjkhdg",
+  "very \"dedicated\" and \"motivated\""
 ];
 
 export const randomSubtitle = () => subtitles[Math.floor(Math.random() * subtitles.length)];
