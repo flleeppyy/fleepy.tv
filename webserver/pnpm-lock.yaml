@@ -13,7 +13,7 @@ specifiers:
   fastify-static: 4.6.1
   pino: ^7.11.0
   pino-pretty: ^8.0.0
-  typescript: ^4.7.3
+  typescript: ^4.7.4
   ws: ^8.8.0
 
 dependencies:
@@ -29,7 +29,7 @@ dependencies:
   fastify-static: 4.6.1
   pino: 7.11.0
   pino-pretty: 8.0.0
-  typescript: 4.7.3
+  typescript: 4.9.4
   ws: 8.8.0
 
 packages:
@@ -911,8 +911,8 @@ packages:
     engines: {node: '>=0.6'}
     dev: false
 
-  /typescript/4.7.3:
-    resolution: {integrity: sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==}
+  /typescript/4.9.4:
+    resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: false
