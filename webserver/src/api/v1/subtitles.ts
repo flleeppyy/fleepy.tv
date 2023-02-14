@@ -5,7 +5,6 @@ export const subtitles = [
   "yeah i make music, but is it good?",
   "bad coding practices all around",
   "i like synthesizers",
-  "i want a Mother 32 and a DFAM, but i have no money",
   "i love chen touhou :3",
   "i absolutely adore chen touhou",
   "chen touhou is very cute!",
@@ -18,7 +17,6 @@ export const subtitles = [
   "do you ever just feel like afdlkajshdfkajwefiueafhiew woefhawefijw",
   "sleep schedule? what's that",
   "uwu?",
-  "owo",
   "òwó",
   "I spend my time not watching anime, but writing bad code",
   "my music is the hottest garbage",
@@ -38,7 +36,9 @@ export const subtitles = [
   "very \"dedicated\" and \"motivated\"", 
   "{CHEN.SUBTITLE}", // hehe they'll think it's broken
   "can i borrow your oreos", 
-  "kitchen GUN", 
+  "kitchen GUN",
+  "free pianos!",
+  "aperature science" 
 ];
 
 export const randomSubtitle = () => subtitles[Math.floor(Math.random() * subtitles.length)];
