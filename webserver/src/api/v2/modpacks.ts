@@ -196,8 +196,13 @@ class ModpackHandler {
 const uuidRegex = /\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/;
 
 export default (app: FastifyInstance) => {
+  const packFolder = path.join(__dirname, "../../../src/public/other_stuff/modpacks");
+  if (!fs.existsSync(packFolder))
+    fs.mkdirSync(packFolder, {
+      recursive: true,
+    });
   const modpackHandler: ModpackHandler = new ModpackHandler(
-    path.join(__dirname, "../../../src/public/other_stuff/modpacks"),
+    packFolder,
   );
 
   app.get("/api/v2/modpacks", async (req, res) => {
