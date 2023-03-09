@@ -1,0 +1,66 @@
+<% layout("../../layouts/default.ejs", {
+    title: "Redirection Tool",
+  }) %>
+  
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %>
+  <div class="box">
+    <h2>Redirection Tool</h2>
+    <p>Typical Uses: Browsers that don't have an address bar,<br>such as the browser built into Google Display devices</p>
+    <div>
+      <label for="urlBox">Valid URL</label>
+      <input type="text" id="urlbox">
+    </div>
+    <div>
+      <label for="target" >Target</label>
+      <select id="target" name="Target">
+        <option value="_self">_self (default)</option>
+        <option value="_blank">_blank</option>
+        <option value="_parent">_parent</option>
+        <option value="_top">_top</option>
+      </select>
+    </div>
+    <button onclick="done(event)" id="donebutton">Create</button>
+    <p>Output url: <a href="https://example.com" id="output">https://example.com</a></p>
+  </div>
+  <script>
+    function done(event) {
+      event.preventDefault();
+      const inputEl = document.getElementById("urlbox");
+      const outputEl = document.getElementById("output");
+      const targetSelectEl = document.getElementById("target");
+      try {
+        const url = new URL(inputEl.value);
+
+        outputEl.href = "";
+        outputEl.innerText = "...";
+        outputEl.target = "";
+        setTimeout(() => {
+          outputEl.href = url.toString();
+          outputEl.innerText = url.toString();
+          outputEl.target = targetSelectEl.value;
+        }, 100)
+      } catch (e) {
+        outputEl.href = "";
+        outputEl.innerText = "Invalid URL";
+      }
+    }
+  </script>
+  <style>
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 8px;
+    }
+    .box > * {
+      margin: 4px 0;
+    }
+
+    #donebutton {
+      cursor: pointer;
+    }
+  </style>
+</div>
