@@ -7,7 +7,12 @@
   <%~ includeFile("../../partials/navbar.ejs"); %>
   <div class="box">
     <h2>Redirection Tool</h2>
-    <p>Typical Uses: Browsers that don't have an address bar,<br>such as the browser built into Google Display devices</p>
+    <p>
+      Typical Uses: Browsers that don't have an address bar, such as<br>
+      the browser built into Google Display devices, or you're on a<br>
+      locked-down device but able to access this page, and just want to<br>
+      screw around and see what you can access
+    </p>
     <div>
       <label for="urlBox">Valid URL</label>
       <input type="text" id="urlbox">
@@ -23,6 +28,48 @@
     </div>
     <button onclick="done(event)" id="donebutton">Create</button>
     <p>Output url: <a href="https://example.com" id="output">https://example.com</a></p>
+    <br>
+    <h2>Quick/Common links</h2>
+    <div class="box">
+      <a href="https://www.whatismybrowser.com/">https://www.whatismybrowser.com/</a>
+      <a href="https://www.google.com/">https://www.google.com/</a>
+      <a href="https://www.duckduckgo.com/">https://www.duckduckgo.com/</a>
+      <a href="https://www.youtube.com/">https://www.youtube.com/</a>
+      <a href="https://canary.discord.com/">https://canary.discord.com/</a>
+      <a href="https://archive.org/">https://archive.org/</a>
+    </div>
+    <h2>Quick Android Shortcuts</h2>
+    <div class="box" id="quickandroidshortcuts">      
+      <div>
+        <a href="geo:38.5765314,-121.482449">geo:38.5765314,-121.482449</a><br>
+        <label>Sacramento LGBT Community Center</label>
+      </div>
+      <div>
+        <a href="https://play.google.com/store/apps/details?id=com.google.android.youtube">https://play.google.com/store/apps/details?id=com.google.android.youtube</a>
+        <label>YouTube on Google Play store Website</label>
+      </div>
+      <div>
+        <a href="market://details?id=com.google.android.youtube">market://details?id=com.google.android.youtube</a>
+        <label>YouTube on Google Play Store</label>
+      </div>
+      <%
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = (today.getMonth() + 1).toString().padStart(2, '0');
+        let day = today.getDate().toString().padStart(2, '0');
+        let formattedDate = year + month + day;
+      %>
+
+      <div style="text-align:center;">
+        <a href="intent://settings/#Intent;end">intent://settings/#Intent;end</a><br>
+        <a href="intent://com.android.settings/#Intent;end">intent://com.android.settings/#Intent;end</a><br>
+        <a href="intent://#Intent;action=android.settings.SETTINGS;end">intent://#Intent;action=android.settings.SETTINGS;end</a><br>
+        <a href="intent://#Intent;component=com.android.settings/.Settings;end">intent://#Intent;component=com.android.settings/.Settings;end</a><br>
+        <label>Attempt to open system settings</label>
+        <label>This may crash the web browser</label>
+      </div>
+      
+    </div>
   </div>
   <script>
     function done(event) {
@@ -55,8 +102,26 @@
       flex-direction: column;
       margin-top: 8px;
     }
+
+    #quickandroidshortcuts > div > * {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    
     .box > * {
       margin: 4px 0;
+    }
+
+    .box > div {
+      align-items: center;
+      margin: 0 0;
+    }
+
+    #quickandroidshortcuts > * {
+      margin: 8px 0;
     }
 
     #donebutton {
