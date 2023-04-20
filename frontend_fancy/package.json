@@ -19,10 +19,10 @@
     "browserify": "^17.0.0",
     "color": "^3.2.1",
     "jquery": "^3.6.4",
-    "sass": "^1.58.3",
+    "sass": "^1.62.0",
     "toastr": "^2.1.4",
     "tsify": "^5.0.4",
-    "typed.js": "^2.0.12",
+    "typed.js": "^2.0.15",
     "typescript": "^4.9.5",
     "uglify-js": "^3.17.4"
   }
