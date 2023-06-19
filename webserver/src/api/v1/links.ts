@@ -7,7 +7,7 @@ export const links = [
     icon: "img/icons/bandcamp.png",
     bgColor: "#4B5154",
     textColor: "white",
-    badgeUrl: "/img/bandcamp.png",
+    badgeUrl: "/img/buttons/bandcamp.png",
   },
   {
     title: "Ko-Fi",
@@ -15,7 +15,7 @@ export const links = [
     icon: "img/icons/kofi.png",
     bgColor: "#29abe0",
     textColor: "white",
-    badgeUrl: "/img/kofi.png",
+    badgeUrl: "/img/buttons/kofi.png",
   },
   {
     title: "Twitter",
@@ -23,7 +23,7 @@ export const links = [
     icon: "img/icons/twitter.png",
     bgColor: "#1da1f2",
     textColor: "white",
-    badgeUrl: "/img/twitter.png",
+    badgeUrl: "/img/buttons/twitter.png",
   },
   {
     title: "Twitch",
@@ -31,7 +31,7 @@ export const links = [
     icon: "img/icons/twitch.png",
     bgColor: "#5e3b9c",
     textColor: "white",
-    badgeUrl: "/img/twitch.png",
+    badgeUrl: "/img/buttons/twitch.png",
   },
   {
     title: "Telegram",
@@ -39,7 +39,7 @@ export const links = [
     icon: "img/icons/telegram.png",
     bgColor: "white",
     textColor: "black",
-    badgeUrl: "/img/telegram.png",
+    badgeUrl: "/img/buttons/telegram.png",
   },
   {
     title: "Tumblr",
@@ -48,7 +48,7 @@ export const links = [
     bgColor: "#36465d",
     textColor: "white",
     iconCss: "border-radius: 100%",
-    badgeUrl: "/img/tumblr.png",
+    badgeUrl: "/img/buttons/tumblr.png",
   },
   {
     title: "YouTube",
@@ -56,7 +56,7 @@ export const links = [
     icon: "img/icons/youtube.png",
     bgColor: "#ff1111",
     textColor: "white",
-    badgeUrl: "/img/youtube.png",
+    badgeUrl: "/img/buttons/youtube.png",
   },
   {
     title: "Steam",
@@ -64,7 +64,7 @@ export const links = [
     icon: "img/icons/steam.png",
     bgColor: "white",
     textColor: "black",
-    badgeUrl: "/img/steam.png",
+    badgeUrl: "/img/buttons/steam.png",
   },
   {
     title: "GitHub",
@@ -72,7 +72,7 @@ export const links = [
     icon: "img/icons/github.png",
     bgColor: "#111213",
     textColor: "white",
-    badgeUrl: "/img/github.png",
+    badgeUrl: "/img/buttons/github.png",
   },
   {
     title: "Business Email",
@@ -80,7 +80,7 @@ export const links = [
     icon: "img/icons/email.png",
     bgColor: "white",
     textColor: "#111213",
-    badgeUrl: "/img/email.png",
+    badgeUrl: "/img/buttons/email.png",
   },
 ];
 
