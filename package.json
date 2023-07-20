@@ -25,14 +25,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@types/node": "^14.18.42",
-    "@types/semver": "^7.3.13",
-    "@typescript-eslint/eslint-plugin": "^5.59.0",
-    "@typescript-eslint/parser": "^5.59.0",
+    "@types/node": "^14.18.53",
+    "@types/semver": "^7.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "nodemon": "^2.0.22",
-    "semver": "^7.5.0",
+    "semver": "^7.5.4",
     "shx": "^0.3.4",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
@@ -41,6 +41,6 @@
     "uniq": "^1.0.1"
   },
   "devDependencies": {
-    "prettier": "^2.8.7"
+    "prettier": "^2.8.8"
   }
 }
