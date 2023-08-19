@@ -9,7 +9,7 @@ export const subtitles = [
   "i absolutely adore chen touhou",
   "chen touhou is very cute!",
   "<a href='https://twitter.com/htfcirno2000'>htfcirno2000</a> is very awesome :3",
-  "<a href='https://twitter.com/sysdotini'>Espi</a> is very cool, talented, and awesome c:",
+  "<a href='https://espi.me'>Espi</a> is very cool, talented, and awesome c:",
   "I love my <a href='https://twitter.com/euphoriaenby'>partner</a> so much <3",
   "cheeeeeeeeeeeeeeeeen",
   "CHEN!",
@@ -33,12 +33,12 @@ export const subtitles = [
   "splish splash your opinion is trash",
   "trans rights!",
   "hjkhgjkfdjkdhfgkhjgdfjkhgdfjkhdg",
-  "very \"dedicated\" and \"motivated\"", 
+  "very \"dedicated\" and \"motivated\"",
   "{CHEN.SUBTITLE}", // hehe they'll think it's broken
-  "can i borrow your oreos", 
+  "can i borrow your oreos",
   "kitchen GUN",
   "free pianos!",
-  "aperature science" 
+  "aperature science"
 ];
 
 export const randomSubtitle = () => subtitles[Math.floor(Math.random() * subtitles.length)];
