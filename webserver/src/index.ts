@@ -112,6 +112,12 @@ const init = async () => {
     res.redirect("/fancy/");
   });
 
+  // Music redirect
+
+  app.get("/music", (req, res) => {
+    res.redirect("https://hyperfollow.com/flleeppyy");
+  });
+
   // app.get("/", async (req, res) => {
   //   res.type("text/html");
 
