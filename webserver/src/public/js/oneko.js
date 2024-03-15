@@ -39,7 +39,13 @@ const b64toBlob = (base64, type = "application/octet-stream") =>
     "fleepy.tv",
     "maia.crimew.gay",
     "spookyghost.zone",
-    "noelle.df1.dev"
+    "noelle.df1.dev",
+    "www.kibty.town",
+    "kibty.town",
+    "avasilver.dev",
+    "tris.fyi", 
+    "breq.dev",
+    "oon.nz"
   ];
 
   try {
