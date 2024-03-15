@@ -34,7 +34,11 @@
         <tr>
           <td><%= element.title %></td>
           <td>
-            <a class="link" href="<%~ element.href %>"><%= element.href %></a>
+            <% if (element.dead) { %>
+              <s>
+            <% } %>
+            <a class="link" href="<%~ element.href %>"><%= element.href%></a><% if (element.dead) { %></s> (Dead)
+            <% } %>
           </td>
         </tr>
         <% }) %>
