@@ -26,7 +26,6 @@ window.randomizeChildren = function (element: HTMLElement) {
   (await import("./modules/hue")).default();
   (await import("./modules/bg")).default();
   (await import("./modules/bgClick")).default();
-  (await import("./modules/arc")).default();
   (await import("./modules/links")).default();
   (await import("./modules/subtitles")).default();
   (await import("./modules/dev")).default();
