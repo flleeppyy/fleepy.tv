@@ -18,12 +18,12 @@ export const links = [
     badgeUrl: "/img/buttons/kofi.png",
   },
   {
-    title: "Twitter",
-    href: "https://twitter.com/flleeppyy",
-    icon: "img/icons/twitter.png",
+    title: "Bluesky",
+    href: "https://bsky.app/profile/fleepy.tv",
+    icon: "img/icons/bluesky.png",
     bgColor: "#1da1f2",
     textColor: "white",
-    badgeUrl: "/img/buttons/twitter.png",
+    badgeUrl: "/img/badges/bluesky.gif",
   },
   {
     title: "Twitch",
