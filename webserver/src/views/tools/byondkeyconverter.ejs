@@ -1,0 +1,56 @@
+<% layout("../../layouts/default.ejs", {
+  title: "BYOND Key to Ckey converter",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %>
+  
+  <style>
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    textarea, button {
+      margin: 5px;
+    }
+    
+    textarea {
+      width: 400px;
+      height: 300px;
+      min-width: 200px;
+      min-height: 100px;
+      background-color: #4e2f69;
+    }
+  </style>
+  
+  <div class="box">
+    <p>BYOND Key to Ckey converter</p>
+    
+    <textarea id="input" placeholder="Enter BYOND keys, one per line"></textarea>
+    <button onclick="convertKeys()">Convert</button>
+    <textarea id="output" placeholder="Converted ckeys" disabled></textarea>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+  </div>
+  
+  <script>
+    const convertKey = (key) => {
+      const keyReplacePattern = /[^\da-z]/g;
+      return key.toLowerCase().replaceAll(keyReplacePattern, "").trim();
+    };
+    
+    function convertKeys() {
+      const input = document.getElementById("input").value;
+      const lines = input.split("\n").map(line => convertKey(line));
+      document.getElementById("output").value = lines.join("\n");
+    }
+    
+    function copyToClipboard() {
+      const output = document.getElementById("output");
+      output.select();
+      navigator.clipboard.writeText(output.value);
+    }
+  </script>
+</div>

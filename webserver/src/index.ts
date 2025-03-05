@@ -151,25 +151,7 @@ const init = async () => {
   }
 
   addRouteDir(path.join(__dirname, "../src/views"), path.join(__dirname, "../src/views"));
-  // fs.readdirSync(path.join(__dirname, "../src/views")).filter(e => e.endsWith("ejs")).forEach(async (file) => {
-  //   console.log(file);
-  //   const route = file.replace(".ejs", "");
-  //   if (file.indexOf(".ejs") !== -1) {
-  //     if (route === "index") {
-  //       app.get("/", async (req, res) => {
-  //         res.type("text/html");
-  //         await res.send(await eta.renderFile(`/views/${route}.ejs`, {}));
-  //       });
-  //       return
-  //     }
 
-  //     app.get("/" + route, async (req, res) => {
-  //       res.type("text/html");
-  //       await res.send(await eta.renderFileAsync(`/views/${file}`, {}));
-  //     });
-  //   }
-  // });
-  // Recursively add views as routes
 
   // for .well-known paths, set mime type to text/plain
   app.addHook("onRequest", (req, res, next) => {
@@ -183,10 +165,6 @@ const init = async () => {
   });
 
   await (await import("./api/index")).default(app);
-  // (await import("./api/v1/links")).default(app);
-  // (await import("./api/v1/subtitles")).default(app);
-  // (await import("./api/v1/modpacks")).default(app);
-  // (await import("./api/v2/modpacks")).default(app);
 
   app.setNotFoundHandler(async (req, res) => {
     res.type("text/html");

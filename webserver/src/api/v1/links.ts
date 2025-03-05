@@ -42,15 +42,6 @@ export const links = [
     badgeUrl: "/img/buttons/telegram.png",
   },
   {
-    title: "Tumblr",
-    href: "https://flleeppyy.tumblr.com",
-    icon: "img/icons/tumblr.png",
-    bgColor: "#36465d",
-    textColor: "white",
-    iconCss: "border-radius: 100%",
-    badgeUrl: "/img/buttons/tumblr.png",
-  },
-  {
     title: "YouTube",
     href: "https://u.fleepy.tv/youtube",
     icon: "img/icons/youtube.png",
