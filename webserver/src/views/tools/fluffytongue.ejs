@@ -1,0 +1,73 @@
+<% layout("../../layouts/default.ejs", {
+  title: "Fluffy Tongue converter (uwuify)",
+}) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %>
+  <%~ includeFile("../../partials/navbar.ejs"); %>
+  
+  <style>
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    textarea, button {
+      margin: 5px;
+    }
+    
+    textarea {
+      width: 400px;
+      height: 300px;
+      min-width: 200px;
+      min-height: 100px;
+      background-color: #4e2f69;
+    }
+  </style>
+  
+  <div class="box">
+    <p>Fluffy Tongue converter (uwuify)</p>
+    
+    <textarea id="input" placeholder="Entertext to uwuify"></textarea>
+    <button onclick="uwuifyShit()">Convert</button>
+    <textarea id="output" placeholder="Converted text" disabled></textarea>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+  </div>
+  <script>
+    // Loosely ported from monkestation's uwuify.dm file
+  const uwuifyMapping = {
+    "ove": "uv", "Ove": "Uv", "oVe": "uV", "OVe": "UV", "ovE": "uv", "OvE": "Uv", "oVE": "uV", "OVE": "UV",
+    "ne": "nye", "Ne": "Nye", "nE": "nYe", "NE": "NYe",
+    "nu": "nyu", "Nu": "Nyu", "nU": "nYu", "NU": "NYu",
+    "na": "nya", "Na": "Nya", "nA": "nYa", "NA": "NYa",
+    "no": "nyo", "No": "Nyo", "nO": "nYo", "NO": "NYo",
+    "r": "w", "R": "W", "l": "w", "L": "W"
+  };
+  
+  const uwuifyRegex = new RegExp(
+    Object.keys(uwuifyMapping)
+      .sort((a, b) => b.length - a.length)
+      .map(str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+      .join('|'),
+    'g'
+  );
+  
+  const uwuifyText = (text) => text?.replace(uwuifyRegex, (match) => uwuifyMapping[match]);
+  </script>
+  
+  <script>
+    function uwuifyShit() {
+      const input = document.getElementById("input").value;
+      document.getElementById("output").value = uwuifyText(input)
+    }
+    
+    function copyToClipboard() {
+      const output = document.getElementById("output");
+      output.select();
+      navigator.clipboard.writeText(output.value);
+    }
+  </script>
+</div>
+
+
