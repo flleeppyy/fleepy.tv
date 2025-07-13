@@ -1,0 +1,130 @@
+<% layout("../../layouts/default.ejs", { title: "DOC Comment Converter", }) %>
+
+<div class="body">
+  <%~ includeFile("../../partials/nameheader.ejs"); %> <%~ includeFile("../../partials/navbar.ejs"); %>
+
+  <style>
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    #input-editor, #output-editor {
+      width: 800px;
+      height: 300px;
+      min-width: 200px;
+      min-height: 100px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin: 5px;
+    }
+  </style>
+
+  <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+
+  <div class="box">
+    <h2>Doc comment converter</h2>
+    <p>Converts comments to documentation comments. One line will simply make it a singleline doc comment, two lines together will make it a block doc comment</p>
+
+    <div id="input-editor"></div>
+    <button onclick="convertLines()">Convert</button>
+    <div id="output-editor"></div>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+  <script>
+    let inputEditor, outputEditor;
+
+    require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+      inputEditor = monaco.editor.create(document.getElementById('input-editor'), {
+        value: `// two lines
+// two lines
+
+// one line
+
+  // three lines with whitespace!!
+  // three lines with whitespace!!
+  // three lines with whitespace!!
+`,
+        language: 'javascript',
+        theme: 'vs-dark',
+        minimap: { enabled: false }
+      });
+
+      outputEditor = monaco.editor.create(document.getElementById('output-editor'), {
+        value: '',
+        language: 'plaintext',
+        theme: 'vs-dark',
+        readOnly: true,
+        minimap: { enabled: false }
+      });
+
+      convertLines()
+
+      inputEditor.onDidChangeModelContent(convertLines);
+    });
+
+    function copyToClipboard() {
+      if (!outputEditor) return;
+      const value = outputEditor.getValue();
+      navigator.clipboard.writeText(value);
+    }
+
+    function convertLines() {
+      if (!inputEditor || !outputEditor) return;
+      const input = inputEditor.getValue();
+      const lines = input.split('\n');
+      let result = '';
+      let block = [];
+      let lastWasComment = false;
+
+      function flushBlock() {
+        if (block.length === 1) {
+          const match = block[0].match(/^(\s*)\/\//);
+          const leadingWhitespace = match ? match[1] : '';
+          const content = block[0].replace(/^(\s*\/\/)/, '').trim();
+          result += leadingWhitespace + '/// ' + content + '\n';
+        } else if (block.length > 1) {
+          const match = block[0].match(/^(\s*)\/\//);
+          const leadingWhitespace = match ? match[1] : '';
+          result += leadingWhitespace + '/**\n';
+          block.forEach((line, idx) => {
+        const content = line.replace(/^(\s*\/\/)/, '').trim();
+        result += leadingWhitespace + ' * ' + content + '\n';
+          });
+          result += leadingWhitespace + ' */\n';
+        }
+        block = [];
+      }
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (/^\s*\/\//.test(line)) {
+          block.push(line);
+          lastWasComment = true;
+        } else {
+          if (block.length) flushBlock();
+          result += line + '\n';
+          lastWasComment = false;
+        }
+        if (
+          lastWasComment &&
+          (i + 1 < lines.length) &&
+          !/^\s*\/\//.test(lines[i + 1]) &&
+          lines[i + 1].trim() === ''
+        ) {
+          result += '\n';
+        }
+      }
+      if (block.length) flushBlock();
+
+      outputEditor.setValue(result.trimEnd());
+    }
+
+    outputEditor
+  </script>
+</div>
