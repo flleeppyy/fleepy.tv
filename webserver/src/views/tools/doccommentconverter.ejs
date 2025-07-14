@@ -10,9 +10,10 @@
       align-items: center;
       gap: 10px;
     }
-    #input-editor, #output-editor {
+    #input-editor,
+    #output-editor {
       width: 800px;
-      height: 300px;
+      height: 500px;
       min-width: 200px;
       min-height: 100px;
       border: 1px solid #ccc;
@@ -22,11 +23,17 @@
     }
   </style>
 
-  <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
+  <link
+    rel="stylesheet"
+    data-name="vs/editor/editor.main"
+    href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css"
+  />
 
   <div class="box">
     <h2>Doc comment converter</h2>
-    <p>Converts comments to documentation comments. One line will simply make it a singleline doc comment, two lines together will make it a block doc comment</p>
+    <p>Converts comments to documentation comments.</p>
+    <p>One line will simply make it a singleline doc comment, two lines together will make it a block doc comment.</p>
+    <p>More conversion situations listed below as examples.</p>
 
     <div id="input-editor"></div>
     <button onclick="convertLines()">Convert</button>
@@ -38,9 +45,9 @@
   <script>
     let inputEditor, outputEditor;
 
-    require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' }});
-    require(['vs/editor/editor.main'], function() {
-      inputEditor = monaco.editor.create(document.getElementById('input-editor'), {
+    require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs" } });
+    require(["vs/editor/editor.main"], function () {
+      inputEditor = monaco.editor.create(document.getElementById("input-editor"), {
         value: `// two lines
 // two lines
 
@@ -49,21 +56,28 @@
   // three lines with whitespace!!
   // three lines with whitespace!!
   // three lines with whitespace!!
+  
+/*
+  this is not a proper doc comment!
+  meow!
+*/
+
+var/list/meowmeow = list("meow", "meow") // this is a comment on the same line as this var declaration
 `,
-        language: 'javascript',
-        theme: 'vs-dark',
-        minimap: { enabled: false }
+        language: "javascript",
+        theme: "vs-dark",
+        minimap: { enabled: false },
       });
 
-      outputEditor = monaco.editor.create(document.getElementById('output-editor'), {
-        value: '',
-        language: 'plaintext',
-        theme: 'vs-dark',
+      outputEditor = monaco.editor.create(document.getElementById("output-editor"), {
+        value: "",
+        language: "plaintext",
+        theme: "vs-dark",
         readOnly: true,
-        minimap: { enabled: false }
+        minimap: { enabled: false },
       });
 
-      convertLines()
+      convertLines();
 
       inputEditor.onDidChangeModelContent(convertLines);
     });
@@ -77,47 +91,96 @@
     function convertLines() {
       if (!inputEditor || !outputEditor) return;
       const input = inputEditor.getValue();
-      const lines = input.split('\n');
-      let result = '';
+      const lines = input.split("\n");
+      let result = "";
       let block = [];
       let lastWasComment = false;
 
       function flushBlock() {
         if (block.length === 1) {
           const match = block[0].match(/^(\s*)\/\//);
-          const leadingWhitespace = match ? match[1] : '';
-          const content = block[0].replace(/^(\s*\/\/)/, '').trim();
-          result += leadingWhitespace + '/// ' + content + '\n';
+          const leadingWhitespace = match ? match[1] : "";
+          const content = block[0].replace(/^(\s*\/\/)/, "").trim();
+          result += leadingWhitespace + "/// " + content + "\n";
         } else if (block.length > 1) {
           const match = block[0].match(/^(\s*)\/\//);
-          const leadingWhitespace = match ? match[1] : '';
-          result += leadingWhitespace + '/**\n';
+          const leadingWhitespace = match ? match[1] : "";
+          result += leadingWhitespace + "/**\n";
           block.forEach((line, idx) => {
-        const content = line.replace(/^(\s*\/\/)/, '').trim();
-        result += leadingWhitespace + ' * ' + content + '\n';
+            const content = line.replace(/^(\s*\/\/)/, "").trim();
+            result += leadingWhitespace + " * " + content + "\n";
           });
-          result += leadingWhitespace + ' */\n';
+          result += leadingWhitespace + " */\n";
         }
         block = [];
       }
 
+      let inBlockComment = false;
+      let blockCommentLines = [];
+      let blockCommentIndent = "";
+
       for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
+        let line = lines[i];
+
+        if (!inBlockComment && /^\s*\/\*/.test(line)) {
+          inBlockComment = true;
+          blockCommentLines = [];
+          const match = line.match(/^(\s*)\/\*/);
+          blockCommentIndent = match ? match[1] : "";
+
+          let content = line
+            .replace(/^(\s*)\/\*/, "")
+            .replace(/\*\/\s*$/, "")
+            .trim();
+          if (content) blockCommentLines.push(content);
+          continue;
+        }
+
+        if (inBlockComment) {
+          if (/\*\//.test(line)) {
+            let content = line
+              .replace(/\*\/\s*$/, "")
+              .replace(/^\s*\*/, "")
+              .trim();
+            if (content) blockCommentLines.push(content);
+            result += blockCommentIndent + "/**\n";
+            blockCommentLines.forEach(l => {
+              result += blockCommentIndent + " * " + l + "\n";
+            });
+            result += blockCommentIndent + " */\n";
+            inBlockComment = false;
+            blockCommentLines = [];
+            blockCommentIndent = "";
+            continue;
+          } else {
+            let content = line.replace(/^\s*\*/, "").trim();
+            if (content) blockCommentLines.push(content);
+            continue;
+          }
+        }
+
+        const inlineCommentMatch = line.match(/^(\s*)(.*?)(\s*\/\/\s*(.*))$/);
+        if (inlineCommentMatch && inlineCommentMatch[2].trim() !== "") {
+          const leadingWhitespace = inlineCommentMatch[1];
+          const codePart = inlineCommentMatch[2].trimEnd();
+          const commentContent = inlineCommentMatch[4].trim();
+          result +=
+            leadingWhitespace + "/// " + commentContent.charAt(0).toUpperCase() + commentContent.slice(1) + "\n";
+          result += leadingWhitespace + codePart + "\n";
+          lastWasComment = false;
+          continue;
+        }
+
         if (/^\s*\/\//.test(line)) {
           block.push(line);
           lastWasComment = true;
         } else {
           if (block.length) flushBlock();
-          result += line + '\n';
+          result += line + "\n";
           lastWasComment = false;
         }
-        if (
-          lastWasComment &&
-          (i + 1 < lines.length) &&
-          !/^\s*\/\//.test(lines[i + 1]) &&
-          lines[i + 1].trim() === ''
-        ) {
-          result += '\n';
+        if (lastWasComment && i + 1 < lines.length && !/^\s*\/\//.test(lines[i + 1]) && lines[i + 1].trim() === "") {
+          result += "\n";
         }
       }
       if (block.length) flushBlock();
@@ -125,6 +188,6 @@
       outputEditor.setValue(result.trimEnd());
     }
 
-    outputEditor
+    outputEditor;
   </script>
 </div>
