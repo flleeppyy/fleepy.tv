@@ -85,7 +85,8 @@ export default function () {
 
   io.once("listening", () => {
     logger.info(`Devsocket ws listening at ws://::1:${wsPort}`);
-    items.forEach(item => {
+
+    items.forEach((item) => {
       let folders = [];
       if (Array.isArray(item.folder)) {
         folders = item.folder;
@@ -93,62 +94,40 @@ export default function () {
         folders = [item.folder];
       }
 
-      folders.forEach(folder => {
-        // for each file in the folder
-        fs.readdir(path.join(__dirname, folder), (err, files) => {
-          if (err) {
-            logger.error(err);
-            return;
-          }
-          files.forEach(file => {
-            // if the path is in public, we need to set the relative path to /
-            // Ex: "..\public\js\example.js" => "/js/example.js"
-            const relativePath = path
-              .join(folder, file)
-              .replace(/\.\.\\public\\/g, "/")
-              .replace(/\\/g, "/");
+      folders.forEach((folder) => {
+        const fullPath = path.join(__dirname, folder);
+        fs.watch(
+          fullPath,
+          { recursive: true },
+          (eventType, filename) => {
+            if (filename) {
+              console.log(`Detected ${eventType} in ${folder} on file: ${filename}`);
 
-            const fileInfo = {
-              id: randomUUID(),
-              relativePath,
-              lastModified: Date.now(),
-              action: item.action,
-            };
-            watchingFiles.push(fileInfo);
-            const filePath = path.join(folder, file);
-            fs.watchFile(
-              path.join(__dirname, filePath),
-              {
-                interval: 500,
-              },
-              () => {
-                if (item.action == "refreshimg") {
-                  // The path to the image, most likely /img
-                  const relativePath = fileInfo.relativePath;
+              if (item.action === "refreshimg") {
+                const relativePath = path
+                  .join(folder, filename)
+                  .replace(/\\/g, "/");
 
-                  // io.emit(`refreshimg<${relativePath}>`);
-                  io.clients.forEach(s =>
-                    s.send(
-                      JSON.stringify({
-                        action: "refreshimg",
-                        relativePath,
-                      }),
-                    ),
-                  );
-                  return;
-                }
-
-                io.clients.forEach(s => s.send(JSON.stringify(item)));
-              },
-            );
-          });
-        });
+                io.clients.forEach((s) =>
+                  s.send(
+                    JSON.stringify({
+                      action: "refreshimg",
+                      relativePath,
+                    }),
+                  ),
+                );
+              } else {
+                io.clients.forEach((s) => s.send(JSON.stringify(item)));
+              }
+            }
+          },
+        );
       });
     });
 
-    io.on("connection", socket => {
+    io.on("connection", (socket) => {
       socket.send("hihi");
-      socket.on("message", data => {
+      socket.on("message", (data) => {
         const convertedData = data.toString();
         if (convertedData.startsWith("hewo! how are you?")) {
           socket.send("I'm fine, thanks!");

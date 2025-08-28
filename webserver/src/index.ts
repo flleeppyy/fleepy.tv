@@ -11,6 +11,7 @@ import { logger } from "./utils/logger";
 import devWebSocket from "./utils/devSocket";
 
 const env = process.env.NODE_ENV;
+const isDev = env === "development";
 const port = isNaN(Number(process.env.PORT)) ? 3000 : Number(process.env.PORT);
 
 const app = fastify({
@@ -79,11 +80,11 @@ const init = async () => {
   });
 
   app.get("/dev", (req, res) => {
-    env === "development" ? res.send(1) : res.send(0);
+    res.send(Number(isDev));
   });
 
   app.addHook("onRequest", (req, res, next) => {
-    if (env === "development") {
+    if (isDev) {
       res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
       res.header("Expires", "-1");
       res.header("Pragma", "no-cache");
@@ -191,7 +192,7 @@ const init = async () => {
 };
 
 const start = async () => {
-  if (env === "development") {
+  if (isDev) {
     devWebSocket();
   }
   await init();
