@@ -2,6 +2,14 @@ import type { FastifyInstance } from "fastify";
 
 export const links = [
   {
+    title: "Ko-Fi",
+    href: "https://ko-fi.com/flleeppyy",
+    icon: "img/icons/kofi.png",
+    bgColor: "#29abe0",
+    textColor: "white",
+    badgeUrl: "/img/buttons/kofi.png",
+  },
+  {
     title: "Bandcamp",
     href: "https://flleeppyy.bandcamp.com/",
     icon: "img/icons/bandcamp.png",
@@ -10,12 +18,12 @@ export const links = [
     badgeUrl: "/img/buttons/bandcamp.png",
   },
   {
-    title: "Ko-Fi",
-    href: "https://ko-fi.com/flleeppyy",
-    icon: "img/icons/kofi.png",
-    bgColor: "#29abe0",
+    title: "Soundcloud",
+    href: "https://soundcloud.com/flleeppyy",
+    icon: "img/icons/soundcloud.png",
+    bgColor: "#4B5154",
     textColor: "white",
-    badgeUrl: "/img/buttons/kofi.png",
+    badgeUrl: "/img/badges/soundcloud.png",
   },
   {
     title: "Bluesky",

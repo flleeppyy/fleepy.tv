@@ -210,7 +210,11 @@ export default (app: FastifyInstance) => {
     return res.send(packs);
   });
 
-  app.get("/api/v2/modpacks/:id", async (req, res) => {
+  app.get<{
+    Params: {
+      id: string
+    }
+  }>("/api/v2/modpacks/:id", async (req, res) => {
     // return res.send({
     //   error: "Invalid ID",
     //   note: "If you're using a regular name string such as 'minecraft-modpack-name', please use the ID instead",
@@ -226,9 +230,16 @@ export default (app: FastifyInstance) => {
     return res.send(pack);
   });
 
-  app.get("/api/v2/modpacks/:id/latest", async (req, res) => {
+  app.get<{
+    Params: {
+      id: string
+    },
+    Querystring: {
+      prerelease: "alpha" | "beta" | "rc" | "any" | "stable"
+    }
+  }>("/api/v2/modpacks/:id/latest", async (req, res) => {
     const id = req.params["id"];
-    const releaseType: "alpha" | "beta" | "rc" | "any" | "stable" = req.query["prerelease"] || "stable";
+    const releaseType = req.query["prerelease"] || "stable";
 
     if (releaseType.length > 32) {
       res.status(400).send({
@@ -247,7 +258,7 @@ export default (app: FastifyInstance) => {
 
     const selectedPackVersion = semver
       .rsort<SemVer>(pack.versions.map(e => e.version))
-      .filter(v => {
+      .filter((v) => {
         if (releaseType === "stable") {
           return v.prerelease.length === 0;
         } else if (releaseType === "any") {
@@ -256,7 +267,7 @@ export default (app: FastifyInstance) => {
           return v.prerelease?.[0] === releaseType;
         }
       })
-      .map(e => e.version)[0];
+      .map((e: { version: any; }) => e.version)[0];
 
     if (!selectedPackVersion) {
       return res.status(404).send({
@@ -275,7 +286,12 @@ export default (app: FastifyInstance) => {
     return res.send(packVersion);
   });
 
-  app.get("/api/v2/modpacks/:id/:version", async (req, res) => {
+  app.get<{
+    Params: {
+      id: string;
+      version: string;
+    }
+  }>("/api/v2/modpacks/:id/:version", async (req, res) => {
     const id = req.params["id"];
     const version = req.params["version"];
     const pack = modpackHandler.GetPackVersion(id, version);

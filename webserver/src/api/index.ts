@@ -10,14 +10,14 @@ export default async (app: FastifyInstance) => {
 
   for (let v of Object.keys(apis)) {
     app.get("/api/" + v, async (req, res) => {
-      return res.send(apis[v]);
+      return res.send(apis[v as "v1"]);
     });
 
     const files = await fs.readdir(path.join(__dirname, v));
     for (const api of files) {
       if (api.endsWith("d.ts")) return;
       await (await import(path.join(__dirname, v, api.split(".ts")[0]))).default(app);
-      apis[v].push(api.split(".")[0]);
+      apis[v as "v1"].push(api.split(".")[0]);
     }
   }
 

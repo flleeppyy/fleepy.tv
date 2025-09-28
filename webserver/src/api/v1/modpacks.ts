@@ -21,7 +21,11 @@ export default (app: FastifyInstance) => {
     return res.send(packs);
   });
 
-  app.get("/api/v1/modpacks/:pack", async (req, res) => {
+  app.get<{
+    Params: {
+      pack: string
+    }
+  }>("/api/v1/modpacks/:pack", async (req, res) => {
     const requestedPack = req.params["pack"];
     try {
       const files = await fs.promises.readdir(path.join(modpackFolder, requestedPack));
@@ -60,9 +64,16 @@ export default (app: FastifyInstance) => {
    * @param pack The pack
    * @queryparam prerelease The prerelease type to return the latest version of. Defaults to stable, meaning no prerelease
    */
-  app.get("/api/v1/modpacks/:pack/latest", async (req, res) => {
+  app.get<{
+    Params: {
+      pack: string,
+    },
+    Querystring: {
+      prerelease: "alpha" | "beta" | "rc" | "any" | "stable"
+    }
+  }>("/api/v1/modpacks/:pack/latest", async (req, res) => {
     const requestedPack = req.params["pack"];
-    const releaseType: "alpha" | "beta" | "rc" | "any" | "stable" = req.query["prerelease"] || "stable";
+    const releaseType  = req.query["prerelease"] || "stable";
 
     if (releaseType.length > 32) {
       res.status(400).send({
@@ -76,7 +87,7 @@ export default (app: FastifyInstance) => {
 
       const selectedPackVersion = semver
         .rsort<SemVer>(processedPacks.map(e => e.version))
-        .filter(v => {
+        .filter((v: any) => {
           if (releaseType === "stable") {
             return v.prerelease.length === 0;
           } else if (releaseType === "any") {
@@ -85,7 +96,7 @@ export default (app: FastifyInstance) => {
             return v.prerelease[0] === releaseType;
           }
         })
-        .map(e => e.version)[0];
+        .map((e: { version: any; }) => e.version)[0];
 
       if (!selectedPackVersion) {
         return res.status(404).send({
@@ -116,7 +127,12 @@ export default (app: FastifyInstance) => {
    * @param pack The pack requested
    * @param version This can be a valid semver spec, or a keyword that represents a prerelease.
    */
-  app.get("/api/v1/modpacks/:pack/:version", async (req, res) => {
+  app.get<{
+    Params: {
+      pack: string;
+      version: string;
+    }
+  }>("/api/v1/modpacks/:pack/:version", async (req, res) => {
     const requestedPack = req.params["pack"];
     const requestedVersion = req.params["version"];
     const processedPacks = await getPacks(requestedPack, true);
