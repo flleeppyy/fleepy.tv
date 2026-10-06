@@ -1,30 +1,43 @@
-<% layout("../layouts/default.ejs", {
-  title: "Home",
-  description: "Music producer, software developer and sysadmin.",
-}) %>
+<% layout("../layouts/default.ejs", { title: "Home", description: "Music producer, software developer and sysadmin.", })
+%>
 
 <div class="body">
-  <%~ includeFile("../partials/nameheader.ejs"); %>
-  <%~ includeFile("../partials/navbar.ejs"); %>
-  <div class="box" style="max-width: 32em;">
-    <p style="max-width: 32em;">
-    Hiya, my name is Chen/Marisa and I go by she/they. I have lots of hobbies, but the ones
-    I'm most passionate about are software development, music production, and screwing around with technology.
-    This is my little website that I sometimes pour time into with random tools, dumb apis, and useless stuff nobody will ever need.</p>
-    <hr>
-    <p>
-      I'm currently a system administrator and partial maintainer for <a href="https://monkestation.com">Monkestation</a> (<a href="https://github.com/Monkestation/Monkestation2.0">Github</a>), ran by <a href="https://www.youtube.com/@TheDukeofOok">The Duke</a> <a href="https://www.twitch.tv/thedukeofook"> of Ook</a>
+  <%~ includeFile("../partials/nameheader.ejs"); %> <%~ includeFile("../partials/navbar.ejs"); %>
+  <div class="box" style="max-width: 32em">
+    <p style="max-width: 32em">
+      Hiya, my name is Chen/Marisa and I go by she/they<a target="_blank" href="https://en.pronouns.page/@flleeppyy"
+        >[?]</a
+      >. I have lots of hobbies, but the ones I'm most passionate about are software development, music production, and
+      screwing around with technology. This is my little website that I sometimes pour time into with random tools, dumb
+      apis, and useless stuff nobody will ever need.
     </p>
-
+    <hr />
+    <p>
+      I am unemployed and have 2 years of experience in system administration for game servers. If you are hiring and
+      need someone with experience in: Proxmox, Debian (intermediate server management), pfSense, MikroTik RouterOS,
+      haproxy, Caddy, nginx, Windows Server (Pre Windows 11), TGS, BYOND/DreamMaker, JS/TS (NodeJS/Bun, PNPM), C#,
+      MariaDB and SQL maintenance, Netbird, Tracy profiling, DDOS disaster response, and a bunch of other stuff,
+      <br />
+      Then send me an email to the email listed at the bottom of the links section!
+    </p>
   </div>
   <div class="box">
-    <p style="max-width: 32em;">I have not really updated this site in a significant amount of time (3 years as of September 2025) and I don't think I'll be changing it's design for a while until I find some random motivation to do so.
-      I still add random tools to it though lol. If you're reading this and we used to talk: hi, I hope you're doing well, DM me if you feel like saying hi and catching up, I'm still on Discord.</p>
+    <p style="max-width: 32em">
+      I have not really updated this site in a significant amount of time (3 years as of September 2025) and I don't
+      think I'll be changing it's design for a while until I find some random motivation to do so. I still add random
+      tools to it though lol. If you're reading this and we used to talk: hi, I hope you're doing well, DM me if you
+      feel like saying hi and catching up, I'm still on Discord.
+    </p>
   </div>
   <div class="box">
     <p>Latest music release</p>
-    <br>
-    <iframe style="border: 0; width: 500px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1676977851/size=large/bgcol=333333/linkcol=9a64ff/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://flleeppyy.bandcamp.com/track/observable-universe">Observable Universe by Flleeppyy</a></iframe>
+    <br />
+    <iframe
+      style="border: 0; width: 500px; height: 120px"
+      src="https://bandcamp.com/EmbeddedPlayer/track=3382019579/size=large/bgcol=333333/linkcol=9a64ff/tracklist=false/artwork=small/transparent=true/"
+      seamless
+      ><a href="https://flleeppyy.bandcamp.com/album/cryphia-simplex">Cryphia Simplex by Flleeppyy</a></iframe
+    >
   </div>
   <p>links and garbage</p>
   <div class="box" id="linksTable">
@@ -54,15 +67,14 @@
   </div>
   <% // Ignore all the errors below. its just the html parser shitting a brick. its all valid tho %>
 
-  <div class="box" id="linksAsBadges" style="display: none;">
+  <div class="box" id="linksAsBadges" style="display: none">
     <p>links as badges so it looks cooler</p>
-    <% E.globalConstants.links.forEach((element, index) => { %>
-      <% if (index % 4 == 3 ) { %>
-        <br>
-      <% } %>
-      <a target="_blank" href="<%= element.href %>" alt="<%= element.title %>">
-        <img src="<%= element.badgeUrl %>">
-      </a>
+    <% E.globalConstants.links.forEach((element, index) => { %> <% if (index % 4 == 3 ) { %>
+    <br />
+    <% } %>
+    <a target="_blank" href="<%= element.href %>" alt="<%= element.title %>">
+      <img src="<%= element.badgeUrl %>" />
+    </a>
     <% }) %>
   </div>
   <script>
@@ -74,31 +86,37 @@
     <a target="_blank" class="link" href="https://foxwells.garden">foxwells.garden</a> and
     <a target="_blank" class="link" href="https://utsuho.rocks">utsuho.rocks</a>
   </p>
-  <footer style="max-width: 40em;">
-    <div style="display: flex; justify-content: center;">
+  <footer style="max-width: 40em">
+    <div style="display: flex; justify-content: center">
       <div style="width: 200px">
-        <p>add my button<br>to ur site!</p>
+        <p>add my button<br />to ur site!</p>
         <a target="_blank" href="https://fleepy.tv">
-          <img src="https://fleepy.tv/img/fleepy.png" alt="my site! feel free to add me to your site. send me a dm and ill add urs to mine if we're good enough friends"/>
+          <img
+            src="https://fleepy.tv/img/fleepy.png"
+            alt="my site! feel free to add me to your site. send me a dm and ill add urs to mine if we're good enough friends"
+          />
         </a>
       </div>
-      <div class="vl" style="border-left: 2px #ffa8f2 solid;">&nbsp;</div> 
+      <div class="vl" style="border-left: 2px #ffa8f2 solid">&nbsp;</div>
       <div style="width: 200px">
-        <p>sign my<br>guestbook!</p>
+        <p>sign my<br />guestbook!</p>
         <a target="_blank" href="https://flleeppyy.atabook.org">
-          <img src="/img/badges/guestbook.gif" alt="my guestbook!"/>
+          <img src="/img/badges/guestbook.gif" alt="my guestbook!" />
         </a>
       </div>
     </div>
-    <hr>
+    <hr />
     <p>Where am I in the 88x31 universe?</p>
     <a target="_blank" href="https://eightyeightthirty.one/#fleepy.tv">
-      <img src="https://raw.githubusercontent.com/NotNite/eightyeightthirtyone/main/client/public/88x31.png"/>
+      <img src="https://raw.githubusercontent.com/NotNite/eightyeightthirtyone/main/client/public/88x31.png" />
     </a>
-    <br>
-    <p style="margin-bottom:0.4em">friends!!!!</p>
+    <br />
+    <p style="margin-bottom: 0.4em">friends!!!!</p>
     <a target="_blank" href="https://absolucy.moe/">
-      <img src="/img/badges/friends/absolucy.png" alt="Catgirl headshot with bright purple eyes, and a fade down hair gradient from brown to a darkish pink, with the lettering 'ABSO' and 'LUCY' on separate lines" />
+      <img
+        src="/img/badges/friends/absolucy.png"
+        alt="Catgirl headshot with bright purple eyes, and a fade down hair gradient from brown to a darkish pink, with the lettering 'ABSO' and 'LUCY' on separate lines"
+      />
     </a>
     <a target="_blank" href="https://utsuho.rocks/">
       <img src="/img/badges/friends/utsuhorocks.png" alt="Utsuho Reiuji next to the text Utsuho rocks" />
@@ -110,78 +128,103 @@
       <img src="/img/badges/friends/c7-badge.png" alt="Foxwells Garden logo" />
     </a>
     <a target="_blank" href="https://adryd.com">
-      <img src="/img/badges/friends/adryd.png" alt="Witch hat next to the text Adryd">
+      <img src="/img/badges/friends/adryd.png" alt="Witch hat next to the text Adryd" />
     </a>
     <a target="_blank" href="https://skyla.moe">
-      <img src="/img/badges/friends/skyla.png" alt="skyla's website">
+      <img src="/img/badges/friends/skyla.png" alt="skyla's website" />
     </a>
     <a target="_blank" href="https://ariajb.net/">
-      <img src="/img/badges/friends/ariajb.png" alt="Aria's Site">
+      <img src="/img/badges/friends/ariajb.png" alt="Aria's Site" />
     </a>
     <a target="_blank" href="https://megu.dev">
-      <img src="/img/badges/friends/megu.png" alt="Megumin's Site">
+      <img src="/img/badges/friends/megu.png" alt="Megumin's Site" />
     </a>
     <a target="_blank" href="https://mariomasta64.me/">
-      <img src="/img/badges/friends/mariomasta64.png" alt="Mariomasta64's website">
+      <img src="/img/badges/friends/mariomasta64.png" alt="Mariomasta64's website" />
     </a>
     <a target="_blank" href="https://reimu.info/">
-      <img src="/img/badges/friends/ezio.png" alt="Dark purple background with the Windows 98 logo on the left, and thin caps text EZIO ">
+      <img
+        src="/img/badges/friends/ezio.png"
+        alt="Dark purple background with the Windows 98 logo on the left, and thin caps text EZIO "
+      />
     </a>
     <a target="_blank" href="https://sapphic.moe">
-      <img src="/img/badges/friends/sapphic.png" alt="Sapphic Angels' website">
+      <img src="/img/badges/friends/sapphic.png" alt="Sapphic Angels' website" />
     </a>
     <a target="_blank" href="https://espi.me">
-      <img src="/img/badges/friends/espi.png" alt="Espi's Site">
+      <img src="/img/badges/friends/espi.png" alt="Espi's Site" />
     </a>
     <a target="_blank" href="https://alula.me">
-      <img src="/img/badges/friends/alula.png" alt="Alula's Site">
+      <img src="/img/badges/friends/alula.png" alt="Alula's Site" />
     </a>
     <a target="_blank" href="https://koishii.online">
-      <img src="/img/badges/friends/koishi.png" alt="koishiis's website">
+      <img src="/img/badges/friends/koishi.png" alt="koishiis's website" />
     </a>
     <a target="_blank" href="https://onz.ee">
-      <img src="/img/badges/friends/onzecki.png" alt="onzecki's website">
+      <img src="/img/badges/friends/onzecki.png" alt="onzecki's website" />
     </a>
     <a target="_blank" href="https://wito.bar">
-      <img src="/img/badges/friends/fides.png" alt="Fides' website">
+      <img src="/img/badges/friends/fides.png" alt="Fides' website" />
     </a>
     <a target="_blank" href="https://cirnosystems.xyz/">
-      <img src="/img/badges/friends/cirnosys.png" alt="Ruby's website">
+      <img src="/img/badges/friends/cirnosys.png" alt="Ruby's website" />
     </a>
     <a target="_blank" href="https://noelle.df1.dev/">
-      <img src="/img/badges/friends/noelle.png" alt="Noelle's website">
+      <img src="/img/badges/friends/noelle.png" alt="Noelle's website" />
     </a>
     <p style="margin: 4px 0">random buttons and services</p>
-    <img src="/img/badges/transnow2.gif" alt="TRANS RIGHTS NOW!">
+    <a target="_blank" href="https://valerie.vg/">
+      <img src="/img/badges/estrogen.gif" alt="powered by estrogen!" />
+    </a>
+    <img src="/img/badges/transnow2.gif" alt="TRANS RIGHTS NOW!" />
+    <img
+      src="/img/badges/yall-means-all.gif"
+      alt="Yall means all - text next to square with a bunch of changing pride flags"
+    />
     <a target="_blank" href="https://bsky.app/profile/fleepy.tv">
-      <img src="/img/badges/bluesky.gif" alt="Join Bluesky!">
+      <img src="/img/badges/bluesky.gif" alt="Join Bluesky!" />
     </a>
     <a target="_blank" href="https://distrowatch.com">
-      <img src="/img/badges/linux.gif" alt="Linux Directory! Click here! Featuring a penguin that winks at you">
+      <img src="/img/badges/linux.gif" alt="Linux Directory! Click here! Featuring a penguin that winks at you" />
     </a>
-    <img src="/img/badges/gregg.gif" alt="HHGREG CULT!">
+    <img
+      src="/img/badges/queercoded.png"
+      alt="you're telling me a queer coded this. (on a rainbow pastel background)"
+    />
+    <img src="/img/badges/gregg.gif" alt="HHGREG CULT!" />
+    <img src="/img/badges/right.gif" alt="I support right to repair!" />
     <a target="_blank" href="https://linode.com">
-      <img src="/img/badges/linode.png" alt="Cloud Computing and server hosting!">
+      <img src="/img/badges/linode.png" alt="Cloud Computing and server hosting!" />
     </a>
-    <img src="/img/badges/twopaws.png" alt="silver plate with a purple paw onthe left with the text 'Made with my own two paws'">
+    <img
+      src="/img/badges/twopaws.png"
+      alt="silver plate with a purple paw onthe left with the text 'Made with my own two paws'"
+    />
+    <img src="/img/badges/toebeans.gif" alt="Toebeans NOW! featuring a pair of paws moving up and down" />
     <a target="_blank" href="https://haste.fleepy.tv/ovaqagoqowuk">
-      <img src="/img/badges/schoolsucks.gif" alt="School sucks! Forever!">
+      <img src="/img/badges/schoolsucks.gif" alt="School sucks! Forever!" />
     </a>
-    <img src="/img/badges/animegay.webp" alt="anime is gay as hell but i approve! - with two anime girls kissing on the left,gay flag background">
-    <img src="/img/badges/aol_no.gif" alt="AOL! no...">
-    <br>
-    <a target="_blank" href="magnet:?xt=urn:btih:2bcb5dff67c1cd2ed8979747351e9415127084ae&dn=seed_this_torrent.png&tr=wss%3a%2f%2ftracker.btorrent.xyz&tr=wss%3a%2f%2ftracker.openwebtorrent.com&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337&tr=udp%3a%2f%2fexplodie.org%3a6969&tr=udp%3a%2f%2ftracker.empire-js.us%3a1337">
-      <img src="/img/badges/sharingiscaring.gif" alt="seed your torrents! sharing is caring">
+    <img
+      src="/img/badges/animegay.webp"
+      alt="anime is gay as hell but i approve! - with two anime girls kissing on the left,gay flag background"
+    />
+    <img src="/img/badges/aol_no.gif" alt="AOL! no..." />
+    <a target="_blank" href="https://wii.hacks.guide/">
+      <img src="/img/badges/wiiguide.gif" alt="hack your wii... the right way!" />
     </a>
-
+    <br />
+    <a
+      target="_blank"
+      href="magnet:?xt=urn:btih:2bcb5dff67c1cd2ed8979747351e9415127084ae&dn=seed_this_torrent.png&tr=wss%3a%2f%2ftracker.btorrent.xyz&tr=wss%3a%2f%2ftracker.openwebtorrent.com&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337&tr=udp%3a%2f%2fexplodie.org%3a6969&tr=udp%3a%2f%2ftracker.empire-js.us%3a1337"
+    >
+      <img src="/img/badges/sharingiscaring.gif" alt="seed your torrents! sharing is caring" />
+    </a>
   </footer>
 </div>
 <script src="/js/oneko.js?<%= E.globalConstants.fakeHash%>"></script>
 
 <style>
-
-img[src^="/img"] {
-  max-height: 31px;
-}
-
-
+  img[src^="/img"] {
+    max-height: 31px;
+  }
+</style>
